@@ -1,0 +1,3 @@
+[submodule "blog/themes/bare"]
+	path = blog/themes/bare
+	url = https://github.com/orf/bare-hugo-theme.git
