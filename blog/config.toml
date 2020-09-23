@@ -1,0 +1,17 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "xshoji's tech blog"
+theme = "Bare"
+
+[params]
+mainSections = ["posts"]
+author = "xshoji"
+email = "shoji.cx@gmail.com"
+repoLink = "https://github.com/xshoji/blog"
+description = 'Posts tech news.'
+# PostCSS is harder than it should be to get working on a theme
+# example site. It's easy on _your_ site.
+postcss = false
+# Include the author name in the <title> of articles
+includeAuthorInTitle = true
+
