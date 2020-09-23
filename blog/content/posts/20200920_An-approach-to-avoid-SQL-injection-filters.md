@@ -2,7 +2,8 @@
 title: "SQLインジェクションフィルタを回避するためのアプローチ"
 date: 2020-09-20T19:00:00+09:00
 draft: false
-tags: ["post"]
+tags: ["posts"]
+keywords: ["cdn", "security", "sql injection"]
 ---
 
 > Astrocamel - Blog/Portfolio of George Skouroupathis  
