@@ -1,6 +1,7 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "xshoji's tech blog"
+publishDir = "../docs"
 theme = "Bare"
 
 [params]
