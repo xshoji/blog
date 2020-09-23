@@ -2,6 +2,8 @@
 
 My blog by hugo.
 
+https://xshoji.github.io/blog/
+
 # Post articles
 
 ```
