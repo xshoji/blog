@@ -15,4 +15,6 @@ description = 'Posts tech news.'
 postcss = false
 # Include the author name in the <title> of articles
 includeAuthorInTitle = true
-
+# Can be any colour here: https://bulma.io/documentation/layout/hero/#colors
+# e.g "warning" or "danger" for yellow or red.
+hero_colour = "dark"
