@@ -6,7 +6,28 @@
     <description>Recent content on xshoji&#39;s tech blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 20 Sep 2020 19:00:00 +0900</lastBuildDate><atom:link href="https://xshoji.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Sep 2020 05:55:23 +0900</lastBuildDate><atom:link href="https://xshoji.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>スマホにおける広告の新しいターゲティング手法について</title>
+      <link>https://xshoji.github.io/blog/posts/20200926_on-new-targeting-techniques-for-ads/</link>
+      <pubDate>Sat, 26 Sep 2020 05:55:23 +0900</pubDate>
+      
+      <guid>https://xshoji.github.io/blog/posts/20200926_on-new-targeting-techniques-for-ads/</guid>
+      <description>Companies can track your phone’s movements to target ads ｜ Ars Technica
+https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/
+ が元の記事。iOS14で適用される（※来年に延期になった）ユーザーのトラッキング機能のデフォルトオプトアウトや、 Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきている。
+ iOS 14、iPadOS 14、watchOS 14、tvOS 14は9月16日にリリース ｜ TechCrunch Japan
+https://jp.techcrunch.com/2020/09/16/2020-09-15-apple-ios-14-release/
+  Google による Cookie 廃止、「2年間」の猶予に歓迎の声 ：「実に穏やかなアプローチだ」 ｜ DIGIDAY［日本版］
+https://digiday.jp/platforms/google-plans-kill-off-third-party-cookies-chrome-within-2-years/
+ それに対しての新しいアプローチってどんなものがある？という話。
+この記事では、新しいターゲティング方法として「ユーザーが何をしているか」を軸とした広告のターゲティング手法を提案、提供しているらしい。
+ NumberEight ｜ AI to power your content with context ｜ London, UK
+https://www.numbereight.ai/
+ この記事に出てくる NumberEight という企業が提供しているSDKをアプリに組み込むことで、 スマホのセンサー情報に基づいたユーザーの行動を判別できるようになる、みたいなことやと思う。 ちなみに、この会社の共同設立者は
+ Abhishek Sen - Co-Founder &amp;amp; CEO - NumberEight ｜ LinkedIn</description>
+    </item>
+    
     <item>
       <title>SQLインジェクションフィルタを回避するためのアプローチ</title>
       <link>https://xshoji.github.io/blog/posts/20200920_an-approach-to-avoid-sql-injection-filters/</link>
