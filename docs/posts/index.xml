@@ -15,7 +15,7 @@
       <guid>https://xshoji.github.io/blog/posts/20200926_new-targeting-techniques-for-ads/</guid>
       <description>Companies can track your phone’s movements to target ads ｜ Ars Technica
 https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/
- が元の記事。iOS14で適用される（※来年に延期になった）ユーザーのトラッキング機能のデフォルトオプトアウトや、 Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきている。
+ が元の記事。iOS14で適用される（※来年に延期になった）ユーザーのトラッキング機能のデフォルトオプトアウト （ユーザーに「あなたのこと追跡するけど、いいよね？」（はい／いいえ）みたいな許可を明示的に得ないと、デフォルトでトラッキングができなくなる）や、 Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきている。
  iOS 14、iPadOS 14、watchOS 14、tvOS 14は9月16日にリリース ｜ TechCrunch Japan
 https://jp.techcrunch.com/2020/09/16/2020-09-15-apple-ios-14-release/
   Google による Cookie 廃止、「2年間」の猶予に歓迎の声 ：「実に穏やかなアプローチだ」 ｜ DIGIDAY［日本版］
