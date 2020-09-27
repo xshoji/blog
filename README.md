@@ -2,7 +2,7 @@
 
 My blog by hugo.
 
-https://xshoji.github.io/blog/
+https://blog.xshoji.com/
 
 # References
 
