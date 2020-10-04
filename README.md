@@ -1,10 +1,8 @@
 # blog
 
-My blog by hugo.
-
 https://blog.xshoji.com/
 
-# References
+A blog by hugo.
 
 > The world’s fastest framework for building websites ｜ Hugo  
 > https://gohugo.io/
