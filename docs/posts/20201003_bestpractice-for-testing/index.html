@@ -87,8 +87,36 @@
 </span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span>2<span style=color:#f92672>));</span>
     assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>createUserWithId<span style=color:#f92672>(</span>id2<span style=color:#f92672>),</span> createUserWithId<span style=color:#f92672>(</span>id3<span style=color:#f92672>))));</span>
   <span style=color:#f92672>}</span>
-</code></pre></div><p>これ結構やりがちかもしれないです。
-まぁ、↑の例だと別に良くない？ってなりますが、これが複雑になった時を考えると・・・ということでしょうか。</p><p>変数にまとめないと何度も同じ値を書くことになるのでDRY原則に反しそうですが、この場合は</p><blockquote><p>KISS. Keep It Simple,Stupid > DRY. Don&rsquo;t Repeat Yourself.</p></blockquote><p>という考えのようです。まぁ、コードは読む時間のほうが圧倒的に長いですからね。
+</code></pre></div><p>これJUnitだと分かりづらいんですかね？会社ではSpock Framework使ってますが、Groovyには <code>Power assert</code> っていう便利な機能がついていて、</p><blockquote><p>The Apache Groovy programming language - Testing guide<br><a href=https://www.groovy-lang.org/testing.html#_power_assertions>https://www.groovy-lang.org/testing.html#_power_assertions</a></p></blockquote><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-groovy data-lang=groovy>  <span style=color:#66d9ef>def</span> <span style=color:#e6db74>&#34;Groovyの場合&#34;</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+    setup: 
+    Long id1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>10L</span>
+    Long id2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>20L</span>
+    Long id3 <span style=color:#f92672>=</span> <span style=color:#ae81ff>30L</span>
+    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>
+            createUserWithId<span style=color:#f92672>(</span>id1<span style=color:#f92672>),</span>
+            createUserWithId<span style=color:#f92672>(</span>id2<span style=color:#f92672>),</span>
+            createUserWithId<span style=color:#f92672>(</span>id3<span style=color:#f92672>),</span>
+    <span style=color:#f92672>));</span>
+
+
+    when:
+    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span><span style=color:#ae81ff>15L</span><span style=color:#f92672>)</span>
+
+    then: 
+    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>
+    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>0</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id2
+    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>1</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id1
+  <span style=color:#f92672>}</span>
+
+
+actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>1</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id1
+<span style=color:#f92672>|</span>          <span style=color:#f92672>|</span>   <span style=color:#f92672>|</span>  <span style=color:#f92672>|</span>  <span style=color:#f92672>|</span>
+<span style=color:#f92672>|</span>          <span style=color:#f92672>|</span>   <span style=color:#ae81ff>30</span> <span style=color:#f92672>|</span>  <span style=color:#ae81ff>10</span>
+<span style=color:#f92672>|</span>          <span style=color:#f92672>|</span>      <span style=color:#66d9ef>false</span>
+<span style=color:#f92672>|</span>          io<span style=color:#f92672>.</span><span style=color:#a6e22e>github</span><span style=color:#f92672>.</span><span style=color:#a6e22e>xshoji</span><span style=color:#f92672>.</span><span style=color:#a6e22e>samplecode</span><span style=color:#f92672>.</span><span style=color:#a6e22e>bestpractice</span><span style=color:#f92672>.</span><span style=color:#a6e22e>testingtarget</span><span style=color:#f92672>.</span><span style=color:#a6e22e>User</span><span style=color:#a6e22e>@c868802</span>
+<span style=color:#f92672>[</span>io<span style=color:#f92672>.</span><span style=color:#a6e22e>github</span><span style=color:#f92672>.</span><span style=color:#a6e22e>xshoji</span><span style=color:#f92672>.</span><span style=color:#a6e22e>samplecode</span><span style=color:#f92672>.</span><span style=color:#a6e22e>bestpractice</span><span style=color:#f92672>.</span><span style=color:#a6e22e>testingtarget</span><span style=color:#f92672>.</span><span style=color:#a6e22e>User</span><span style=color:#a6e22e>@c860008</span><span style=color:#f92672>,</span> io<span style=color:#f92672>.</span><span style=color:#a6e22e>github</span><span style=color:#f92672>.</span><span style=color:#a6e22e>xshoji</span><span style=color:#f92672>.</span><span style=color:#a6e22e>samplecode</span><span style=color:#f92672>.</span><span style=color:#a6e22e>bestpractice</span><span style=color:#f92672>.</span><span style=color:#a6e22e>testingtarget</span><span style=color:#f92672>.</span><span style=color:#a6e22e>User</span><span style=color:#a6e22e>@c868802</span><span style=color:#f92672>]</span>
+</code></pre></div><p>こんな感じでエラーがあった行とその値をあわせて表示してくれるので、ここで指摘されている懸念は意識したことありませんでした。
+Javaを主軸にした記事なのでそこは仕方ないですね。SpockはGroovyなんで。</p><p>話を戻して、変数にまとめないと何度も同じ値を書くことになるのでDRY原則に反しそうですが、この場合は</p><blockquote><p>KISS. Keep It Simple,Stupid > DRY. Don&rsquo;t Repeat Yourself.</p></blockquote><p>という考えのようです。まぁ、コードは読む時間のほうが圧倒的に長いですからね。
 とはいえ、変数化自体はやったほうが良い場合ももちろんあるので、ここでは複雑化させる要因にもなり得るから気をつけよう、程度で抑えておけば良さそう。</p><h3 id=3-期待される動作についてのテストメソッドをそれぞれ個別に用意する>(3) 期待される動作についてのテストメソッドをそれぞれ個別に用意する</h3><p>これの逆を結構やってしまいがち。<code>GetTest()</code> とかいうテストメソッド内で通常系とかエラーとか色々テストしちゃってるというパターン。
 特に、機能追加などで既存のメソッドの役割が膨らんでいった場合に、
 元のテストメソッドにどんどんパターンを追加していっちゃう、みたいなやつ。</p><blockquote><p>Yes, it’s more writing effort but you can create a tailored and clear test, that only test the relevant behavior.<br>そうです、それはより多く書く労力が必要ですが、関連する動作のみをテストするような、カスタマイズされた明確なテストを作成することができます。</p></blockquote><p>テストメソッド内でやってることが多すぎて、修正しようにもどこ直せば良いかわからない！となるのを防ぐため、
