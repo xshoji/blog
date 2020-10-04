@@ -215,8 +215,8 @@ for文やif文の嵐になるのでそうならないようにすべき。</p><h
 このため、テスト時に都合が良い制限値を設定できる作りにすべき、という話。
 一度設定すると書き換えできないようにするのが理想なので、コンストラクタで値を設定できるようにしておけば良い。それだけ。</p><h4 id=3-instantnow-や-new-date-を使わないようにする>(3) <code>Instant.now()</code> や <code>new Date()</code> を使わないようにする</h4><p>例えば、DBに値を保存するメソッド内で、更新日時に <code>Instant.now()</code> した値を設定して保存、ということはよくあると思います。
 が、これだとDBに保存された際の更新日時がシステム日時に依存してしまうので、良くないです。</p><p>Javaには <code>java.time.Clock</code> というクラスが用意されており、このClockをインジェクションできる作りにすることで、
-テスト時のみ固定の時刻が設定される状態を作れます。</p><p>テストしづらい実装と、テストしやすい実装は以下のような感じです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>/**
-</span><span style=color:#75715e> * テストしにくい...
+テスト時のみ固定の時刻が設定される状態を作れます。</p><p>テストしづらい実装と、テストしやすい実装例を以下に示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>/**
+</span><span style=color:#75715e> * テストしづらい...
 </span><span style=color:#75715e> */</span>
 <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UnTestableDao</span> <span style=color:#f92672>{</span>
   <span style=color:#f92672>...</span>
@@ -242,8 +242,8 @@ for文やif文の嵐になるのでそうならないようにすべき。</p><h
   <span style=color:#f92672>}</span>
   <span style=color:#f92672>...</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><p>何が嬉しいか、実際にテストコードで示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#75715e>/**
-</span><span style=color:#75715e>   * テストしにくい...
+</code></pre></div><p>何が困るのか、何が嬉しいか、実際のテストコードを以下に示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#75715e>/**
+</span><span style=color:#75715e>   * テストしづらい...
 </span><span style=color:#75715e>   */</span>
   <span style=color:#a6e22e>@Test</span>
   <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>updateUserTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
