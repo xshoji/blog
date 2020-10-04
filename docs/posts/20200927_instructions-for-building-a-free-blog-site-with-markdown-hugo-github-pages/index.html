@@ -1,0 +1,298 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）
+| xshoji</title><link rel=stylesheet href=https://blog.xshoji.com/css/site.min.5b92094b89c75bcdd147f48b97e2316a552fe8e8fd10c9bcec6f9270da85c58430668afdaa5479cde87d4e462bea134e7c6f7a22c060c65d1c1e0c1ab2344359.css integrity="sha512-W5IJS4nHW83RR/SLl+IxalUv6Oj9EMm87G+ScNqFxYQwZor9qlR5zeh9TkYr6hNOfG96IsBgxl0cHgwasjRDWQ=="><link rel=canonical href=https://blog.xshoji.com/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/><link rel=alternate type=application/rss+xml href=https://blog.xshoji.com/index.xml title="xshoji's tech blog"><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=referrer content="no-referrer"><meta name=author content="xshoji"><meta name=description content="Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。 お金をかけない Markdownで記事を書けるようにする ブログの静的デー"><meta property="og:title" content="Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）"><meta property="og:description" content="Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。 お金をかけない Markdownで記事を書けるようにする ブログの静的デー"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.xshoji.com/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/"><meta property="article:published_time" content="2020-09-27T01:05:47+09:00"><meta property="article:modified_time" content="2020-09-27T01:05:47+09:00"></head><body><nav class="navbar is-transparent" role=navigation aria-label="main navigation"><div class=navbar-brand><a class=navbar-item href=https://blog.xshoji.com/><figure class=image><img alt class=is-rounded src="https://www.gravatar.com/avatar/dae9579b0a2b7e5f2872d705f228d321?s=128&d=identicon"></figure></a><a class=navbar-item href=https://blog.xshoji.com/>xshoji's tech blog</a></div><div class=navbar-menu><div class=navbar-start><a class=navbar-item href=https://blog.xshoji.com/tags/posts/>Posts</a></div><div class=navbar-end><a class=navbar-item href=https://github.com/xshoji/ rel=noopener target=_blank><span class=icon><img alt=icons/svg/github.svg src=https://blog.xshoji.com/icons/svg/github.svg></span></a>
+<a class=navbar-item href=mailto:shoji.cx@gmail.com target=_blank><span class=icon><img alt=email src=https://blog.xshoji.com/icons/svg/email.svg></span></a>
+<a class=navbar-item href=https://blog.xshoji.com/index.xml target=_blank><span class=icon><img alt=rss src=https://blog.xshoji.com/icons/svg/rss.svg></span></a></div></div></nav><section><section class="hero is-small is-dark is-fullwidth"><div class=hero-body><div class=container><h1 class=title>Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）</h1><h2 class=subtitle><time datetime=2020-09-27T01:05:47+09:00>September 27, 2020</time><br><a class="tag is-link" href=https://blog.xshoji.com/tags/posts/>posts</a></h2></div></div></section><section class=section><div class=container><div class="content is-medium"><p>Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。</p><ol><li>お金をかけない</li><li>Markdownで記事を書けるようにする</li><li>ブログの静的データのみ公開し、元ネタは公開しない</li><li>更新をお手軽にする</li></ol><p>似たような要件でブログを作ってみたい人に向けて、構築の流れを紹介したいと思います。
+ほんとに1から説明しているので結構長いと思います。</p><p>以下にリンク付き目次を載せておくので、
+興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。</p><nav id=TableOfContents><ul><li><a href=#お金をかけない>お金をかけない</a><ul><li><a href=#github-pages用のrepositoryを用意する>GitHub Pages用のRepositoryを用意する</a></li><li><a href=#github-pagesを設定して公開する>GitHub Pagesを設定して公開する</a></li></ul></li><li><a href=#markdownで記事を書けるようにする>Markdownで記事を書けるようにする</a><ul><li><a href=#hugoを導入する>Hugoを導入する</a></li><li><a href=#hugo用のリポジトリを作る>Hugo用のリポジトリを作る</a></li><li><a href=#hugoでサイトの雛形を作る>Hugoでサイトの雛形を作る</a></li><li><a href=#hugoで記事を作ってローカルで確認する>Hugoで記事を作ってローカルで確認する</a></li><li><a href=#作った記事をgithub-pagesで公開する>作った記事をGithub Pagesで公開する</a></li><li><a href=#gitignoreを整理する>.gitignoreを整理する</a></li></ul></li><li><a href=#更新をお手軽にする>更新をお手軽にする</a></li><li><a href=#参考にさせて頂いたサイト>参考にさせて頂いたサイト</a></li></ul></nav><h2 id=お金をかけない>お金をかけない</h2><h3 id=github-pages用のrepositoryを用意する>GitHub Pages用のRepositoryを用意する</h3><p>GitHub Pagesを使いましょう。設定方法などはたくさん記事がありますが、
+2020/10現在の最新の手順として、ここでも改めて具体的な流れを説明することにします。</p><p>Githubアカウントがなければ作りましょう。 <code>GitHub Free</code> プランはその名の通り無料です。
+アカウントができたら、ブログ本体のリポジトリを作りましょう。 <code>my-blog</code> とかなんでも良いです。</p><hr><figure><img src=data/01_new_repository_creation_setting.png width=65% height=65%></figure><hr><p>↑の通り、ここで作成するリポジトリは <code>Public repository</code> で作成してください。
+<code>GitHub Free</code> プランでは、Private repositoryをGitHub Pagesとして公開することはできません。</p><hr><blockquote><p>GitHub Pages について - GitHub Docs<br><a href=https://docs.github.com/ja/free-pro-team@latest/github/working-with-github-pages/about-github-pages>https://docs.github.com/ja/free-pro-team@latest/github/working-with-github-pages/about-github-pages</a></p><p>GitHub Pagesは、GitHub Free 及びGitHub FreeのOrganizationではパブリックリポジトリでのみ使用でき&mldr;<br>※2020/10現在の情報</p></blockquote><figure><img src=data/02_github_pages_limits_each_plans.png width=65% height=65%></figure><hr><p>ググると、たまにブログでPrivate repositoryでもGitHub Pagesで公開できるみたいなこと書いてある場合がありますが、
+それは <code>Github Team</code> のプランなど、課金している場合だけです。
+お金をかけたくない場合 <code>GitHub Free</code> になるので、おとなしくPublic repositoryを使いましょう。</p><p><strong>※ただし、このあと説明する方法により、ブログの元素材はPrivate repositoryで管理することができます👌</strong></p><h3 id=github-pagesを設定して公開する>GitHub Pagesを設定して公開する</h3><p>作成できたら、このリポジトリをGitHub Pagesで公開する設定を行います。</p><p>リポジトリページの右上の「Settings」から「GitHub Pages」の「Source」項目を</p><p>ブランチを <code>main</code> に、<code>/docs</code> をsourceディレクトリに指定してSaveします。
+（2020-10-05から、デフォルトブランチが <code>main</code> になったようです。前は <code>master</code> でした。なので、 masterになってる人はmasterでもOKです。）</p><hr><figure><img src=data/04_github_pages_publish_setting.png width=65% height=65%></figure><hr><p>完了したら、以下の内容のhtmlファイルをリポジトリの <code>docs/index.html</code> というパスに作成します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=color:#75715e>&lt;!DOCTYPE html&gt;</span>
+&lt;<span style=color:#f92672>html</span>&gt;
+  &lt;<span style=color:#f92672>head</span>&gt;
+    &lt;<span style=color:#f92672>meta</span> <span style=color:#a6e22e>charset</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;UTF-8&#34;</span>&gt;
+    &lt;<span style=color:#f92672>title</span>&gt;Welcome to My GitHub Pages&lt;/<span style=color:#f92672>title</span>&gt;
+  &lt;/<span style=color:#f92672>head</span>&gt;
+
+  &lt;<span style=color:#f92672>body</span>&gt;
+    &lt;<span style=color:#f92672>main</span>&gt;
+      &lt;<span style=color:#f92672>h1</span>&gt;Welcome to My GitHub Pages&lt;/<span style=color:#f92672>h1</span>&gt;
+    &lt;/<span style=color:#f92672>main</span>&gt;
+  &lt;/<span style=color:#f92672>body</span>&gt;
+&lt;/<span style=color:#f92672>html</span>&gt;
+</code></pre></div><hr><figure><img src=data/03_create_indexhtml.png width=65% height=65%></figure><hr><p>では早速作ったページにアクセスしてみます。先程と同じく、リポジトリページの右上の「Settings」から「GitHub Pages」へ行くと
+自分のリポジトリのGitHub PagesのURLが表示されていると思うので、開いてみてください。</p><blockquote><p>Your site is published at <a href=https://xshoji.github.io/my-blog/>https://xshoji.github.io/my-blog/</a></p></blockquote><p>↑みたいな感じで出てるはず。 <code>Welcome to My GitHub Pages</code> と表示されていたらOKです。
+これでGitHub Pagesの設定は完了です。</p><h2 id=markdownで記事を書けるようにする>Markdownで記事を書けるようにする</h2><h3 id=hugoを導入する>Hugoを導入する</h3><p>では、Github Pagesに載せる記事を書く仕組みを作ります。</p><blockquote><p>What is Hugo ｜ Hugo<br><a href=https://gohugo.io/about/what-is-hugo/>https://gohugo.io/about/what-is-hugo/</a></p></blockquote><p>Hugoとは、Goで書かれた静的サイトジェネレーターです。</p><p>まぁ、Markdownで書いた記事をhtmlに変換してくれるツール、と思ってもらってOKです。
+WordPressからHugoに乗り換えるひとも多いみたいで、ここ数年流行ってるのでこれを使います。
+（使ってみて、実際簡単で使いやすかったです。）</p><p>まず、hugoをローカルPCにインストールします。Macの場合はbrewで入れれます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ brew install hugo
+
+$ hugo version
+Hugo Static Site Generator v0.75.1/extended darwin/amd64 BuildDate: unknown
+</code></pre></div><p>インストールしたら、次はHugo用のリポジトリを作りましょう。</p><h3 id=hugo用のリポジトリを作る>Hugo用のリポジトリを作る</h3><p>Hugo用のリポジトリを作りましょう。 <code>my-blog-source</code> とかなんでも良いです。
+ここで作成するリポジトリは <code>Private repository</code> でOKです。
+このリポジトリは記事の元ネタを管理するリポジトリになるので外部には公開されません。</p><h3 id=hugoでサイトの雛形を作る>Hugoでサイトの雛形を作る</h3><p>↑で作ったリポジトリをcloneし、その中にblogの記事の元ネタとなるファイル群を生成しましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># git cloneする</span>
+<span style=color:#75715e>#------------------------------------------</span>
+$ git clone https://github.com/xshoji/my-blog-source
+Cloning into <span style=color:#e6db74>&#39;my-blog-source&#39;</span>...
+remote: Enumerating objects: 4, <span style=color:#66d9ef>done</span>.
+remote: Counting objects: 100% <span style=color:#f92672>(</span>4/4<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Compressing objects: 100% <span style=color:#f92672>(</span>3/3<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Total <span style=color:#ae81ff>4</span> <span style=color:#f92672>(</span>delta 0<span style=color:#f92672>)</span>, reused <span style=color:#ae81ff>0</span> <span style=color:#f92672>(</span>delta 0<span style=color:#f92672>)</span>, pack-reused <span style=color:#ae81ff>0</span>
+Unpacking objects: 100% <span style=color:#f92672>(</span>4/4<span style=color:#f92672>)</span>, <span style=color:#ae81ff>854</span> bytes | 213.00 KiB/s, <span style=color:#66d9ef>done</span>.
+$ 
+
+
+
+<span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># サイトの雛形を作る</span>
+<span style=color:#75715e>#------------------------------------------</span>
+$ cd my-blog-source/
+$ hugo new site hugo-source
+Congratulations! Your new Hugo site is created in /tmp/my-blog-source/hugo-source.
+
+Just a few more steps and you<span style=color:#ae81ff>\&#39;</span>re ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/ or
+   create your own with the <span style=color:#e6db74>&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
+2. Perhaps you want to add some content. You can add single files
+   with <span style=color:#e6db74>&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
+3. Start the built-in live server via <span style=color:#e6db74>&#34;hugo server&#34;</span>.
+
+Visit https://gohugo.io/ <span style=color:#66d9ef>for</span> quickstart guide and full documentation.
+$ ls -al
+total <span style=color:#ae81ff>16</span>
+drwxr-xr-x   <span style=color:#ae81ff>6</span> user  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:49 .
+drwxrwxrwt   <span style=color:#ae81ff>6</span> root  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 ..
+drwxr-xr-x  <span style=color:#ae81ff>12</span> user  wheel  <span style=color:#ae81ff>384</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x   <span style=color:#ae81ff>9</span> user  wheel  <span style=color:#ae81ff>288</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:49 hugo-source
+$ 
+
+
+
+<span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># サイトのデザインテンプレートを設定する</span>
+<span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># https://themes.gohugo.io/ から自分の好きなテンプレートを選び、「Homepage」からGithubのリポジトリページに行きます。</span>
+<span style=color:#75715e># 今回の例では、</span>
+<span style=color:#75715e># https://themes.gohugo.io/hugo-theme-simple-blog/ | Hugo Theme Simple Blog </span>
+<span style=color:#75715e># を使いました。</span>
+$ ls -al
+total <span style=color:#ae81ff>16</span>
+drwxr-xr-x   <span style=color:#ae81ff>6</span> user  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:49 .
+drwxrwxrwt   <span style=color:#ae81ff>6</span> root  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 ..
+drwxr-xr-x  <span style=color:#ae81ff>12</span> user  wheel  <span style=color:#ae81ff>384</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x   <span style=color:#ae81ff>9</span> user  wheel  <span style=color:#ae81ff>288</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:49 hugo-source
+$ 
+$ git submodule add https://github.com/10mohi6/hugo-theme-simple-blog hugo-source/themes/simple-blog
+Cloning into <span style=color:#e6db74>&#39;/private/tmp/my-blog-source/hugo-source/themes/simple-blog&#39;</span>...
+remote: Enumerating objects: 73, <span style=color:#66d9ef>done</span>.
+remote: Counting objects: 100% <span style=color:#f92672>(</span>73/73<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Compressing objects: 100% <span style=color:#f92672>(</span>48/48<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Total <span style=color:#ae81ff>73</span> <span style=color:#f92672>(</span>delta 22<span style=color:#f92672>)</span>, reused <span style=color:#ae81ff>69</span> <span style=color:#f92672>(</span>delta 18<span style=color:#f92672>)</span>, pack-reused <span style=color:#ae81ff>0</span>
+Unpacking objects: 100% <span style=color:#f92672>(</span>73/73<span style=color:#f92672>)</span>, 919.49 KiB | 1.10 MiB/s, <span style=color:#66d9ef>done</span>.
+$ git submodule update --init --recursive
+$
+
+
+
+<span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># サイトの基本設定を行う</span>
+<span style=color:#75715e>#------------------------------------------</span>
+$ vim hugo-source/config.toml
+$ cat hugo-source/config.toml
+<span style=color:#75715e># baseURL: 自分のGithub PagesのURLを設定します。</span>
+baseURL <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://xshoji.github.io/my-blog/&#34;</span>
+<span style=color:#75715e># languageCode: 言語を設定します。今回は日本語なのでjaを指定。</span>
+languageCode <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;ja&#34;</span>
+<span style=color:#75715e># title: ブログのタイトルを設定します。</span>
+title <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;my-blog&#34;</span>
+<span style=color:#75715e># theme: 自分の選んだテーマ名を設定します。</span>
+theme <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;simple-blog&#34;</span>
+</code></pre></div><h3 id=hugoで記事を作ってローカルで確認する>Hugoで記事を作ってローカルで確認する</h3><p>では、さっそくMarkdownで記事を書いてみましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># 記事を作る</span>
+<span style=color:#75715e>#------------------------------------------</span>
+$ ls -al
+total <span style=color:#ae81ff>24</span>
+drwxr-xr-x   <span style=color:#ae81ff>7</span> user  wheel  <span style=color:#ae81ff>224</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .
+drwxrwxrwt   <span style=color:#ae81ff>6</span> root  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:01 ..
+drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel  <span style=color:#ae81ff>416</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel  <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+$ cd hugo-source/
+$ hugo new posts/20201005_first-post.md
+/tmp/my-blog-source/hugo-source/content/posts/20201005_first-post.md created
+$ vim content/posts/20201005_first-post.md
+$ cat content/posts/20201005_first-post.md
+---
+title: <span style=color:#e6db74>&#34;20201005_first Post&#34;</span>
+date: 2020-10-05T04:51:46+09:00
+draft: true
+---
+
+<span style=color:#75715e># First post</span>
+
+This is my first post.
+
+$
+</code></pre></div><p>記事が書けたら、ローカルでサイトを立ち上げ、ブログのイメージを確認できます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
+total <span style=color:#ae81ff>24</span>
+drwxr-xr-x   <span style=color:#ae81ff>7</span> user  wheel  <span style=color:#ae81ff>224</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .
+drwxrwxrwt   <span style=color:#ae81ff>6</span> root  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:01 ..
+drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel  <span style=color:#ae81ff>416</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel  <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+$ cd hugo-source
+$ hugo server -D
+Start building sites …
+
+                   | EN
+-------------------+-----
+  Pages            | <span style=color:#ae81ff>10</span>
+  Paginator pages  |  <span style=color:#ae81ff>0</span>
+  Non-page files   |  <span style=color:#ae81ff>0</span>
+  Static files     |  <span style=color:#ae81ff>2</span>
+  Processed images |  <span style=color:#ae81ff>0</span>
+  Aliases          |  <span style=color:#ae81ff>4</span>
+  Sitemaps         |  <span style=color:#ae81ff>1</span>
+  Cleaned          |  <span style=color:#ae81ff>0</span>
+
+Built in <span style=color:#ae81ff>3</span> ms
+Watching <span style=color:#66d9ef>for</span> changes in /tmp/my-blog-source/hugo-source/<span style=color:#f92672>{</span>archetypes,content,data,layouts,static,themes<span style=color:#f92672>}</span>
+Watching <span style=color:#66d9ef>for</span> config changes in /tmp/my-blog-source/hugo-source/config.toml
+Environment: <span style=color:#e6db74>&#34;development&#34;</span>
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/my-blog/ <span style=color:#f92672>(</span>bind address 127.0.0.1<span style=color:#f92672>)</span>
+Press Ctrl+C to stop
+</code></pre></div><blockquote><p>Web Server is available at http://localhost:1313/my-blog/ (bind address 127.0.0.1)</p></blockquote><p>↑のURLにアクセスしてみましょう。</p><hr><figure><img src=data/05_new_my_blog_first_post.png width=65% height=65%></figure><hr><p>Markdownで書いた記事がブログに反映されました🎉</p><h3 id=作った記事をgithub-pagesで公開する>作った記事をGithub Pagesで公開する</h3><p>記事ができたので、Github Pagesで公開します。</p><p>まず、Hugoの設定を少し変更します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
+total <span style=color:#ae81ff>24</span>
+drwxr-xr-x   <span style=color:#ae81ff>7</span> user  wheel  <span style=color:#ae81ff>224</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .
+drwxrwxrwt   <span style=color:#ae81ff>6</span> root  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:01 ..
+drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel  <span style=color:#ae81ff>416</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel  <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+$ vim hugo-source/config.toml
+$ cat hugo-source/config.toml
+<span style=color:#75715e># baseURL: 自分のGithub PagesのURLを設定します。</span>
+baseURL <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;https://xshoji.github.io/my-blog/&#34;</span>
+<span style=color:#75715e># languageCode: 言語を設定します。今回は日本語なのでjaを指定。</span>
+languageCode <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;ja&#34;</span>
+<span style=color:#75715e># title: ブログのタイトルを設定します。</span>
+title <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;my-blog&#34;</span>
+<span style=color:#75715e># theme: 自分の選んだテーマ名を設定します。</span>
+theme <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;simple-blog&#34;</span>
+<span style=color:#75715e># publishDir: 静的サイトの生成先ディレクトリ。&#34;my-blog&#34; 部分は自身のblogのリポジトリ名と一致させてください。</span>
+publishDir <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;../my-blog/docs&#34;</span>
+$
+</code></pre></div><p><code>publishDir</code> という設定を追加しました。
+次に、記事を公開するため、記事のMarkdownファイルの「draft」を「false」に変更します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
+total <span style=color:#ae81ff>24</span>
+drwxr-xr-x   <span style=color:#ae81ff>7</span> user  wheel  <span style=color:#ae81ff>224</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .
+drwxrwxrwt   <span style=color:#ae81ff>6</span> root  wheel  <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:01 ..
+drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel  <span style=color:#ae81ff>416</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel  <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+$ vim hugo-source/content/posts/20201005_first-post.md
+$ cat hugo-source/content/posts/20201005_first-post.md
+---
+title: <span style=color:#e6db74>&#34;20201005_first Post&#34;</span>
+date: 2020-10-05T04:51:46+09:00
+draft: false &lt;---- ここを「false」にします。falseにすることで記事が生成される（＝公開される）ようになります。「true」だとドラフト版の状態となりサイト生成時にhtmlが生成されません。
+---
+
+<span style=color:#75715e># First post</span>
+
+This is my first post.
+</code></pre></div><p>では、サイトを生成してみます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
+total <span style=color:#ae81ff>40</span>
+drwxr-xr-x   <span style=color:#ae81ff>8</span> user  wheel   <span style=color:#ae81ff>256</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:43 .
+drwxrwxrwt   <span style=color:#ae81ff>8</span> root  wheel   <span style=color:#ae81ff>256</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:38 ..
+-rw-r--r--@  <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>6148</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:36 .DS_Store
+drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel   <span style=color:#ae81ff>416</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel    <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel   <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+$ cd hugo-source/
+$ hugo --minify --gc --cleanDestinationDir
+Start building sites …
+
+                   | EN
+-------------------+-----
+  Pages            | <span style=color:#ae81ff>10</span>
+  Paginator pages  |  <span style=color:#ae81ff>0</span>
+  Non-page files   |  <span style=color:#ae81ff>0</span>
+  Static files     |  <span style=color:#ae81ff>2</span>
+  Processed images |  <span style=color:#ae81ff>0</span>
+  Aliases          |  <span style=color:#ae81ff>4</span>
+  Sitemaps         |  <span style=color:#ae81ff>1</span>
+  Cleaned          |  <span style=color:#ae81ff>0</span>
+
+Total in <span style=color:#ae81ff>52</span> ms
+$ cd ..
+$ ls -al
+total <span style=color:#ae81ff>40</span>
+drwxr-xr-x   <span style=color:#ae81ff>9</span> user  wheel   <span style=color:#ae81ff>288</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 .
+drwxrwxrwt   <span style=color:#ae81ff>8</span> root  wheel   <span style=color:#ae81ff>256</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:38 ..
+-rw-r--r--@  <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>6148</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:36 .DS_Store
+drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel   <span style=color:#ae81ff>416</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .git
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>269</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 .gitignore
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel    <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel   <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel    <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 my-blog &lt;------ ファイルが生成されてる
+$ cd my-blog/
+$ ls -al
+total <span style=color:#ae81ff>0</span>
+drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel   <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 .
+drwxr-xr-x   <span style=color:#ae81ff>9</span> user  wheel  <span style=color:#ae81ff>288</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 ..
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel  <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 docs
+$ cd docs/
+$ ls -al
+total <span style=color:#ae81ff>32</span>
+drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel   <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 .
+drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel    <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 ..
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>1660</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 404.html
+drwxr-xr-x   <span style=color:#ae81ff>5</span> user  wheel   <span style=color:#ae81ff>160</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 categories
+drwxr-xr-x   <span style=color:#ae81ff>4</span> user  wheel   <span style=color:#ae81ff>128</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 css
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>2086</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 index.html
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>754</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 index.xml
+drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel    <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 page
+drwxr-xr-x   <span style=color:#ae81ff>6</span> user  wheel   <span style=color:#ae81ff>192</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 posts
+-rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>582</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 sitemap.xml
+drwxr-xr-x   <span style=color:#ae81ff>5</span> user  wheel   <span style=color:#ae81ff>160</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 tags
+$
+</code></pre></div><p>このdocsディレクトリがGithub Pages公開用のファイル群となります。
+なので、これらのファイルを一番初めに作成したGithub Pages用のリポジトリに追加してコミット、プッシュしましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># Github Pages用のリポジトリをcloneする</span>
+<span style=color:#75715e>#------------------------------------------</span>
+$ cd /tmp/
+$ git clone https://github.com/xshoji/my-blog
+
+<span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># Hugoで生成したファイル群を追加してコミット、プッシュする</span>
+<span style=color:#75715e>#------------------------------------------</span>
+$ cd my-blog
+$ rm -rf docs
+$ cp -R ../my-blog-source/my-blog/docs .
+$ git add .
+$ git commit -am <span style=color:#e6db74>&#34;Add files&#34;</span>
+</code></pre></div><p>プッシュすると、Github Pagesが更新されます。
+<a href=github-pages%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>GitHub Pagesを設定して公開する</a>で公開したGithub Pagesを見てみましょう。</p><p>先程ローカルで確認したブログ記事が公開されているでしょうか。</p><h3 id=gitignoreを整理する>.gitignoreを整理する</h3><p>ここまできたら、あとは</p><ol><li>Markdownの記事を追加する</li><li>ローカルで確認する</li><li>サイトを生成する</li><li>Github Pagesリポジトリに反映して公開する</li></ol><p>という流れでサイトを運営できます。</p><p>が、運用を始める前に、Hugo用リポジトリでいくつかコミット対象外にしておいたほうが良いディレクトリがあるので <code>.gitignore</code> に追加しておきましょう。</p><h2 id=更新をお手軽にする>更新をお手軽にする</h2><p>準備中</p><h2 id=参考にさせて頂いたサイト>参考にさせて頂いたサイト</h2><blockquote><p>GitHub Actions による GitHub Pages への自動デプロイ - Qiita<br><a href=https://qiita.com/peaceiris/items/d401f2e5724fdcb0759d>https://qiita.com/peaceiris/items/d401f2e5724fdcb0759d</a></p></blockquote><blockquote><p>peaceiris/actions-hugo： GitHub Actions for Hugo ⚡️ Setup Hugo quickly and build your site fast. Hugo extended, Hugo Modules, Linux (Ubuntu), macOS, and Windows are supported.<br><a href=https://github.com/peaceiris/actions-hugo>https://github.com/peaceiris/actions-hugo</a></p></blockquote><blockquote><p>GitHubのSecretsを活用して、GitHub Actionsで安全に機密情報を扱う - Qiita<br><a href=https://qiita.com/developer-kikikaikai/items/60b209c065f076dca7a1>https://qiita.com/developer-kikikaikai/items/60b209c065f076dca7a1</a></p></blockquote><blockquote><p>GitHub Actions で別のリポジトリに git push する<br><a href=https://3nan3.github.io/post/2019122201_github_actions/>https://3nan3.github.io/post/2019122201_github_actions/</a></p></blockquote><blockquote><p>逆引きUNIXコマンド/指定したタイムゾーンのローカルタイムを表示する方法・TZ - Linuxと過ごす<br><a href=https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%BBTZ>https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%BBTZ</a></p></blockquote></div></div></section></section><footer class=footer><div class="content has-text-centered"><p><a href=https://github.com/orf/bare-hugo-theme target=_blank>Bare Hugo theme.</a>
+Blog source code <a href=https://github.com/xshoji/blog target=_blank>available on Github</a>.</p></div></footer></body></html>
