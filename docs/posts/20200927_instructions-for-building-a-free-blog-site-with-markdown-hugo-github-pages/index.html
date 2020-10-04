@@ -296,7 +296,7 @@ $ git commit -am <span style=color:#e6db74>&#34;Add files&#34;</span>
 </code></pre></div><p>プッシュすると、Github Pagesが更新されます。
 <a href=github-pages%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>GitHub Pagesを設定して公開する</a>で公開したGithub Pagesを見てみましょう。</p><p>先程ローカルで確認したブログ記事が公開されているでしょうか。
 これで、記事の元ネタのMarkdownは公開せず（Private repository）、
-最終的に生成されるhtmlファイルのみ公開されている（Public repository）状態を作れました。</p><p>何が嬉しいのかというと、</p><ul><li>自分専用のコメントを書ける</li><li>公開前の記事がどこにも晒されない</li><li>記事の元ネタとなる公開したくないデータなどを一元管理できる</li></ul><p>というメリットがあります。</p><h3 id=gitignoreを整理する>.gitignoreを整理する</h3><p>ここまできたら、あとは</p><ol><li>Markdownの記事を追加する</li><li>ローカルで確認する</li><li>サイトを生成する</li><li>Github Pagesリポジトリに反映して公開する</li></ol><p>という流れでサイトを運営できます。</p><p>が、運用を始める前に、Hugo用リポジトリでいくつかコミット対象外にしておいたほうが良いディレクトリがあるので <code>.gitignore</code> に追加しておきましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>cat .gitignore
+最終的に生成されるhtmlファイルのみ公開されている（Public repository）状態を作れました。</p><p>何が嬉しいのかというと、</p><ul><li>自分専用のコメントを書ける（コメント行はhtmlに出力されない）</li><li>公開前の記事がどこにも晒されない</li><li>記事の元ネタとなる公開したくないデータなどを一元管理できる</li></ul><p>などのメリットがあります。</p><h3 id=gitignoreを整理する>.gitignoreを整理する</h3><p>ここまできたら、あとは</p><ol><li>Markdownの記事を追加する</li><li>ローカルで確認する</li><li>サイトを生成する</li><li>Github Pagesリポジトリに反映して公開する</li></ol><p>という流れでサイトを運営できます。</p><p>が、運用を始める前に、Hugo用リポジトリでいくつかコミット対象外にしておいたほうが良いディレクトリがあるので <code>.gitignore</code> に追加しておきましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>cat .gitignore
 <span style=color:#75715e>### Mac ###</span>
 .DS_Store
 
