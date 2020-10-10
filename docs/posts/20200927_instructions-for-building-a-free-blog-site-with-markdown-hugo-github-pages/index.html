@@ -306,7 +306,7 @@ $ rm -rf docs
 $ cp -R ../my-blog-source/my-blog/docs .
 $ git add .
 $ git commit -am <span style=color:#e6db74>&#34;Add files&#34;</span>
-$ git push origin master
+$ git push origin main
 </code></pre></div><p>プッシュすると、Github Pagesが更新されます。
 <a href=#github-pages%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>GitHub Pagesを設定して公開する</a>で公開したページを見てみましょう。</p><p>先程ローカルで確認したブログ記事が公開されているでしょうか。
 これで、記事の元ネタのMarkdownは公開せず（Private repository）、
@@ -428,7 +428,7 @@ jobs:
           cd my-blog # ■自分のブログ用リポジトリ名に置き換える■
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m &#34;Updates on $(TZ=Asia/Tokyo date +&#34;%Y-%m-%d %H:%M:%S&#34;) (SHA: $GITHUB_SHA) by GitHub Actions&#34;
+            git commit -m &#34;Updated on $(TZ=Asia/Tokyo date +&#34;%Y-%m-%d %H:%M:%S&#34;) (SHA: $GITHUB_SHA) by GitHub Actions&#34;
             git push origin main # ■メインブランチがmasterならmasterに置き換える■
           else
             echo &#34;No differences.&#34;
