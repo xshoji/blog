@@ -25,7 +25,7 @@ Githubのリポジトリにhtml, css, jsを置くとそれをそれらをウェ�
 &lt;/<span style=color:#f92672>html</span>&gt;
 </code></pre></div><hr><figure><img src=data/03_create_indexhtml.png width=65% height=65%></figure><hr><p>では早速作ったページにアクセスしてみます。先程と同じく、リポジトリページの右上の「Settings」から「GitHub Pages」へ行くと
 自分のリポジトリのGitHub PagesのURLが表示されていると思うので、開いてみてください。</p><blockquote><p>Your site is published at <a href=https://xshoji.github.io/my-blog/>https://xshoji.github.io/my-blog/</a></p></blockquote><p>↑みたいな感じで出てるはず。 <code>Welcome to My GitHub Pages</code> と表示されていたらOKです。
-これでGitHub Pagesの設定は完了です。</p><h2 id=markdownで記事を書けること>Markdownで記事を書けること</h2><h3 id=hugoを導入する>Hugoを導入する</h3><p>では、Github Pagesに載せる記事を書く仕組みを作ります。</p><blockquote><p>What is Hugo ｜ Hugo<br><a href=https://gohugo.io/about/what-is-hugo/>https://gohugo.io/about/what-is-hugo/</a></p></blockquote><p>Hugoとは、Goで書かれた静的サイトジェネレーターです。</p><p>まぁ、Markdownで書いた記事をhtmlに変換してくれるツール、と思ってもらってOKです。
+これでGitHub Pagesの設定は完了です。</p><h2 id=markdownで記事を書けること>Markdownで記事を書けること</h2><h3 id=hugoを導入する>Hugoを導入する</h3><p>Github Pagesに載せる記事を書く仕組みを作ります。</p><blockquote><p>What is Hugo ｜ Hugo<br><a href=https://gohugo.io/about/what-is-hugo/>https://gohugo.io/about/what-is-hugo/</a></p></blockquote><p>Hugoとは、Goで書かれた静的サイトジェネレーターです。</p><p>まぁ、Markdownで書いた記事をhtmlに変換してくれるツール、と思ってもらってOKです。
 WordPressからHugoに乗り換えるひとも多いみたいで、ここ数年流行ってるのでこれを使います。
 （使ってみて、実際簡単で使いやすかったです。）</p><p>まず、hugoをローカルPCにインストールします。Macの場合はbrewで入れれます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ brew install hugo
 
@@ -123,7 +123,7 @@ languageCode <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;j
 title <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;my-blog&#34;</span>
 <span style=color:#75715e># theme: 自分の選んだテーマ名を設定します。</span>
 theme <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;simple-blog&#34;</span>
-</code></pre></div><h3 id=hugoで記事を作ってローカルで確認する>Hugoで記事を作ってローカルで確認する</h3><p>では、さっそくMarkdownで記事を書いてみましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#------------------------------------------</span>
+</code></pre></div><h3 id=hugoで記事を作ってローカルで確認する>Hugoで記事を作ってローカルで確認する</h3><p>さっそくMarkdownで記事を書いてみましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#------------------------------------------</span>
 <span style=color:#75715e># 記事を作る</span>
 <span style=color:#75715e>#------------------------------------------</span>
 $ ls -al
@@ -230,7 +230,7 @@ draft: false &lt;---- ここを「false」にします。falseにすることで
 <span style=color:#75715e># First post</span>
 
 This is my first post.
-</code></pre></div><p>では、サイトを生成してみます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
+</code></pre></div><p>サイトを生成してみます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ls -al
 total <span style=color:#ae81ff>40</span>
 drwxr-xr-x   <span style=color:#ae81ff>8</span> user  wheel   <span style=color:#ae81ff>256</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:43 .
 drwxrwxrwt   <span style=color:#ae81ff>8</span> root  wheel   <span style=color:#ae81ff>256</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:38 ..
@@ -325,7 +325,7 @@ my-blog &lt;--- こいつを追加
 </code></pre></div><p><code>my-blog</code> を無視しているのはHugoで生成されるディレクトリだから、という理由もあるんですが、
 もう一つ、このあとに説明するGithub Actionで更新を自動化する際にこの.gitignoreの設定が必要になります。</p><h2 id=記事の更新反映が自動化されていること>記事の更新／反映が自動化されていること</h2><p>さて、ここまでで無料でブログを運用する構成にはできたんですが、</p><ul><li><a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a></li></ul><p>ブログを更新するたびに、↑の作業をするのは流石にめんどくさすぎるので、
 ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）を更新するだけで、
-ブログ本体の静的ファイルの生成と公開を自動的に行う方法をご紹介します。</p><h3 id=github-actionsで公開作業を自動化する概要>Github Actionsで公開作業を自動化する（概要）</h3><p>では、Github Actionsでどのように自動化するのか、概要を説明します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>                    + - - - - - - - - - - - - - +         + - - - - - - - - - - - - - - -+
+ブログ本体の静的ファイルの生成と公開を自動的に行う方法をご紹介します。</p><h3 id=github-actionsで公開作業を自動化する概要>Github Actionsで公開作業を自動化する（概要）</h3><p>Github Actionsでどのように自動化するのか、概要を説明します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>                    + - - - - - - - - - - - - - +         + - - - - - - - - - - - - - - -+
                     &#39; Github.com repositories   &#39;         &#39; Github Actions               &#39;
                     &#39;                           &#39;         &#39;                              &#39;
 +-----+             &#39; +-----------------------+ &#39;         &#39; +--------------------------+ &#39;
@@ -350,7 +350,7 @@ my-blog &lt;--- こいつを追加
 </code></pre></div><p>↑の構成の通り、元ネタMarkdown用のPrivate repositoryへのpushをきっかけに、
 「<a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a>」で手動で実施した作業を
 Github ActionsのWorkflow（以下、Workflow）にやらせれば良いということです。
-こう聞くと難しそうに聞こえますが、yamlファイルを1つ用意するだけなので簡単です。</p><p>では、早速その設定方法を説明します。</p><h3 id=github-pagesリポジトリへ記事をコミットするための公開鍵秘密鍵を生成する>Github Pagesリポジトリへ記事をコミットするための公開鍵／秘密鍵を生成する</h3><p>まず、Workflowで使う公開鍵、秘密鍵を作成します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># &#34;xxxxx&#34; は自分のメールアドレス</span>
+こう聞くと難しそうに聞こえますが、yamlファイルを1つ用意するだけなので簡単です。</p><p>それでは、早速その設定方法を説明します。</p><h3 id=github-pagesリポジトリへ記事をコミットするための公開鍵秘密鍵を生成する>Github Pagesリポジトリへ記事をコミットするための公開鍵／秘密鍵を生成する</h3><p>まず、Workflowで使う公開鍵、秘密鍵を作成します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># &#34;xxxxx&#34; は自分のメールアドレス</span>
 $ ssh-keygen -t rsa -b <span style=color:#ae81ff>4096</span> -C <span style=color:#e6db74>&#34;xxxxx&#34;</span>
 Generating public/private rsa key pair.
 Enter file in which to save the key <span style=color:#f92672>(</span>/Users/user/.ssh/id_rsa<span style=color:#f92672>)</span>: /Users/user/.ssh/id_rsa_for_my-blog
@@ -433,7 +433,7 @@ jobs:
           else
             echo &#34;No differences.&#34;
           fi
-</code></pre></div><p>一応、このWorkflowでやってることをざっと説明すると</p><ol><li>ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のmainブランチをチェックアウトする</li><li>hugoをインストールする</li><li>ブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするため秘密鍵を配置する</li><li>ブログ本体のリポジトリ（ <code>my-blog</code> ）をcloneする</li><li>hugoコマンドでブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）から静的ファイルを生成する</li><li>生成した静的ファイルをブログ本体のリポジトリ（ <code>my-blog</code> ）にcommitしてpushする</li></ol><p>をやってます。まさに「<a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a>」で手動でやってた作業ですね。</p><p>では、これで一旦コミット、プッシュしておきましょう。</p><p>次に、このWorkflowからブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするための秘密鍵をSecretに登録します。
+</code></pre></div><p>一応、このWorkflowでやってることをざっと説明すると</p><ol><li>ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のmainブランチをチェックアウトする</li><li>hugoをインストールする</li><li>ブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするため秘密鍵を配置する</li><li>ブログ本体のリポジトリ（ <code>my-blog</code> ）をcloneする</li><li>hugoコマンドでブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）から静的ファイルを生成する</li><li>生成した静的ファイルをブログ本体のリポジトリ（ <code>my-blog</code> ）にcommitしてpushする</li></ol><p>をやってます。まさに「<a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a>」で手動でやってた作業ですね。</p><p>これで一旦コミット、プッシュしておきましょう。</p><p>次に、このWorkflowからブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするための秘密鍵をSecretに登録します。
 ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のSettingsタブのSecretsに秘密鍵を登録します。</p><hr><figure><img src=data/07_secrets_setting.png width=65% height=65%></figure><hr><ul><li>Name: DEPLOY_KEY &lt;&ndash; この値は↑のWorkflowで参照してる変数なのでこのままで</li><li>Value: さっき作った秘密鍵 <code>/Users/user/.ssh/id_rsa_for_my-blog</code> の中身をコピペ</li></ul><p>これでOKです。最後に、ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のGithub Actionsを有効化します。
 ブログの元ネタのリポジトリのActionsタブに行きます。</p><blockquote><p>Workflows aren’t being run on this repository<br>Actions are not currently enabled on this repository.</p><p>[ Enable Actions on this repository ]</p></blockquote><p>こんな画面が出るでEnableを押します。</p><p>これで設定完了です。</p><h3 id=github-actionsで記事を更新する>Github Actionsで記事を更新する</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ cd /tmp/my-blog-source/
 $ cd hugo-source/
