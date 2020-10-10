@@ -435,9 +435,12 @@ jobs:
           fi
 </code></pre></div><p>一応、このWorkflowでやってることをざっと説明すると</p><ol><li>ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のmainブランチをチェックアウトする</li><li>hugoをインストールする</li><li>ブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするため秘密鍵を配置する</li><li>ブログ本体のリポジトリ（ <code>my-blog</code> ）をcloneする</li><li>hugoコマンドでブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）から静的ファイルを生成する</li><li>生成した静的ファイルをブログ本体のリポジトリ（ <code>my-blog</code> ）にcommitしてpushする</li></ol><p>をやってます。まさに「<a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a>」で手動でやってた作業ですね。</p><p>これで一旦コミット、プッシュしておきましょう。</p><p>次に、このWorkflowからブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするための秘密鍵をSecretに登録します。
 ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のSettingsタブのSecretsに秘密鍵を登録します。</p><hr><figure><img src=data/07_secrets_setting.png width=65% height=65%></figure><hr><ul><li>Name: DEPLOY_KEY &lt;&ndash; この値は↑のWorkflowで参照してる変数なのでこのままで</li><li>Value: さっき作った秘密鍵 <code>/Users/user/.ssh/id_rsa_for_my-blog</code> の中身をコピペ</li></ul><p>これでOKです。最後に、ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のGithub Actionsを有効化します。
-ブログの元ネタのリポジトリのActionsタブに行きます。</p><blockquote><p>Workflows aren’t being run on this repository<br>Actions are not currently enabled on this repository.</p><p>[ Enable Actions on this repository ]</p></blockquote><p>こんな画面が出るでEnableを押します。</p><p>これで設定完了です。</p><h3 id=github-actionsで記事を更新する>Github Actionsで記事を更新する</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ cd /tmp/my-blog-source/
+ブログの元ネタのリポジトリのActionsタブに行きます。</p><blockquote><p>Workflows aren’t being run on this repository<br>Actions are not currently enabled on this repository.</p><p>[ Enable Actions on this repository ]</p></blockquote><p>こんな画面が出るでEnableを押します。</p><p>これで設定完了です。</p><h3 id=github-actionsで記事を更新する>Github Actionsで記事を更新する</h3><p>実際にmarkdownの記事を追加して、それを公開してみましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># まずは記事を追加します。</span>
+$ cd /tmp/my-blog-source/
 $ cd hugo-source/
 $ hugo new posts/20201010_second-post.md
+
+<span style=color:#75715e># 記事を編集します（draft: falseを忘れずに）</span>
 $ vim content/posts/20201010_second-post.md
 $ cat content/posts/20201010_second-post.md
 ---
