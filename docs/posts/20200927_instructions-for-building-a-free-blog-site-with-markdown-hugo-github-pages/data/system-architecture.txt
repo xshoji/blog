@@ -1,0 +1,8 @@
+( Github.com repositories [my-blog-source] { label:<< Private >>\nmy-blog-source; } [my-blog] { label:<< Public >>\nmy-blog; origin:my-blog-source; offset:0,4; } ) 
+( Github Actions [clone my-blog repository] [build blog] { origin:clone my-blog repository; offset:0,2; } [git commit and push] { origin:build blog; offset:0,2; } ) 
+[mac] ->{ label:git push; } [my-blog-source] 
+[my-blog-source] ->{ minlen:4; style:invisible; } [my-blog] 
+[my-blog-source] ->{ label:run; } [clone my-blog repository] 
+[clone my-blog repository] ->{ start:south; end:north; } [build blog]
+[build blog] -> [git commit and push]
+[git commit and push] ->{ label:push; start:west; end:east; } [my-blog]

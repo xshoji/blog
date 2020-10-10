@@ -2,8 +2,8 @@
 | xshoji</title><link rel=stylesheet href=https://blog.xshoji.com/css/site.min.5b92094b89c75bcdd147f48b97e2316a552fe8e8fd10c9bcec6f9270da85c58430668afdaa5479cde87d4e462bea134e7c6f7a22c060c65d1c1e0c1ab2344359.css integrity="sha512-W5IJS4nHW83RR/SLl+IxalUv6Oj9EMm87G+ScNqFxYQwZor9qlR5zeh9TkYr6hNOfG96IsBgxl0cHgwasjRDWQ=="><link rel=canonical href=https://blog.xshoji.com/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/><link rel=alternate type=application/rss+xml href=https://blog.xshoji.com/index.xml title="xshoji's tech blog"><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=referrer content="no-referrer"><meta name=author content="xshoji"><meta name=description content="Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。 お金をかけないこと Markdownで記事を書けること ブログの静的データ"><link rel=stylesheet href=https://blog.xshoji.com/css/custom.css><meta property="og:title" content="Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）"><meta property="og:description" content="Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。 お金をかけないこと Markdownで記事を書けること ブログの静的データ"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.xshoji.com/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/"><meta property="article:published_time" content="2020-09-27T01:05:47+09:00"><meta property="article:modified_time" content="2020-09-27T01:05:47+09:00"></head><body><nav class="navbar is-transparent" role=navigation aria-label="main navigation"><div class=navbar-brand><a class=navbar-item href=https://blog.xshoji.com/><figure class=image><img alt class=is-rounded src="https://www.gravatar.com/avatar/dae9579b0a2b7e5f2872d705f228d321?s=128&d=identicon"></figure></a><a class=navbar-item href=https://blog.xshoji.com/>xshoji's tech blog</a></div><div class=navbar-menu><div class=navbar-start><a class=navbar-item href=https://blog.xshoji.com/tags/posts/>Posts</a></div><div class=navbar-end><a class=navbar-item href=https://github.com/xshoji/ rel=noopener target=_blank><span class=icon><img alt=icons/svg/github.svg src=https://blog.xshoji.com/icons/svg/github.svg></span></a>
 <a class=navbar-item href=mailto:shoji.cx@gmail.com target=_blank><span class=icon><img alt=email src=https://blog.xshoji.com/icons/svg/email.svg></span></a>
 <a class=navbar-item href=https://blog.xshoji.com/index.xml target=_blank><span class=icon><img alt=rss src=https://blog.xshoji.com/icons/svg/rss.svg></span></a></div></div></nav><section><section class="hero is-small is-dark is-fullwidth"><div class=hero-body><div class=container><h1 class=title>Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）</h1><h2 class=subtitle><time datetime=2020-09-27T01:05:47+09:00>September 27, 2020</time><br><a class="tag is-link" href=https://blog.xshoji.com/tags/posts/>posts</a></h2></div></div></section><section class=section><div class=container><div class="content is-medium"><p>Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。</p><ol><li>お金をかけないこと</li><li>Markdownで記事を書けること</li><li>ブログの静的データのみ公開し、元ネタは公開しないこと</li><li>記事の更新／反映が自動化されていること</li></ol><p>似たような要件でブログを作ってみたい人に向けて、構築の流れを紹介したいと思います。
-ほんとに1から説明しているので結構長いと思います。</p><p>以下にリンク付き目次を載せておくので、
-興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。</p><nav id=TableOfContents><ul><li><a href=#お金をかけないこと>お金をかけないこと</a><ul><li><a href=#github-pages用のrepositoryを用意する>GitHub Pages用のRepositoryを用意する</a></li><li><a href=#github-pagesを設定して公開する>GitHub Pagesを設定して公開する</a></li></ul></li><li><a href=#markdownで記事を書けること>Markdownで記事を書けること</a><ul><li><a href=#hugoを導入する>Hugoを導入する</a></li><li><a href=#hugo用のリポジトリを作る>Hugo用のリポジトリを作る</a></li><li><a href=#hugoでサイトの雛形を作る>Hugoでサイトの雛形を作る</a></li><li><a href=#hugoで記事を作ってローカルで確認する>Hugoで記事を作ってローカルで確認する</a></li></ul></li><li><a href=#ブログの静的データのみ公開し元ネタは公開しないこと>ブログの静的データのみ公開し、元ネタは公開しないこと</a><ul><li><a href=#作った記事をgithub-pagesで公開する>作った記事をGithub Pagesで公開する</a></li><li><a href=#gitignoreを整理する>.gitignoreを整理する</a></li></ul></li><li><a href=#記事の更新反映が自動化されていること>記事の更新／反映が自動化されていること</a><ul><li><a href=#github-actionsで公開作業を自動化する概要>Github Actionsで公開作業を自動化する（概要）</a></li><li><a href=#github-pagesリポジトリへ記事をコミットするための公開鍵秘密鍵を生成する>Github Pagesリポジトリへ記事をコミットするための公開鍵／秘密鍵を生成する</a></li><li><a href=#github-actionsを設定する>Github Actionsを設定する</a></li></ul></li><li><a href=#参考にさせて頂いたサイト>参考にさせて頂いたサイト</a></li></ul></nav><h2 id=お金をかけないこと>お金をかけないこと</h2><h3 id=github-pages用のrepositoryを用意する>GitHub Pages用のRepositoryを用意する</h3><p>GitHub Pagesを使いましょう。設定方法などはたくさん記事がありますが、
+初心者向けに細かく説明しているので若干長いと思います。</p><p>以下にリンク付き目次を載せておくので、
+興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。</p><nav id=TableOfContents><ul><li><a href=#お金をかけないこと>お金をかけないこと</a><ul><li><a href=#github-pages用のrepositoryを用意する>GitHub Pages用のRepositoryを用意する</a></li><li><a href=#github-pagesを設定して公開する>GitHub Pagesを設定して公開する</a></li></ul></li><li><a href=#markdownで記事を書けること>Markdownで記事を書けること</a><ul><li><a href=#hugoを導入する>Hugoを導入する</a></li><li><a href=#hugo用のリポジトリを作る>Hugo用のリポジトリを作る</a></li><li><a href=#hugoでサイトの雛形を作る>Hugoでサイトの雛形を作る</a></li><li><a href=#hugoで記事を作ってローカルで確認する>Hugoで記事を作ってローカルで確認する</a></li></ul></li><li><a href=#ブログの静的データのみ公開し元ネタは公開しないこと>ブログの静的データのみ公開し、元ネタは公開しないこと</a><ul><li><a href=#作った記事をgithub-pagesで公開する>作った記事をGithub Pagesで公開する</a></li><li><a href=#gitignoreを整理する>.gitignoreを整理する</a></li></ul></li><li><a href=#記事の更新反映が自動化されていること>記事の更新／反映が自動化されていること</a><ul><li><a href=#github-actionsで公開作業を自動化する概要>Github Actionsで公開作業を自動化する（概要）</a></li><li><a href=#github-pagesリポジトリへ記事をコミットするための公開鍵秘密鍵を生成する>Github Pagesリポジトリへ記事をコミットするための公開鍵／秘密鍵を生成する</a></li><li><a href=#github-actionsを設定する>Github Actionsを設定する</a></li><li><a href=#github-actionsで記事を更新する>Github Actionsで記事を更新する</a></li></ul></li><li><a href=#参考にさせて頂いたサイト>参考にさせて頂いたサイト</a></li></ul></nav><h2 id=お金をかけないこと>お金をかけないこと</h2><h3 id=github-pages用のrepositoryを用意する>GitHub Pages用のRepositoryを用意する</h3><p>GitHub Pagesを使いましょう。設定方法などはたくさん記事がありますが、
 2020/10現在の最新の手順として、ここでも改めて具体的な流れを説明することにします。</p><p>Githubアカウントがなければ作りましょう。 <code>GitHub Free</code> プランはその名の通り無料です。
 アカウントができたら、ブログ本体のリポジトリを作りましょう。 <code>my-blog</code> とかなんでも良いです。</p><hr><figure><img src=data/01_new_repository_creation_setting.png width=65% height=65%></figure><hr><p>↑の通り、ここで作成するリポジトリは <code>Public repository</code> で作成してください。
 <code>GitHub Free</code> プランでは、Private repositoryをGitHub Pagesとして公開することはできません。</p><hr><blockquote><p>GitHub Pages について - GitHub Docs<br><a href=https://docs.github.com/ja/free-pro-team@latest/github/working-with-github-pages/about-github-pages>https://docs.github.com/ja/free-pro-team@latest/github/working-with-github-pages/about-github-pages</a></p><p>GitHub Pagesは、GitHub Free 及びGitHub FreeのOrganizationではパブリックリポジトリでのみ使用でき&mldr;<br>※2020/10現在の情報</p></blockquote><figure><img src=data/02_github_pages_limits_each_plans.png width=65% height=65%></figure><hr><p>ググると、たまにブログでPrivate repositoryでもGitHub Pagesで公開できるみたいなこと書いてある場合がありますが、
@@ -106,6 +106,12 @@ $
 <span style=color:#75715e>#------------------------------------------</span>
 <span style=color:#75715e># サイトの基本設定を行う</span>
 <span style=color:#75715e>#------------------------------------------</span>
+<span style=color:#75715e># まず、空Directoryを保持するために.gitkeep配置</span>
+$ touch hugo-source/data/.gitkeep
+$ touch hugo-source/layouts/.gitkeep
+$ touch hugo-source/static/.gitkeep
+
+<span style=color:#75715e># 次に、コンフィグファイルをいじる</span>
 $ vim hugo-source/config.toml
 $ cat hugo-source/config.toml
 <span style=color:#75715e># baseURL: 自分のGithub PagesのURLを設定します。</span>
@@ -128,7 +134,11 @@ drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel  <span style=color:#
 -rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
 -rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
 drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel  <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
+
+<span style=color:#75715e># まず、hugo-sourceに移動してから</span>
 $ cd hugo-source/
+
+<span style=color:#75715e># postを作成します。</span>
 $ hugo new posts/20201005_first-post.md
 /tmp/my-blog-source/hugo-source/content/posts/20201005_first-post.md created
 $ vim content/posts/20201005_first-post.md
@@ -256,8 +266,10 @@ drwxr-xr-x  <span style=color:#ae81ff>13</span> user  wheel   <span style=color:
 -rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>142</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:05 .gitmodules
 -rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel    <span style=color:#ae81ff>42</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 04:40 README.md
 drwxr-xr-x  <span style=color:#ae81ff>11</span> user  wheel   <span style=color:#ae81ff>352</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:00 hugo-source
-drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel    <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 my-blog &lt;------ ファイルが生成されてる
-$ cd my-blog/
+drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel    <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 my-blog &lt;------ ディレクトリが生成されてる
+</code></pre></div><p>ディレクトリが生成されていると思います。
+このディレクトリの中に、Github Pages公開用の静的ファイルがされています。
+中身を覗いてみましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ cd my-blog/
 $ ls -al
 total <span style=color:#ae81ff>0</span>
 drwxr-xr-x   <span style=color:#ae81ff>3</span> user  wheel   <span style=color:#ae81ff>96</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 .
@@ -278,7 +290,7 @@ drwxr-xr-x   <span style=color:#ae81ff>6</span> user  wheel   <span style=color:
 -rw-r--r--   <span style=color:#ae81ff>1</span> user  wheel   <span style=color:#ae81ff>582</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 sitemap.xml
 drwxr-xr-x   <span style=color:#ae81ff>5</span> user  wheel   <span style=color:#ae81ff>160</span> <span style=color:#ae81ff>10</span>  <span style=color:#ae81ff>5</span> 05:44 tags
 $
-</code></pre></div><p>このdocsディレクトリがGithub Pages公開用のファイル群となります。
+</code></pre></div><p>この「docsディレクトリ」がGithub Pages公開用のファイル群となります。
 なので、これらのファイルを一番初めに作成したGithub Pages用のリポジトリに追加してコミット、プッシュしましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e>#------------------------------------------</span>
 <span style=color:#75715e># Github Pages用のリポジトリをcloneする</span>
 <span style=color:#75715e>#------------------------------------------</span>
@@ -293,8 +305,9 @@ $ rm -rf docs
 $ cp -R ../my-blog-source/my-blog/docs .
 $ git add .
 $ git commit -am <span style=color:#e6db74>&#34;Add files&#34;</span>
+$ git push origin master
 </code></pre></div><p>プッシュすると、Github Pagesが更新されます。
-<a href=#github-pages%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>GitHub Pagesを設定して公開する</a>で公開したGithub Pagesを見てみましょう。</p><p>先程ローカルで確認したブログ記事が公開されているでしょうか。
+<a href=#github-pages%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>GitHub Pagesを設定して公開する</a>で公開したページを見てみましょう。</p><p>先程ローカルで確認したブログ記事が公開されているでしょうか。
 これで、記事の元ネタのMarkdownは公開せず（Private repository）、
 最終的に生成されるhtmlファイルのみ公開されている（Public repository）状態を作れました。</p><p>何が嬉しいのかというと、</p><ul><li>自分専用のコメントを書ける（コメント行はhtmlに出力されない）</li><li>公開前の記事がどこにも晒されない</li><li>記事の元ネタとなる公開したくないデータなどを一元管理できる</li></ul><p>などのメリットがあります。</p><h3 id=gitignoreを整理する>.gitignoreを整理する</h3><p>ここまできたら、あとは</p><ol><li>Markdownの記事を追加する</li><li>ローカルで確認する</li><li>サイトを生成する</li><li>Github Pagesリポジトリに反映して公開する</li></ol><p>という流れでサイトを運営できます。</p><p>が、運用を始める前に、Hugo用リポジトリでいくつかコミット対象外にしておいたほうが良いディレクトリがあるので <code>.gitignore</code> に追加しておきましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>cat .gitignore
 <span style=color:#75715e>### Mac ###</span>
@@ -306,8 +319,149 @@ $ git commit -am <span style=color:#e6db74>&#34;Add files&#34;</span>
 *.iml
 *.ipr
 
-<span style=color:#75715e>## hugo</span>
+<span style=color:#75715e>### Hugo ###</span>
 my-blog &lt;--- こいつを追加
 </code></pre></div><p><code>my-blog</code> を無視しているのはHugoで生成されるディレクトリだから、という理由もあるんですが、
-もう一つ、このあとに説明するGithub Actionで更新を自動化する際にこの.gitignoreの設定が必要になります。</p><h2 id=記事の更新反映が自動化されていること>記事の更新／反映が自動化されていること</h2><p>準備中</p><h3 id=github-actionsで公開作業を自動化する概要>Github Actionsで公開作業を自動化する（概要）</h3><h3 id=github-pagesリポジトリへ記事をコミットするための公開鍵秘密鍵を生成する>Github Pagesリポジトリへ記事をコミットするための公開鍵／秘密鍵を生成する</h3><h3 id=github-actionsを設定する>Github Actionsを設定する</h3><h2 id=参考にさせて頂いたサイト>参考にさせて頂いたサイト</h2><blockquote><p>GitHub Actions による GitHub Pages への自動デプロイ - Qiita<br><a href=https://qiita.com/peaceiris/items/d401f2e5724fdcb0759d>https://qiita.com/peaceiris/items/d401f2e5724fdcb0759d</a></p></blockquote><blockquote><p>peaceiris/actions-hugo： GitHub Actions for Hugo ⚡️ Setup Hugo quickly and build your site fast. Hugo extended, Hugo Modules, Linux (Ubuntu), macOS, and Windows are supported.<br><a href=https://github.com/peaceiris/actions-hugo>https://github.com/peaceiris/actions-hugo</a></p></blockquote><blockquote><p>GitHubのSecretsを活用して、GitHub Actionsで安全に機密情報を扱う - Qiita<br><a href=https://qiita.com/developer-kikikaikai/items/60b209c065f076dca7a1>https://qiita.com/developer-kikikaikai/items/60b209c065f076dca7a1</a></p></blockquote><blockquote><p>GitHub Actions で別のリポジトリに git push する<br><a href=https://3nan3.github.io/post/2019122201_github_actions/>https://3nan3.github.io/post/2019122201_github_actions/</a></p></blockquote><blockquote><p>逆引きUNIXコマンド/指定したタイムゾーンのローカルタイムを表示する方法・TZ - Linuxと過ごす<br><a href=https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%BBTZ>https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%BBTZ</a></p></blockquote></div></div></section></section><footer class=footer><div class="content has-text-centered"><p><a href=https://github.com/orf/bare-hugo-theme target=_blank>Bare Hugo theme.</a>
+もう一つ、このあとに説明するGithub Actionで更新を自動化する際にこの.gitignoreの設定が必要になります。</p><h2 id=記事の更新反映が自動化されていること>記事の更新／反映が自動化されていること</h2><p>さて、ここまでで無料でブログを運用する構成にはできたんですが、</p><ul><li><a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a></li></ul><p>ブログを更新するたびに、↑の作業をするのは流石にめんどくさすぎるので、
+ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）を更新するだけで、
+ブログ本体の静的ファイルの生成と公開を自動的に行う方法をご紹介します。</p><h3 id=github-actionsで公開作業を自動化する概要>Github Actionsで公開作業を自動化する（概要）</h3><p>では、Github Actionsでどのように自動化するのか、概要を説明します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>                    + - - - - - - - - - - - - - +         + - - - - - - - - - - - - - - -+
+                    &#39; Github.com repositories   &#39;         &#39; Github Actions               &#39;
+                    &#39;                           &#39;         &#39;                              &#39;
++-----+             &#39; +-----------------------+ &#39;         &#39; +--------------------------+ &#39;
+| mac |  git push   &#39; |     &lt;&lt; Private &gt;&gt;     | &#39;  run    &#39; | clone my-blog repository | &#39;
+|     | ----------&gt; &#39; |    my-blog-source     | &#39; ------&gt; &#39; |                          | &#39;
++-----+             &#39; +-----------------------+ &#39;         &#39; +--------------------------+ &#39;
+                    &#39;                           &#39;         &#39;   |                          &#39;
+                    &#39;                           &#39;         &#39;   |                          &#39;
+                    &#39;                           &#39;         &#39;   v                          &#39;
+                    &#39;                           &#39;         &#39; +--------------------------+ &#39;
+                    &#39;                           &#39;         &#39; |        build blog        | &#39;
+                    &#39;                           &#39;         &#39; +--------------------------+ &#39;
+                    &#39;                           &#39;         &#39;   |                          &#39;
+                    &#39;                           &#39;         &#39;   |                          &#39;
+                    &#39;                           &#39;         &#39;   v                          &#39;
+                    &#39; +-----------------------+ &#39;         &#39; +--------------------------+ &#39;
+                    &#39; |     &lt;&lt; Public &gt;&gt;      | &#39;  push   &#39; |   git commit and push    | &#39;
+                    &#39; |        my-blog        | &#39; &lt;------ &#39; |                          | &#39;
+                    &#39; +-----------------------+ &#39;         &#39; +--------------------------+ &#39;
+                    &#39;                           &#39;         &#39;                              &#39;
+                    + - - - - - - - - - - - - - +         + - - - - - - - - - - - - - - -+
+</code></pre></div><p>↑の構成の通り、元ネタMarkdown用のPrivate repositoryへのpushをきっかけに、
+「<a href=#%E4%BD%9C%E3%81%A3%E3%81%9F%E8%A8%98%E4%BA%8B%E3%82%92github-pages%E3%81%A7%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>作った記事をGithub Pagesで公開する</a>」で手動で実施した作業を
+Github Actionにやらせれば良いということです。
+こう聞くと難しそうに聞こえますが、yamlファイルを1つ用意するだけなので簡単です。</p><p>では、早速その設定方法を説明します。</p><h3 id=github-pagesリポジトリへ記事をコミットするための公開鍵秘密鍵を生成する>Github Pagesリポジトリへ記事をコミットするための公開鍵／秘密鍵を生成する</h3><p>まず、Github Actionsで使う公開鍵、秘密鍵を作成します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># &#34;xxxxx&#34; は自分のメールアドレス</span>
+$ ssh-keygen -t rsa -b <span style=color:#ae81ff>4096</span> -C <span style=color:#e6db74>&#34;xxxxx&#34;</span>
+Generating public/private rsa key pair.
+Enter file in which to save the key <span style=color:#f92672>(</span>/Users/user/.ssh/id_rsa<span style=color:#f92672>)</span>: /Users/user/.ssh/id_rsa_for_my-blog
+Enter passphrase <span style=color:#f92672>(</span>empty <span style=color:#66d9ef>for</span> no passphrase<span style=color:#f92672>)</span>:
+Enter same passphrase again:
+Your identification has been saved in /Users/user/.ssh/id_rsa_for_my-blog.
+Your public key has been saved in /Users/user/.ssh/id_rsa_for_my-blog.pub.
+The key fingerprint is:
+SHA256:DVOSO96T6kdRtmlM24YPlwzpn4YeTVz/Q+2lYm8Yws0 xxxxx
+The key<span style=color:#960050;background-color:#1e0010>&#39;</span>s randomart image is:
++---<span style=color:#f92672>[</span>RSA 4096<span style=color:#f92672>]</span>----+
+|        ...  .   |
+|        .o  *   .|
+|        o. * X oo|
+|        o+. X O.+|
+|       .S+.* X.+o|
+|        . B E B.o|
+|         o <span style=color:#f92672>=</span> B  .|
+|        . . o o  |
+|       ...   .   |
++----<span style=color:#f92672>[</span>SHA256<span style=color:#f92672>]</span>-----+
+$
+$ ls -al ~/.ssh/id_rsa_for_my-blog*
+-rw-------  <span style=color:#ae81ff>1</span> user  staff  <span style=color:#ae81ff>3369</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>10</span> 17:59 /Users/user/.ssh/id_rsa_for_my-blog
+-rw-r--r--  <span style=color:#ae81ff>1</span> user  staff   <span style=color:#ae81ff>731</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>10</span> 17:59 /Users/user/.ssh/id_rsa_for_my-blog.pub
+</code></pre></div><p>公開鍵と秘密鍵が作れました。</p><p>※この秘密鍵はGithub Actionsのシークレット変数として登録するので、念の為普段自分が使ってる鍵とは別で作成することをおすすめします。</p><h3 id=github-actionsを設定する>Github Actionsを設定する</h3><p>公開鍵、秘密鍵が作れたので、Github Actionsの設定を行います。
+まず、ブログ本体のリポジトリ（ <code>my-blog</code> ）のリポジトリページのSettingsタブから <code>Deploy key</code> （公開鍵）を追加します。</p><hr><figure><img src=data/06_github_action_deploy_key_setting.png width=65% height=65%></figure><hr><p>Add Deploy Keyで開いたページで以下の通り設定します。</p><ul><li>Title: blog deploy key（分かりやすい名前なら何でもOK）</li><li>Key: さっき作った公開鍵 <code>/Users/user/.ssh/id_rsa_for_my-blog.pub</code> の中身をコピペ</li><li>Allow write access: チェックを入れる</li></ul><p>これで、 <code>my-blog</code> 側の設定は完了です。</p><p>次に、ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）でGithub Actionsの設定を追加します。
+ブログの元ネタのリポジトリのrootに、<code>.github/workflows/release.yml</code> というファイルを作成します（ファイル名はなんでもOK）</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ cd /tmp/my-blog-source/
+$ mkdir -p .github/workflows
+$ touch .github/workflows/release.yml
+$ ls -al .github/workflows/release.yml
+-rw-r--r--  <span style=color:#ae81ff>1</span> user  wheel  <span style=color:#ae81ff>0</span> <span style=color:#ae81ff>10</span> <span style=color:#ae81ff>10</span> 18:36 .github/workflows/release.yml
+</code></pre></div><p>で、以下の内容を貼り付けます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>name: release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive  # Fetch Hugo themes
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: &#39;0.75.1&#39;
+
+      - name: Setup git for blog repository
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          echo &#34;$DEPLOY_KEY&#34; &gt; ~/deploy_key.pem
+          chmod 600 ~/deploy_key.pem
+          git config --global user.email &#34;action@github.com&#34;
+          git config --global user.name &#34;GitHub Action&#34;
+          git clone  git@github.com:xshoji/my-blog.git &lt;-- ■自分のブログ用リポジトリに置き換える■
+
+      - name: Build
+        run: |
+          cd hugo-source &amp;&amp; hugo --minify --gc --cleanDestinationDir &lt;-- ■自分のブログ用リポジトリ名に置き換える■
+          cd .. &amp;&amp; ls -al
+
+      - name: Deploy
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/deploy_key.pem -o StrictHostKeyChecking=no -F /dev/null
+        run: |
+          cd my-blog &lt;-- ■自分のブログ用リポジトリ名に置き換える■
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m &#34;Updates on $(TZ=Asia/Tokyo date +&#34;%Y-%m-%d %H:%M:%S&#34;) (SHA: $GITHUB_SHA) by GitHub Actions&#34;
+            git push origin main
+          else
+            echo &#34;No differences.&#34;
+          fi
+</code></pre></div><p>※ブログ用リポジトリ、あるいはブログの元ネタリポジトリのメインブランチが「master」の場合は、↑の設定の「main」となってる箇所を「master」に置換して設定してください。</p><p>これで一旦コミット、プッシュしてみましょう。</p><p>次に、このGithub Actionsからブログ本体のリポジトリ（ <code>my-blog</code> ）へpushするための秘密鍵をSecretに登録します。
+ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のSettingsタブのSecretsに秘密鍵を登録します。</p><hr><figure><img src=data/07_secrets_setting.png width=65% height=65%></figure><hr><ul><li>Name: DEPLOY_KEY &lt;&ndash; この値は↑のworkflowで参照してる変数なのでこのままで</li><li>Value: さっき作った秘密鍵 <code>/Users/user/.ssh/id_rsa_for_my-blog</code> の中身をコピペ</li></ul><p>これでOKです。最後に、ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のGithub Actionsを有効化します。
+ブログの元ネタのリポジトリのActionsタブに行きます。</p><blockquote><p>Workflows aren’t being run on this repository<br>Actions are not currently enabled on this repository.</p><p>[ Enable Actions on this repository ]</p></blockquote><p>こんな画面が出るでEnableを押します。</p><p>これで設定完了です。</p><h3 id=github-actionsで記事を更新する>Github Actionsで記事を更新する</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ cd /tmp/my-blog-source/
+$ cd hugo-source/
+$ hugo new posts/20201010_second-post.md
+$ vim content/posts/20201010_second-post.md
+$ cat content/posts/20201010_second-post.md
+---
+title: <span style=color:#e6db74>&#34;20201010_second Post&#34;</span>
+date: 2020-10-10T19:12:44+09:00
+draft: false
+---
+
+<span style=color:#75715e># This is second post</span>
+
+This is second post.
+
+</code></pre></div><p>記事ができたので、コミット＆プッシュしてみましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git add . <span style=color:#f92672>&amp;&amp;</span> git commit -am <span style=color:#e6db74>&#34;Add second post.&#34;</span>
+$ git push
+Enumerating objects: 10, <span style=color:#66d9ef>done</span>.
+Counting objects: 100% <span style=color:#f92672>(</span>10/10<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+Delta compression using up to <span style=color:#ae81ff>8</span> threads
+Compressing objects: 100% <span style=color:#f92672>(</span>5/5<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+Writing objects: 100% <span style=color:#f92672>(</span>6/6<span style=color:#f92672>)</span>, <span style=color:#ae81ff>558</span> bytes | 558.00 KiB/s, <span style=color:#66d9ef>done</span>.
+Total <span style=color:#ae81ff>6</span> <span style=color:#f92672>(</span>delta 2<span style=color:#f92672>)</span>, reused <span style=color:#ae81ff>0</span> <span style=color:#f92672>(</span>delta 0<span style=color:#f92672>)</span>, pack-reused <span style=color:#ae81ff>0</span>
+remote: Resolving deltas: 100% <span style=color:#f92672>(</span>2/2<span style=color:#f92672>)</span>, completed with <span style=color:#ae81ff>2</span> local objects.
+To https://github.com/xshoji/my-blog-source
+   643f307..43705d4  main -&gt; main
+$
+</code></pre></div><p>Github Actionsの設定がうまくできていると、以下のようにブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）のActionsタブのworkflowsが緑色になります。</p><hr><figure><img src=data/08_github_actions_success.png width=65% height=65%></figure><hr><p>これで、↑で追加した記事が静的ファイルに変換され、ブログ本体のリポジトリ（ <code>my-blog</code> ）にファイル群がpushされています。
+ブログ本体のリポジトリ（ <code>my-blog</code> ）を見ると、以下のようにactions-userユーザーによってファイルが更新されていることが分かります。</p><hr><figure><img src=data/09_blog_repository_commiter_and_log.png width=65% height=65%></figure><hr><p>これで記事の更新が自動化できまそた。
+<a href=#github-pages%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%A6%E5%85%AC%E9%96%8B%E3%81%99%E3%82%8B>GitHub Pagesを設定して公開する</a>で公開したページを再び見てみましょう。
+ブログの元ネタのリポジトリ（ <code>my-blog-source</code> ）に記事をPushしただけで、Github pagesで公開しているブログが更新されていることが分かります！</p><h2 id=参考にさせて頂いたサイト>参考にさせて頂いたサイト</h2><blockquote><p>GitHub Actions による GitHub Pages への自動デプロイ - Qiita<br><a href=https://qiita.com/peaceiris/items/d401f2e5724fdcb0759d>https://qiita.com/peaceiris/items/d401f2e5724fdcb0759d</a></p></blockquote><blockquote><p>peaceiris/actions-hugo： GitHub Actions for Hugo ⚡️ Setup Hugo quickly and build your site fast. Hugo extended, Hugo Modules, Linux (Ubuntu), macOS, and Windows are supported.<br><a href=https://github.com/peaceiris/actions-hugo>https://github.com/peaceiris/actions-hugo</a></p></blockquote><blockquote><p>GitHubのSecretsを活用して、GitHub Actionsで安全に機密情報を扱う - Qiita<br><a href=https://qiita.com/developer-kikikaikai/items/60b209c065f076dca7a1>https://qiita.com/developer-kikikaikai/items/60b209c065f076dca7a1</a></p></blockquote><blockquote><p>GitHub Actions で別のリポジトリに git push する<br><a href=https://3nan3.github.io/post/2019122201_github_actions/>https://3nan3.github.io/post/2019122201_github_actions/</a></p></blockquote><blockquote><p>逆引きUNIXコマンド/指定したタイムゾーンのローカルタイムを表示する方法・TZ - Linuxと過ごす<br><a href=https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%BBTZ>https://linux.just4fun.biz/?%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%BE%E3%83%BC%E3%83%B3%E3%81%AE%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%83%BBTZ</a></p></blockquote></div></div></section></section><footer class=footer><div class="content has-text-centered"><p><a href=https://github.com/orf/bare-hugo-theme target=_blank>Bare Hugo theme.</a>
 Blog source code <a href=https://github.com/xshoji/blog target=_blank>available on Github</a>.</p></div></footer></body></html>
