@@ -19,11 +19,10 @@ Goでコンパイル済みのバイナリを配るメリットとしては</p><u
 <span style=color:#66d9ef>var</span> (
 	<span style=color:#a6e22e>base64src</span>      <span style=color:#66d9ef>string</span>
 	<span style=color:#a6e22e>paramsPrintSrc</span> = <span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Bool</span>(<span style=color:#e6db74>&#34;print-src&#34;</span>, <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;[optional] Print main.go&#34;</span>)
-	<span style=color:#a6e22e>paramsHelp</span>     = <span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Bool</span>(<span style=color:#e6db74>&#34;h&#34;</span>, <span style=color:#66d9ef>false</span> <span style=color:#75715e>/* */</span>, <span style=color:#e6db74>&#34;\nhelp&#34;</span>)
+	<span style=color:#a6e22e>paramsHelp</span>     = <span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Bool</span>(<span style=color:#e6db74>&#34;h&#34;</span>, <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;\nhelp&#34;</span>)
 )
 
-<span style=color:#75715e>// Build
-</span><span style=color:#75715e>// ------
+<span style=color:#75715e>// Build: 
 </span><span style=color:#75715e>// $ go build -ldflags=&#34;-s -w -X &#39;main.base64src=$(cat main.go |base64)&#39;&#34; -trimpath main.go
 </span><span style=color:#75715e></span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
 	<span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Parse</span>()
