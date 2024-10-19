@@ -7,7 +7,51 @@ Goでコンパイル済みのバイナリを配るメリットとしては</p><u
 バイナリを使う利用者はソースコードの内容を把握する術がありません。</p><p>もちろん、golereaserなどを使い、コミット番号をバイナリに埋め込んだり、ちゃんとしたリリースのワークフローを介して配布すれば、
 どのソースから生成されたかわからない、ということは防げるには防げるんですが
 ほんとに使い捨てのスクリプトなどの場合そこまでしっかり環境を整えるのは面倒な場合が多いです。</p><h1 id=goのバイナリにソースコードを同梱する>Goのバイナリにソースコードを同梱する</h1><p>そこで、最近「だったらもうバイナリにソースコードを含めちゃえば良いのでは？」を思い始めました。
-具体的には、ビルド時の引数で <code>-X 'main.base64src=$(cat main.go |base64)'"</code> を指定することでソースコードをバイナリに埋め込むという方法です。</p><p>（ただし、スクリプトがシンプルで <code>main.go</code> だけで構成されるような、本当にちょっとしたツールを前提にしてます。）</p><p>具体的なコードの例を示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+具体的には、go 1.16から追加された</p><blockquote><p>embed package - embed - Go Packages<br><a href=https://pkg.go.dev/embed>https://pkg.go.dev/embed</a></p></blockquote><p>を利用して、ビルド時に自身のバイナリへ元のソースコードを埋め込んでしまえば良い。</p><p>（ただし、スクリプトがシンプルで <code>main.go</code> だけで構成されるような、本当にちょっとしたツールを前提にしてます。）</p><p>具体的なコードの例を示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+
+<span style=color:#f92672>import</span> (
+	<span style=color:#a6e22e>_</span> <span style=color:#e6db74>&#34;embed&#34;</span>
+	<span style=color:#e6db74>&#34;flag&#34;</span>
+	<span style=color:#e6db74>&#34;fmt&#34;</span>
+	<span style=color:#e6db74>&#34;os&#34;</span>
+)
+
+<span style=color:#66d9ef>var</span> (
+	<span style=color:#75715e>//go:embed main.go
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>srcBytes</span>       []<span style=color:#66d9ef>byte</span>
+	<span style=color:#a6e22e>paramsPrintSrc</span> = <span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Bool</span>(<span style=color:#e6db74>&#34;print-src&#34;</span>, <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;[optional] Print main.go&#34;</span>)
+	<span style=color:#a6e22e>paramsHelp</span>     = <span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Bool</span>(<span style=color:#e6db74>&#34;h&#34;</span>, <span style=color:#66d9ef>false</span>, <span style=color:#e6db74>&#34;\nhelp&#34;</span>)
+)
+
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+	<span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Parse</span>()
+	<span style=color:#66d9ef>if</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>paramsHelp</span> {
+		<span style=color:#a6e22e>flag</span>.<span style=color:#a6e22e>Usage</span>()
+		<span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>Exit</span>(<span style=color:#ae81ff>0</span>)
+	}
+	<span style=color:#66d9ef>if</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>paramsPrintSrc</span> {
+		<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;%s&#34;</span>, <span style=color:#a6e22e>srcBytes</span>)
+	}
+}
+</code></pre></div><p>上のような実装にします。で、ビルドします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ go build main.go
+</code></pre></div><p>こうすることで、以下のように実行時のオプション指定でバイナリの元となったソースコードを表示できます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ./main -h
+Usage of ./main:
+  -h
+    	help
+  -print-src
+    	<span style=color:#f92672>[</span>optional<span style=color:#f92672>]</span> Print main.go
+$ ./main -print-src
+package main
+
+import <span style=color:#f92672>(</span>
+	_ <span style=color:#e6db74>&#34;embed&#34;</span>
+	<span style=color:#e6db74>&#34;flag&#34;</span>
+	<span style=color:#e6db74>&#34;fmt&#34;</span>
+	<span style=color:#e6db74>&#34;os&#34;</span>
+<span style=color:#f92672>)</span>
+
+...
+</code></pre></div><p>これで、ビルド済みのバイナリの配布のみでもととなったソースも同時に配布できることになるので捗るなと思ってます。</p><h1 id=複数ファイルの場合>複数ファイルの場合</h1><p>複数ファイルの場合は、 <code>embed.FS</code> を使ってディレクトリ全体を埋め込むか、あるいはもっとお手軽にやるのであれば</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
 
 <span style=color:#f92672>import</span> (
 	<span style=color:#e6db74>&#34;encoding/base64&#34;</span>
@@ -35,24 +79,6 @@ Goでコンパイル済みのバイナリを配るメリットとしては</p><u
 		<span style=color:#a6e22e>fmt</span>.<span style=color:#a6e22e>Printf</span>(<span style=color:#e6db74>&#34;%s&#34;</span>, <span style=color:#a6e22e>b</span>)
 	}
 }
-</code></pre></div><p>上のような実装にします。で、コメントにある通り以下のコマンドでビルドします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ go build -ldflags<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;-s -w -X &#39;main.base64src=</span><span style=color:#66d9ef>$(</span>cat main.go |base64<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#39;&#34;</span> -trimpath main.go
-</code></pre></div><ul><li><code>-X</code> の意味: <a href=https://www.digitalocean.com/community/tutorials/using-ldflags-to-set-version-information-for-go-applications>Using ldflags to Set Version Information for Go Applications | DigitalOcean</a><ul><li>ビルド時に指定したパッケージの変数に値を埋め込める</li></ul></li><li><code>-s -w</code> の意味: <a href=https://stackoverflow.com/questions/22267189/what-does-the-w-flag-mean-when-passed-in-via-the-ldflags-option-to-the-go-comman>What does the w flag mean when passed in via the ldflags option to the go command? - Stack Overflow</a><ul><li>DWARFやデバッグ用のシンボル情報を含めないようにし、バイナリサイズを小さくする</li></ul></li></ul><p>こうすることで、以下のように実行時のオプション指定でバイナリの元となったソースコードを表示できます。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ ./main -h
-Usage of ./main:
-  -h
-    	help
-  -print-src
-    	<span style=color:#f92672>[</span>optional<span style=color:#f92672>]</span> Print main.go
-$ ./main -print-src
-package main
-
-import <span style=color:#f92672>(</span>
-	<span style=color:#e6db74>&#34;encoding/base64&#34;</span>
-	<span style=color:#e6db74>&#34;flag&#34;</span>
-	<span style=color:#e6db74>&#34;fmt&#34;</span>
-	<span style=color:#e6db74>&#34;os&#34;</span>
-<span style=color:#f92672>)</span>
-
-...
-</code></pre></div><p>これで、ビルド済みのバイナリの配布のみでもととなったソースも同時に配布できることになるので捗るなと思ってます。</p><h1 id=複数ファイルの場合>複数ファイルの場合</h1><p>複数ファイルの場合でも</p><pre><code>$ go build -ldflags=&quot;-s -w -X 'main.base64src=$(find . -type f |xargs -I{} bash -c &quot;echo -e \&quot;====\n{}\&quot;; cat {}&quot; |base64)'&quot; -trimpath .
-</code></pre><p>という感じで、工夫すればバイナリに埋め込むことができます。</p><p>上のコマンドは、ファイルをリストアップしつつ、各ファイルの内容をcatで出力してる感じです。</p><h1 id=ソースコードを同梱するメリット>ソースコードを同梱するメリット</h1><p>以下の点でメリットがあると思いました。</p><ul><li>バイナリの配布先の利用者がバイナリの処理内容を確認できる</li><li>バイナリの配布先の利用者が処理を修正できる</li><li>ソースコード内に書いた細かい処理のコメントやスクリプトのREADME的な説明を読んで貰える<ul><li>（コマンドのdescriptionに書かなくても良い）</li></ul></li></ul><h1 id=おわりに>おわりに</h1><p>ソースコードの量が膨大じゃない限りはバイナリの容量が大きくなってつらい、みたいなことはそんなにないかなーと思います。</p></div></div></section></section><footer class=footer><div class="content has-text-centered"><p><a href=https://github.com/orf/bare-hugo-theme target=_blank>Bare Hugo theme.</a>
+</code></pre></div><p>という実装にし、</p><pre><code>$ go build -ldflags=&quot;-X 'main.base64src=$(find . -type f |xargs -I{} bash -c &quot;echo -e \&quot;====\n{}\&quot;; cat {}&quot; |base64)'&quot; .
+</code></pre><p>という感じで、ファイルをリストアップしつつ、各ファイルの内容をcatで出力し、その文字列を埋め込む形でビルドすれば、一応複数ファイルをバイナリに埋め込めます。</p><h1 id=ソースコードを同梱するメリット>ソースコードを同梱するメリット</h1><p>以下の点でメリットがあると思いました。</p><ul><li>バイナリの配布先の利用者がバイナリの処理内容を確認できる</li><li>バイナリの配布先の利用者が処理を修正できる</li><li>ソースコード内に書いた細かい処理のコメントやスクリプトのREADME的な説明を読んで貰える<ul><li>（コマンドのdescriptionに書かなくても良い）</li></ul></li></ul><h1 id=おわりに>おわりに</h1><p>ソースコードの量が膨大じゃない限りはバイナリの容量が大きくなってつらい、みたいなことはそんなにないかなーと思います。</p></div></div></section></section><footer class=footer><div class="content has-text-centered"><p><a href=https://github.com/orf/bare-hugo-theme target=_blank>Bare Hugo theme.</a>
 Blog source code <a href=https://github.com/xshoji/blog target=_blank>available on Github</a>.</p></div></footer></body></html>
