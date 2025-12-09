@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unit Test on xshoji's blog</title><link>https://blog.xshoji.com/tags/unit-test/</link><description>Recent content in Unit Test on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 03 Oct 2020 12:13:50 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/unit-test/index.xml" rel="self" type="application/rss+xml"/><item><title>単体テスト ベストプラクティス集</title><link>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</link><pubDate>Sat, 03 Oct 2020 12:13:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;Modern Best Practices for Testing in Java&lt;br&gt;
+&lt;a href="https://phauer.com/2019/modern-best-practices-testing-java/"&gt;https://phauer.com/2019/modern-best-practices-testing-java/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、
+自分自身がテストする時はもちろん、コードレビュー時でも注意・指摘したい内容がまとめられています。&lt;/p&gt;
+&lt;p&gt;タイトルには「Java」と書かれていますが、プラクティスとしては言語に依存しない内容がほとんどなので、
+特定の言語に限らない有益なプラクティスだと思いました。&lt;/p&gt;
+&lt;p&gt;それでは、それぞれの中身をまとめていきます。&lt;/p&gt;</description></item></channel></rss>

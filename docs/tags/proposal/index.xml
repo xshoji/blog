@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Proposal on xshoji's blog</title><link>https://blog.xshoji.com/tags/proposal/</link><description>Recent content in Proposal on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 26 Mar 2023 02:00:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/proposal/index.xml" rel="self" type="application/rss+xml"/><item><title>Goのバイナリにソースコードをそのまま同梱するという提案</title><link>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</link><pubDate>Sun, 26 Mar 2023 02:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;業務でGoのスクリプトを書いて、バイナリをチームに配ることがよくあります。
+Goでコンパイル済みのバイナリを配るメリットとしては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;実行環境に依存せずどこでも実行できる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;という点かなーと思います。 ただ、デメリットもあって、それは実行するバイナリがどのソースコードから生成されたものか分かりづらいという点です。&lt;/p&gt;</description></item></channel></rss>

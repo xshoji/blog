@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on xshoji's blog</title><link>https://blog.xshoji.com/tags/hugo/</link><description>Recent content in Hugo on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 27 Sep 2020 01:05:47 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）</title><link>https://blog.xshoji.com/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/</link><pubDate>Sun, 27 Sep 2020 01:05:47 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/</guid><description>&lt;p&gt;Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;お金をかけないこと&lt;/li&gt;
+&lt;li&gt;Markdownで記事を書けること&lt;/li&gt;
+&lt;li&gt;ブログの静的データのみ公開し、元ネタは公開しないこと&lt;/li&gt;
+&lt;li&gt;記事の更新／反映が自動化されていること&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;似たような要件でブログを作ってみたい人に向けて、構築の流れを紹介したいと思います。
+初心者向けに細かく説明しているので若干長いと思います。&lt;/p&gt;
+&lt;p&gt;以下にリンク付き目次を載せておくので、
+興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。&lt;/p&gt;</description></item></channel></rss>

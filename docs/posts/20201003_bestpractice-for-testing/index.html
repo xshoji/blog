@@ -1,113 +1,112 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>単体テスト ベストプラクティス集
-| xshoji</title><link rel=stylesheet href=https://blog.xshoji.com/css/site.min.5b92094b89c75bcdd147f48b97e2316a552fe8e8fd10c9bcec6f9270da85c58430668afdaa5479cde87d4e462bea134e7c6f7a22c060c65d1c1e0c1ab2344359.css integrity="sha512-W5IJS4nHW83RR/SLl+IxalUv6Oj9EMm87G+ScNqFxYQwZor9qlR5zeh9TkYr6hNOfG96IsBgxl0cHgwasjRDWQ=="><link rel=canonical href=https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/><link rel=alternate type=application/rss+xml href=https://blog.xshoji.com/index.xml title="xshoji's blog"><meta http-equiv=x-ua-compatible content="chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=referrer content="no-referrer"><meta name=author content="xshoji"><meta name=description content="Modern Best Practices for Testing in Java https://phauer.com/2019/modern-best-practices-testing-java/ テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、 自分自身がテストする時はもちろん、コードレビュー時でも"><link rel=stylesheet href=https://blog.xshoji.com/css/custom.css><meta property="og:title" content="単体テスト ベストプラクティス集"><meta property="og:description" content="Modern Best Practices for Testing in Java https://phauer.com/2019/modern-best-practices-testing-java/ テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、 自分自身がテストする時はもちろん、コードレビュー時でも"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/"><meta property="article:published_time" content="2020-10-03T12:13:50+09:00"><meta property="article:modified_time" content="2020-10-03T12:13:50+09:00"></head><body><nav class="navbar is-transparent" role=navigation aria-label="main navigation"><div class=navbar-brand><a class=navbar-item href=https://blog.xshoji.com/><figure class=image><img alt class=is-rounded src="https://www.gravatar.com/avatar/dae9579b0a2b7e5f2872d705f228d321?s=128&d=identicon"></figure></a><a class=navbar-item href=https://blog.xshoji.com/>xshoji's blog</a></div><div class=navbar-menu><div class=navbar-start><a class=navbar-item href=https://blog.xshoji.com/tags/posts/>Posts</a></div><div class=navbar-end><a class=navbar-item href=https://github.com/xshoji/ rel=noopener target=_blank><span class=icon><img alt=icons/svg/github.svg src=https://blog.xshoji.com/icons/svg/github.svg></span></a>
-<a class=navbar-item href=mailto:shoji.cx@gmail.com target=_blank><span class=icon><img alt=email src=https://blog.xshoji.com/icons/svg/email.svg></span></a>
-<a class=navbar-item href=https://blog.xshoji.com/index.xml target=_blank><span class=icon><img alt=rss src=https://blog.xshoji.com/icons/svg/rss.svg></span></a></div></div></nav><section><section class="hero is-small is-dark is-fullwidth"><div class=hero-body><div class=container><h1 class=title>単体テスト ベストプラクティス集</h1><h2 class=subtitle><time datetime=2020-10-03T12:13:50+09:00>October 03, 2020</time><br><a class="tag is-link" href=https://blog.xshoji.com/tags/posts/>posts</a></h2></div></div></section><section class=section><div class=container><div class="content is-medium"><blockquote><p>Modern Best Practices for Testing in Java<br><a href=https://phauer.com/2019/modern-best-practices-testing-java/>https://phauer.com/2019/modern-best-practices-testing-java/</a></p></blockquote><p>テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、
+<!doctype html><html lang=ja dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><title>単体テスト ベストプラクティス集 | xshoji's blog</title><link rel=icon type=image/x-icon href=/favicon.ico><link rel=stylesheet href=/css/main.min.a6f3f19a6b748cee79360613862c8a66532cfec46f4e47655e0ff2168e6b27a0.css integrity="sha256-pvPxmmt0jO55NgYThiyKZlMs/sRvTkdlXg/yFo5rJ6A=" crossorigin=anonymous><script src=/js/main.9ba4e4979f37ac864f5a8d53e468d3d84e495610d89b88cbae8eeded4d5d9280.js integrity="sha256-m6Tkl583rIZPWo1T5GjT2E5JVhDYm4jLro7t7U1dkoA=" crossorigin=anonymous defer></script></head><body><header><div><h1><a href=/>xshoji's blog</a></h1><nav><ul><li><a href=/posts/>Blog</a></li><li><a href=/about/>About</a></li><li><a href=/tags/>Tags</a></li></ul></nav></div></header><main><article><header><div class=article-meta><time datetime=2020-10-03T12:13:50+09:00>October 03, 2020</time>
+<span class=article-meta-reading-time>15 min read</span></div><h1 class=article-title>単体テスト ベストプラクティス集</h1><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/java class=tag>#java</a>
+<a href=https://blog.xshoji.com/%20tags/unit-test class=tag>#unit test</a></div></header><div class=article-content><blockquote><p>Modern Best Practices for Testing in Java<br><a href=https://phauer.com/2019/modern-best-practices-testing-java/>https://phauer.com/2019/modern-best-practices-testing-java/</a></p></blockquote><p>テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、
 自分自身がテストする時はもちろん、コードレビュー時でも注意・指摘したい内容がまとめられています。</p><p>タイトルには「Java」と書かれていますが、プラクティスとしては言語に依存しない内容がほとんどなので、
-特定の言語に限らない有益なプラクティスだと思いました。</p><p>以下が各章のサマリです。</p><nav id=TableOfContents><ul><li><a href=#一般的なプラクティスの話>一般的なプラクティスの話</a><ul><li><a href=#1-1つの空行で区切られた3つのブロックを含むようにする>(1) 1つの空行で区切られた3つのブロックを含むようにする</a></li><li><a href=#2-等値アサートで変数を使用する場合は変数名の前に-actual-と-expected-を付ける>(2) 等値アサートで変数を使用する場合は、変数名の前に <code>actual</code> と <code>expected</code> を付ける</a></li><li><a href=#3-ランダムな値特に時刻などは使わない固定値を使って再現性を高める>(3) ランダムな値（特に時刻など）は使わない。固定値を使って再現性を高める</a></li></ul></li><li><a href=#小規模で具体的なテストを書こうという話>小規模で具体的なテストを書こうという話</a><ul><li><a href=#1-繰り返し使うコードは専用のメソッドに切り出し分かりやすい記述的な名前を付ける>(1) 繰り返し使うコードは専用のメソッドに切り出し、分かりやすい記述的な名前を付ける</a></li><li><a href=#2-複数回使用される値を変数に抽出するのは実はやらない方が良い>(2) 複数回使用される値を変数に抽出するのは実はやらない方が良い</a></li><li><a href=#3-期待される動作についてのテストメソッドをそれぞれ個別に用意する>(3) 期待される動作についてのテストメソッドをそれぞれ個別に用意する</a></li><li><a href=#4-テストしたい部分だけをアサートする>(4) テストしたい部分だけをアサートする</a></li></ul></li><li><a href=#自己完結型テストの話>自己完結型テストの話</a><ul><li><a href=#1-テストコードの読者にメソッドの定義へのジャンプを強制させない>(1) テストコードの読者にメソッドの定義へのジャンプを強制させない</a></li><li><a href=#2-継承よりも合成を優先する>(2) 継承よりも合成を優先する</a></li></ul></li><li><a href=#出力はハードコードされた期待値と比較しようというの話>出力はハードコードされた期待値と比較しようというの話</a><ul><li><a href=#1-production-codeアプリ本体のコードをテストで再利用しない>(1) Production Code（アプリ本体のコード）をテストで再利用しない</a></li><li><a href=#2-production-logicアプリ本体のロジックをテストに持ち込まない>(2) Production Logic（アプリ本体のロジック）をテストに持ち込まない</a></li><li><a href=#3-テストメソッド内にロジックを書きすぎないようにする>(3) テストメソッド内にロジックを書きすぎないようにする</a></li></ul></li><li><a href=#現実に近いテストの話>現実に近いテストの話</a></li><li><a href=#テスタブルな実装の話>テスタブルな実装の話</a><ul><li><a href=#1-production-codeで静的アクセスを使わない>(1) Production codeで静的アクセスを使わない</a></li><li><a href=#2-ロジックが持つ制限上限値やしきい値などはパラメタとして外から設定可能にする>(2) ロジックが持つ制限（上限値やしきい値など）はパラメタとして外から設定可能にする</a></li><li><a href=#3-instantnow-や-new-date-を使わないようにする>(3) <code>Instant.now()</code> や <code>new Date()</code> を使わないようにする</a></li><li><a href=#4-非同期実行とビジネスロジックは分離する>(4) 非同期実行とビジネスロジックは分離する</a></li></ul></li><li><a href=#jvmの設定junit5などの話>JVMの設定、Junit5などの話</a></li></ul></nav><p>って感じ。それでは、それぞれの中身をまとめていきます。</p><h2 id=一般的なプラクティスの話>一般的なプラクティスの話</h2><p>テストメソッドでは、以下の基本ルールを守ると良いみたいです。</p><ul><li>(1) 1つの空行で区切られた3つのブロックを含むようにする<ul><li>Given (Input): データ作成やモックの設定などのテスト準備</li><li>When (Action): テストしたいメソッドやアクションを呼び出す</li><li>Then (Output): アサートを実行して、アクションの正しい出力や動作を検証する</li></ul></li><li>(2) 等値アサートで変数を使用する場合は、変数名の前に <code>actual</code> と <code>expected</code> を付ける<ul><li>実際に取得される値: 変数名の前に <code>actual</code> をにつける</li><li>取得される値の期待値: 変数名の前に <code>expected</code> をつける</li><li>モチベーション: 比較時の意図が明確になり間違いが減るし、可読性もあがるため</li></ul></li><li>(3) ランダムな値（特に時刻など）は使わない。固定値を使って再現性を高める</li></ul><h3 id=1-1つの空行で区切られた3つのブロックを含むようにする>(1) 1つの空行で区切られた3つのブロックを含むようにする</h3><h3 id=2-等値アサートで変数を使用する場合は変数名の前に-actual-と-expected-を付ける>(2) 等値アサートで変数を使用する場合は、変数名の前に <code>actual</code> と <code>expected</code> を付ける</h3><p>最初に、(1), (2)をまとめると、以下の形が理想的です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    UserGetRequest request <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserGetRequest<span style=color:#f92672>(</span>1111L<span style=color:#f92672>);</span>
-    UserDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserDao<span style=color:#f92672>();</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    User actualUser <span style=color:#f92672>=</span> dao<span style=color:#f92672>.</span><span style=color:#a6e22e>get</span><span style=color:#f92672>(</span>request<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    User expectedUser <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> User<span style=color:#f92672>(</span>1111L<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;John&#34;</span><span style=color:#f92672>);</span>
-    assertThat<span style=color:#f92672>(</span>actualUser<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>expectedUser<span style=color:#f92672>));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>GroovyのSpock frameworkを使っていると、構文としてこのあたりが用意されていて自然と意識する形になっていますよね。</p><blockquote><p>Spock Framework Reference Documentation<br><a href=http://spockframework.org/spock/docs/1.3/all_in_one.html>http://spockframework.org/spock/docs/1.3/all_in_one.html</a></p></blockquote><blockquote><p>spock-workshop/02_basics.md at master · yamkazu/spock-workshop<br><a href=https://github.com/yamkazu/spock-workshop/blob/master/docs/02_basics.md#setup>https://github.com/yamkazu/spock-workshop/blob/master/docs/02_basics.md#setup</a></p></blockquote><p>こういうフレームワークに関わらず、テストする時これらのステップごとにブロックを分けてちゃんと記述しようねってことです。</p><h3 id=3-ランダムな値特に時刻などは使わない固定値を使って再現性を高める>(3) ランダムな値（特に時刻など）は使わない。固定値を使って再現性を高める</h3><p>結果が毎回変わるような、ランダム化される値が登場するテストは行わないようにします。</p><p>以下が悪い例です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#75715e>/**
-</span><span style=color:#75715e>   * ダメな例
-</span><span style=color:#75715e>   */</span>
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>formatBadTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    Instant currentInstant <span style=color:#f92672>=</span> Instant<span style=color:#f92672>.</span><span style=color:#a6e22e>now</span><span style=color:#f92672>();</span> <span style=color:#75715e>// example =&gt; 1601739774
-</span><span style=color:#75715e></span>    EpochSecondFormatter formatter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EpochSecondFormatter<span style=color:#f92672>();</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    String actualDate <span style=color:#f92672>=</span> formatter<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>currentInstant<span style=color:#f92672>);</span> <span style=color:#75715e>// example:  =&gt; DATE: 20201003
-</span><span style=color:#75715e></span>
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    String expectedDate <span style=color:#f92672>=</span> createExpectedString<span style=color:#f92672>(</span>currentInstant<span style=color:#f92672>);</span>
-    assertThat<span style=color:#f92672>(</span>actualDate<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>expectedDate<span style=color:#f92672>));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>こういうテストはアサートが失敗した場合に出るログの値が毎回変わるのでデバッグが困難になります。
-また、コメントに記載されている値も役に立ちません。</p><p>以下のように、固定値を使い、毎回同じ結果になるようにします。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#75715e>/**
-</span><span style=color:#75715e>   * 良い例
-</span><span style=color:#75715e>   */</span>
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>formatGoodTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    Instant fixedInstant <span style=color:#f92672>=</span> Instant<span style=color:#f92672>.</span><span style=color:#a6e22e>ofEpochSecond</span><span style=color:#f92672>(</span>1601739774<span style=color:#f92672>);</span>
-    EpochSecondFormatter formatter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EpochSecondFormatter<span style=color:#f92672>();</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    String actualDate <span style=color:#f92672>=</span> formatter<span style=color:#f92672>.</span><span style=color:#a6e22e>format</span><span style=color:#f92672>(</span>fixedInstant<span style=color:#f92672>);</span> <span style=color:#75715e>// DATE: 20201003
-</span><span style=color:#75715e></span>
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    String expectedDate <span style=color:#f92672>=</span> createExpectedString<span style=color:#f92672>(</span>fixedInstant<span style=color:#f92672>);</span>
-    assertThat<span style=color:#f92672>(</span>actualDate<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>expectedDate<span style=color:#f92672>));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>こうすることでいつ実行しても毎回同じ結果になる再現性の高いテストになります。</p><h2 id=小規模で具体的なテストを書こうという話>小規模で具体的なテストを書こうという話</h2><ul><li>(1) 繰り返し使うコードは専用のメソッドに切り出し、分かりやすい記述的な名前を付ける</li><li>(2) 複数回使用される値を変数に抽出するのは実はやらない方が良い</li><li>(3) 期待される動作についてのテストメソッドをそれぞれ個別に用意する<ul><li>期待する動作が何なのかが分かりやすいテストメソッド名にする</li><li>1つのでかいテストメソッドの中でいろんなコーナーケースのテストはやらないほうが良い</li></ul></li><li>(4) テストしたい部分だけをアサートする</li></ul><h3 id=1-繰り返し使うコードは専用のメソッドに切り出し分かりやすい記述的な名前を付ける>(1) 繰り返し使うコードは専用のメソッドに切り出し、分かりやすい記述的な名前を付ける</h3><p>テスト用のオブジェクトを作るだけのメソッド、みたいな、みんなよく無意識のうちにやってることだとは思います。</p><p>ただ、ここで大切なのは、「テストに関係するフィールドをパラメータとして指定させるメソッド」にするとより見通しが良いみたいです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>
-            createUserWithId<span style=color:#f92672>(</span>10L<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>20L<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>30L<span style=color:#f92672>)</span>
-    <span style=color:#f92672>));</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span>15L<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span>2<span style=color:#f92672>));</span>
-    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>createUserWithId<span style=color:#f92672>(</span>20L<span style=color:#f92672>),</span> createUserWithId<span style=color:#f92672>(</span>30L<span style=color:#f92672>))));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>ここでは、IDで <code>User</code> クラスを絞り込む処理のテストをしているので、 <code>User.name</code> フィールドは何でも良いです。
+特定の言語に限らない有益なプラクティスだと思いました。</p><p>それでは、それぞれの中身をまとめていきます。</p><h2 id=一般的なプラクティスの話>一般的なプラクティスの話</h2><p>テストメソッドでは、以下の基本ルールを守ると良いみたいです。</p><ul><li>(1) 1つの空行で区切られた3つのブロックを含むようにする<ul><li>Given (Input): データ作成やモックの設定などのテスト準備</li><li>When (Action): テストしたいメソッドやアクションを呼び出す</li><li>Then (Output): アサートを実行して、アクションの正しい出力や動作を検証する</li></ul></li><li>(2) 等値アサートで変数を使用する場合は、変数名の前に <code>actual</code> と <code>expected</code> を付ける<ul><li>実際に取得される値: 変数名の前に <code>actual</code> をにつける</li><li>取得される値の期待値: 変数名の前に <code>expected</code> をつける</li><li>モチベーション: 比較時の意図が明確になり間違いが減るし、可読性もあがるため</li></ul></li><li>(3) ランダムな値（特に時刻など）は使わない。固定値を使って再現性を高める</li></ul><h3 id=1-1つの空行で区切られた3つのブロックを含むようにする>(1) 1つの空行で区切られた3つのブロックを含むようにする</h3><h3 id=2-等値アサートで変数を使用する場合は変数名の前に-actual-と-expected-を付ける>(2) 等値アサートで変数を使用する場合は、変数名の前に <code>actual</code> と <code>expected</code> を付ける</h3><p>最初に、(1), (2)をまとめると、以下の形が理想的です。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    UserGetRequest request <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserGetRequest(1111L);
+</span></span><span style=display:flex><span>    UserDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserDao();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    User actualUser <span style=color:#f92672>=</span> dao.<span style=color:#a6e22e>get</span>(request);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    User expectedUser <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> User(1111L, <span style=color:#e6db74>&#34;John&#34;</span>);
+</span></span><span style=display:flex><span>    assertThat(actualUser, is(expectedUser));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>GroovyのSpock frameworkを使っていると、構文としてこのあたりが用意されていて自然と意識する形になっていますよね。</p><blockquote><p>Spock Framework Reference Documentation<br><a href=http://spockframework.org/spock/docs/1.3/all_in_one.html>http://spockframework.org/spock/docs/1.3/all_in_one.html</a></p></blockquote><blockquote><p>spock-workshop/02_basics.md at master · yamkazu/spock-workshop<br><a href=https://github.com/yamkazu/spock-workshop/blob/master/docs/02_basics.md#setup>https://github.com/yamkazu/spock-workshop/blob/master/docs/02_basics.md#setup</a></p></blockquote><p>こういうフレームワークに関わらず、テストする時これらのステップごとにブロックを分けてちゃんと記述しようねってことです。</p><h3 id=3-ランダムな値特に時刻などは使わない固定値を使って再現性を高める>(3) ランダムな値（特に時刻など）は使わない。固定値を使って再現性を高める</h3><p>結果が毎回変わるような、ランダム化される値が登場するテストは行わないようにします。</p><p>以下が悪い例です。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * ダメな例
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>formatBadTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    Instant currentInstant <span style=color:#f92672>=</span> Instant.<span style=color:#a6e22e>now</span>(); <span style=color:#75715e>// example =&gt; 1601739774</span>
+</span></span><span style=display:flex><span>    EpochSecondFormatter formatter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EpochSecondFormatter();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    String actualDate <span style=color:#f92672>=</span> formatter.<span style=color:#a6e22e>format</span>(currentInstant); <span style=color:#75715e>// example:  =&gt; DATE: 20201003</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    String expectedDate <span style=color:#f92672>=</span> createExpectedString(currentInstant);
+</span></span><span style=display:flex><span>    assertThat(actualDate, is(expectedDate));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>こういうテストはアサートが失敗した場合に出るログの値が毎回変わるのでデバッグが困難になります。
+また、コメントに記載されている値も役に立ちません。</p><p>以下のように、固定値を使い、毎回同じ結果になるようにします。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * 良い例
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>formatGoodTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    Instant fixedInstant <span style=color:#f92672>=</span> Instant.<span style=color:#a6e22e>ofEpochSecond</span>(1601739774);
+</span></span><span style=display:flex><span>    EpochSecondFormatter formatter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> EpochSecondFormatter();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    String actualDate <span style=color:#f92672>=</span> formatter.<span style=color:#a6e22e>format</span>(fixedInstant); <span style=color:#75715e>// DATE: 20201003</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    String expectedDate <span style=color:#f92672>=</span> createExpectedString(fixedInstant);
+</span></span><span style=display:flex><span>    assertThat(actualDate, is(expectedDate));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>こうすることでいつ実行しても毎回同じ結果になる再現性の高いテストになります。</p><h2 id=小規模で具体的なテストを書こうという話>小規模で具体的なテストを書こうという話</h2><ul><li>(1) 繰り返し使うコードは専用のメソッドに切り出し、分かりやすい記述的な名前を付ける</li><li>(2) 複数回使用される値を変数に抽出するのは実はやらない方が良い</li><li>(3) 期待される動作についてのテストメソッドをそれぞれ個別に用意する<ul><li>期待する動作が何なのかが分かりやすいテストメソッド名にする</li><li>1つのでかいテストメソッドの中でいろんなコーナーケースのテストはやらないほうが良い</li></ul></li><li>(4) テストしたい部分だけをアサートする</li></ul><h3 id=1-繰り返し使うコードは専用のメソッドに切り出し分かりやすい記述的な名前を付ける>(1) 繰り返し使うコードは専用のメソッドに切り出し、分かりやすい記述的な名前を付ける</h3><p>テスト用のオブジェクトを作るだけのメソッド、みたいな、みんなよく無意識のうちにやってることだとは思います。</p><p>ただ、ここで大切なのは、「テストに関係するフィールドをパラメータとして指定させるメソッド」にするとより見通しが良いみたいです。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter(Arrays.<span style=color:#a6e22e>asList</span>(
+</span></span><span style=display:flex><span>            createUserWithId(10L),
+</span></span><span style=display:flex><span>            createUserWithId(20L),
+</span></span><span style=display:flex><span>            createUserWithId(30L)
+</span></span><span style=display:flex><span>    ));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter.<span style=color:#a6e22e>getByIdGreaterThan</span>(15L);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    assertThat(actualUsers.<span style=color:#a6e22e>size</span>(), is(2));
+</span></span><span style=display:flex><span>    assertThat(actualUsers, is(containsInAnyOrder(createUserWithId(20L), createUserWithId(30L))));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>ここでは、IDで <code>User</code> クラスを絞り込む処理のテストをしているので、 <code>User.name</code> フィールドは何でも良いです。
 なので、 <code>createUserWithId(Long id)</code> というIDを指定して <code>User</code> を返してくれる（ <code>User.name</code> の値は何でも良い）テスト用のメソッドを用意します。</p><h3 id=2-複数回使用される値を変数に抽出するのは実はやらない方が良い>(2) 複数回使用される値を変数に抽出するのは実はやらない方が良い</h3><p>これは意外でした。</p><blockquote><p>A usual reflex of a developer is to extract values that are used multiple times to variables.<br>複数回使用される値を変数に抽出するのが開発者の常套手段です。</p></blockquote><p>よくありがちというか、むしろそうした方が良いという人がいそうなくらいの話ですが、
 この元記事では、実は変数化のやりすぎは良くないと紹介されていました。</p><p>というのも、アサートが失敗した時のログからテストコードを辿る際、
-変数化されていると実際に問題がある行までトレースするのに時間がかかってしまうから、ということのようです。ふーん。</p><p>この「複数回使用される値を変数に抽出する」良くない例が以下です。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanVariableIdTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    Long id1 <span style=color:#f92672>=</span> 10L<span style=color:#f92672>;</span>
-    Long id2 <span style=color:#f92672>=</span> 20L<span style=color:#f92672>;</span>
-    Long id3 <span style=color:#f92672>=</span> 30L<span style=color:#f92672>;</span>
-    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>
-            createUserWithId<span style=color:#f92672>(</span>id1<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>id2<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>id3<span style=color:#f92672>)</span>
-    <span style=color:#f92672>));</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span>15L<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span>2<span style=color:#f92672>));</span>
-    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>createUserWithId<span style=color:#f92672>(</span>id2<span style=color:#f92672>),</span> createUserWithId<span style=color:#f92672>(</span>id3<span style=color:#f92672>))));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>これJUnitだと分かりづらいんですかね？会社ではSpock Framework使ってますが、Groovyには <code>Power assert</code> っていう便利な機能がついていて、</p><blockquote><p>The Apache Groovy programming language - Testing guide<br><a href=https://www.groovy-lang.org/testing.html#_power_assertions>https://www.groovy-lang.org/testing.html#_power_assertions</a></p></blockquote><p>例えば、以下の様に失敗するテストを実行すると&mldr;</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-groovy data-lang=groovy>  <span style=color:#66d9ef>def</span> <span style=color:#e6db74>&#34;Groovyの場合&#34;</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    setup: 
-    Long id1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>10L</span>
-    Long id2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>20L</span>
-    Long id3 <span style=color:#f92672>=</span> <span style=color:#ae81ff>30L</span>
-    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>
-            createUserWithId<span style=color:#f92672>(</span>id1<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>id2<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>id3<span style=color:#f92672>),</span>
-    <span style=color:#f92672>));</span>
-
-
-    when:
-    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span><span style=color:#ae81ff>15L</span><span style=color:#f92672>)</span>
-
-    then: 
-    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>
-    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>0</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id2
-    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>1</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id1
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>以下のような感じでエラーがあった行とその値をあわせて表示してくれます。</p><pre><code>// Console output
+変数化されていると実際に問題がある行までトレースするのに時間がかかってしまうから、ということのようです。ふーん。</p><p>この「複数回使用される値を変数に抽出する」良くない例が以下です。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanVariableIdTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    Long id1 <span style=color:#f92672>=</span> 10L;
+</span></span><span style=display:flex><span>    Long id2 <span style=color:#f92672>=</span> 20L;
+</span></span><span style=display:flex><span>    Long id3 <span style=color:#f92672>=</span> 30L;
+</span></span><span style=display:flex><span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter(Arrays.<span style=color:#a6e22e>asList</span>(
+</span></span><span style=display:flex><span>            createUserWithId(id1),
+</span></span><span style=display:flex><span>            createUserWithId(id2),
+</span></span><span style=display:flex><span>            createUserWithId(id3)
+</span></span><span style=display:flex><span>    ));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter.<span style=color:#a6e22e>getByIdGreaterThan</span>(15L);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    assertThat(actualUsers.<span style=color:#a6e22e>size</span>(), is(2));
+</span></span><span style=display:flex><span>    assertThat(actualUsers, is(containsInAnyOrder(createUserWithId(id2), createUserWithId(id3))));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>これJUnitだと分かりづらいんですかね？会社ではSpock Framework使ってますが、Groovyには <code>Power assert</code> っていう便利な機能がついていて、</p><blockquote><p>The Apache Groovy programming language - Testing guide<br><a href=https://www.groovy-lang.org/testing.html#_power_assertions>https://www.groovy-lang.org/testing.html#_power_assertions</a></p></blockquote><p>例えば、以下の様に失敗するテストを実行すると&mldr;</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-groovy data-lang=groovy><span style=display:flex><span>  <span style=color:#66d9ef>def</span> <span style=color:#e6db74>&#34;Groovyの場合&#34;</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    setup: 
+</span></span><span style=display:flex><span>    Long id1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>10L</span>
+</span></span><span style=display:flex><span>    Long id2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>20L</span>
+</span></span><span style=display:flex><span>    Long id3 <span style=color:#f92672>=</span> <span style=color:#ae81ff>30L</span>
+</span></span><span style=display:flex><span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>
+</span></span><span style=display:flex><span>            createUserWithId<span style=color:#f92672>(</span>id1<span style=color:#f92672>),</span>
+</span></span><span style=display:flex><span>            createUserWithId<span style=color:#f92672>(</span>id2<span style=color:#f92672>),</span>
+</span></span><span style=display:flex><span>            createUserWithId<span style=color:#f92672>(</span>id3<span style=color:#f92672>),</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>));</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    when:
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span><span style=color:#ae81ff>15L</span><span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    then: 
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>()</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>0</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id2
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>assert</span> actualUsers<span style=color:#f92672>[</span><span style=color:#ae81ff>1</span><span style=color:#f92672>].</span><span style=color:#a6e22e>id</span> <span style=color:#f92672>==</span> id1
+</span></span><span style=display:flex><span>  <span style=color:#f92672>}</span>
+</span></span></code></pre></div><p>以下のような感じでエラーがあった行とその値をあわせて表示してくれます。</p><pre tabindex=0><code>// Console output
 
 actualUsers[1].id == id1
 |          |   |  |  |
@@ -125,112 +124,112 @@ Javaを主軸にした記事なのでそこは仕方ないですね。SpockはGr
 特に、色んなメソッドで使われてる共通のビジネスロジックは、複数のテスト内で何度も同じ観点のアサートしちゃってるケースは多いので、
 (3)のテストメソッドを分離する話と合わせて、</p><ul><li>共通でアサートすべきところ</li><li>コーナーケースとして追加でアサートすべきところ</li></ul><p>を分離した構成にすることが求められそうです。</p><h2 id=自己完結型テストの話>自己完結型テストの話</h2><ul><li>(1) テストコードの読者にメソッドの定義へのジャンプを強制させない<ul><li>テストで制御する必要があるパラメータをヘルパーメソッドの引数にする</li><li>事前データの準備機能（JUnitだと <code>@Before</code>）は使わず、ヘルパーメソッドを明示的に呼び出す形にする</li></ul></li><li>(2) 継承よりも合成を優先する</li></ul><h3 id=1-テストコードの読者にメソッドの定義へのジャンプを強制させない>(1) テストコードの読者にメソッドの定義へのジャンプを強制させない</h3><p>これは「<a href=#1-%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97%E4%BD%BF%E3%81%86%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AF%E5%B0%82%E7%94%A8%E3%81%AE%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%AB%E5%88%87%E3%82%8A%E5%87%BA%E3%81%97%E5%88%86%E3%81%8B%E3%82%8A%E3%82%84%E3%81%99%E3%81%84%E8%A8%98%E8%BF%B0%E7%9A%84%E3%81%AA%E5%90%8D%E5%89%8D%E3%82%92%E4%BB%98%E3%81%91%E3%82%8B>繰り返し使うコードは専用のメソッドに切り出し分かりやすい記述的な名前を付ける</a>」
 に出てきた内容と少し被りますが、事前データを用意するためのヘルパーメソッドの引数は、
-必ずテストに関係する引数を渡すようにする、ということです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// 悪い例
-</span><span style=color:#75715e></span>User user <span style=color:#f92672>=</span> createUser<span style=color:#f92672>();</span>
-
-<span style=color:#75715e>// 良い例
-</span><span style=color:#75715e></span>User user <span style=color:#f92672>=</span> createdUserWithId<span style=color:#f92672>(</span>11111L<span style=color:#f92672>);</span>
-</code></pre></div><p>悪い例の引数なしのヘルパーメソッドだと、中で何が作られるのか定義に飛んで確認しないと読んだ人は分かりません。</p><p>良い例の場合、少なくともIDが <code>11111</code> のUserが作られていることは定義に飛ばなくても分かります。常にこっちの形になるようにしましょう。</p><p>また、共通の事前処理を仕込むための仕組み（JavaのJUnitだと <code>@Before</code> アノテーションをつけたメソッドは各テストの実行前に必ず自動で呼び出してくれる）はできるだけ使わないようにし、そういった共通処理はヘルパーメソッド名に適切な名前をつけ、
-各テストメソッド内で個別に呼ぶようにします。</p><p>以下、だめな例です。（完全にダメではないけど、良くない例）</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> targetUsers<span style=color:#f92672>;</span>
-
-  <span style=color:#75715e>/**
-</span><span style=color:#75715e>   * ダメな例
-</span><span style=color:#75715e>   */</span>
-  <span style=color:#a6e22e>@Before</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    targetUsers <span style=color:#f92672>=</span> Arrays<span style=color:#f92672>.</span><span style=color:#a6e22e>asList</span><span style=color:#f92672>(</span>
-            createUserWithId<span style=color:#f92672>(</span>10L<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>20L<span style=color:#f92672>),</span>
-            createUserWithId<span style=color:#f92672>(</span>30L<span style=color:#f92672>)</span>
-    <span style=color:#f92672>);</span>
-  <span style=color:#f92672>}</span>
-
-<span style=color:#f92672>...</span>
-
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanTestWithBeforeSetup</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>targetUsers<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span>15L<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span>2<span style=color:#f92672>));</span>
-    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>createUserWithId<span style=color:#f92672>(</span>20L<span style=color:#f92672>),</span> createUserWithId<span style=color:#f92672>(</span>30L<span style=color:#f92672>))));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>これだと、 <code>getByIdGreaterThanTestWithBeforeSetup</code> のテストを読むためには、 事前処理でデータがセットアップされることを知らないと理解できません。
-このため、事前処理が行われるメソッドの定義を探すこと、さらにそこに飛んで中身を読むことを強制されます。</p><p>この場合、以下の方が良いです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanTestIncludesSetup</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> targetUsers <span style=color:#f92672>=</span> createUsersHavingIdFrom10To30<span style=color:#f92672>();</span>
-    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter<span style=color:#f92672>(</span>targetUsers<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter<span style=color:#f92672>.</span><span style=color:#a6e22e>getByIdGreaterThan</span><span style=color:#f92672>(</span>15L<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>.</span><span style=color:#a6e22e>size</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span>2<span style=color:#f92672>));</span>
-    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>createUserWithId<span style=color:#f92672>(</span>20L<span style=color:#f92672>),</span> createUserWithId<span style=color:#f92672>(</span>30L<span style=color:#f92672>))));</span>
-  <span style=color:#f92672>}</span>
-</code></pre></div><p>事前処理でやって良いのは、データベースのセットアップや、HTTP通信周りの設定など、
+必ずテストに関係する引数を渡すようにする、ということです。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// 悪い例</span>
+</span></span><span style=display:flex><span>User user <span style=color:#f92672>=</span> createUser();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// 良い例</span>
+</span></span><span style=display:flex><span>User user <span style=color:#f92672>=</span> createdUserWithId(11111L);
+</span></span></code></pre></div><p>悪い例の引数なしのヘルパーメソッドだと、中で何が作られるのか定義に飛んで確認しないと読んだ人は分かりません。</p><p>良い例の場合、少なくともIDが <code>11111</code> のUserが作られていることは定義に飛ばなくても分かります。常にこっちの形になるようにしましょう。</p><p>また、共通の事前処理を仕込むための仕組み（JavaのJUnitだと <code>@Before</code> アノテーションをつけたメソッドは各テストの実行前に必ず自動で呼び出してくれる）はできるだけ使わないようにし、そういった共通処理はヘルパーメソッド名に適切な名前をつけ、
+各テストメソッド内で個別に呼ぶようにします。</p><p>以下、だめな例です。（完全にダメではないけど、良くない例）</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> targetUsers;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * ダメな例
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Before</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    targetUsers <span style=color:#f92672>=</span> Arrays.<span style=color:#a6e22e>asList</span>(
+</span></span><span style=display:flex><span>            createUserWithId(10L),
+</span></span><span style=display:flex><span>            createUserWithId(20L),
+</span></span><span style=display:flex><span>            createUserWithId(30L)
+</span></span><span style=display:flex><span>    );
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanTestWithBeforeSetup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter(targetUsers);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter.<span style=color:#a6e22e>getByIdGreaterThan</span>(15L);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    assertThat(actualUsers.<span style=color:#a6e22e>size</span>(), is(2));
+</span></span><span style=display:flex><span>    assertThat(actualUsers, is(containsInAnyOrder(createUserWithId(20L), createUserWithId(30L))));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>これだと、 <code>getByIdGreaterThanTestWithBeforeSetup</code> のテストを読むためには、 事前処理でデータがセットアップされることを知らないと理解できません。
+このため、事前処理が行われるメソッドの定義を探すこと、さらにそこに飛んで中身を読むことを強制されます。</p><p>この場合、以下の方が良いです。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>getByIdGreaterThanTestIncludesSetup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> targetUsers <span style=color:#f92672>=</span> createUsersHavingIdFrom10To30();
+</span></span><span style=display:flex><span>    UserFilter userFilter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserFilter(targetUsers);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> userFilter.<span style=color:#a6e22e>getByIdGreaterThan</span>(15L);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    assertThat(actualUsers.<span style=color:#a6e22e>size</span>(), is(2));
+</span></span><span style=display:flex><span>    assertThat(actualUsers, is(containsInAnyOrder(createUserWithId(20L), createUserWithId(30L))));
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><p>事前処理でやって良いのは、データベースのセットアップや、HTTP通信周りの設定など、
 各テストケースに依存しない共通設定（テストケースの読者が詳細を意識しなくて良いこと）を書くべきです。</p><h3 id=2-継承よりも合成を優先する>(2) 継承よりも合成を優先する</h3><p>継承よりも委譲を使ったほうが良いという議論</p><blockquote><p>Effective Java Tuesday! Favor Composition Over Inheritance - DEV<br><a href=https://dev.to/kylec32/effective-java-tuesday-favor-composition-over-inheritance-4ph5>https://dev.to/kylec32/effective-java-tuesday-favor-composition-over-inheritance-4ph5</a></p></blockquote><p>とは少し趣旨は違いますが、
-言ってることは同じです。テストで継承を使わない方が良い理由は以下の通りです。</p><ul><li>現在のテストが必要としていないものを多く含むベーステストクラスを拡張する羽目になる</li><li>一つ、あるいは複数の基底クラスを飛び回らなければならなくなる</li><li>継承は柔軟性に欠ける</li></ul><blockquote><p>The Wrong Abstraction — Sandi Metz<br><a href=https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction>https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</a></p><p>&ldquo;Prefer duplication over the wrong abstraction.&rdquo; Sandi Metz.<br>&ldquo;間違った抽象化よりも重複を優先する&rdquo; サンディ・メッツ</p></blockquote><p>具体的には、以下のようなテストの構成は避けましょう。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SelfContainedTestBase</span> <span style=color:#f92672>{</span>
-  <span style=color:#66d9ef>protected</span> Connection connection<span style=color:#f92672>;</span>
-  <span style=color:#a6e22e>@Before</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>setupDatabaseConnection</span><span style=color:#f92672>();</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>loadFixtures</span><span style=color:#f92672>();</span>
-  <span style=color:#f92672>}</span>
-  <span style=color:#f92672>...</span>
-<span style=color:#f92672>}</span>
-
-
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SelfContainedTest</span> <span style=color:#66d9ef>extends</span> SelfContainedTestBase <span style=color:#f92672>{</span>
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>extendedTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given ( fixture data is loaded in SelfContainedTestBase )
-</span><span style=color:#75715e></span>    UserDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserDao<span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>connection</span><span style=color:#f92672>);</span>
-    
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> dao<span style=color:#f92672>.</span><span style=color:#a6e22e>getAll</span><span style=color:#f92672>();</span>
-    
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    User expectedUser <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> User<span style=color:#f92672>(</span>1111L<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;John&#34;</span><span style=color:#f92672>);</span>
-    assertThat<span style=color:#f92672>(</span>actualUsers<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>expectedUser<span style=color:#f92672>)));</span>
-  <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>継承元の <code>setup()</code> の処理相当のクラスを個別に分離し、
-以下のように継承をやめ、テストメソッド内でそれらを個別に呼び出す作りの方が良いです。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SelfContainedTest</span> <span style=color:#f92672>{</span>
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>compositionTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    Connection connection <span style=color:#f92672>=</span>  <span style=color:#66d9ef>new</span> DatabaseConfiguration<span style=color:#f92672>().</span><span style=color:#a6e22e>setupConnection</span><span style=color:#f92672>();</span>
-    FixtureLoader loader <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FixtureLoader<span style=color:#f92672>(</span>connection<span style=color:#f92672>);</span>
-    loader<span style=color:#f92672>.</span><span style=color:#a6e22e>load</span><span style=color:#f92672>();</span>
-    CompanyDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> CompanyDao<span style=color:#f92672>(</span>connection<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    List<span style=color:#f92672>&lt;</span>Company<span style=color:#f92672>&gt;</span> actualCompanies <span style=color:#f92672>=</span> dao<span style=color:#f92672>.</span><span style=color:#a6e22e>getAll</span><span style=color:#f92672>();</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    Company expectedCompany <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Company<span style=color:#f92672>(</span>1111L<span style=color:#f92672>,</span> <span style=color:#e6db74>&#34;Apple&#34;</span><span style=color:#f92672>);</span>
-    assertThat<span style=color:#f92672>(</span>actualCompanies<span style=color:#f92672>,</span> is<span style=color:#f92672>(</span>containsInAnyOrder<span style=color:#f92672>(</span>expectedCompany<span style=color:#f92672>)));</span>
-  <span style=color:#f92672>}</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>とても複雑な手続きが必要で、どうしても継承して共通処理にしたい！って場合でも、
+言ってることは同じです。テストで継承を使わない方が良い理由は以下の通りです。</p><ul><li>現在のテストが必要としていないものを多く含むベーステストクラスを拡張する羽目になる</li><li>一つ、あるいは複数の基底クラスを飛び回らなければならなくなる</li><li>継承は柔軟性に欠ける</li></ul><blockquote><p>The Wrong Abstraction — Sandi Metz<br><a href=https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction>https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</a></p><p>&ldquo;Prefer duplication over the wrong abstraction.&rdquo; Sandi Metz.<br>&ldquo;間違った抽象化よりも重複を優先する&rdquo; サンディ・メッツ</p></blockquote><p>具体的には、以下のようなテストの構成は避けましょう。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SelfContainedTestBase</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>protected</span> Connection connection;
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Before</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>connection</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>setupDatabaseConnection</span>();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>loadFixtures</span>();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  ...
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SelfContainedTest</span> <span style=color:#66d9ef>extends</span> SelfContainedTestBase {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>extendedTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given ( fixture data is loaded in SelfContainedTestBase )</span>
+</span></span><span style=display:flex><span>    UserDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UserDao(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>connection</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>User<span style=color:#f92672>&gt;</span> actualUsers <span style=color:#f92672>=</span> dao.<span style=color:#a6e22e>getAll</span>();
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    User expectedUser <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> User(1111L, <span style=color:#e6db74>&#34;John&#34;</span>);
+</span></span><span style=display:flex><span>    assertThat(actualUsers, is(containsInAnyOrder(expectedUser)));
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>継承元の <code>setup()</code> の処理相当のクラスを個別に分離し、
+以下のように継承をやめ、テストメソッド内でそれらを個別に呼び出す作りの方が良いです。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SelfContainedTest</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>compositionTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    Connection connection <span style=color:#f92672>=</span>  <span style=color:#66d9ef>new</span> DatabaseConfiguration().<span style=color:#a6e22e>setupConnection</span>();
+</span></span><span style=display:flex><span>    FixtureLoader loader <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> FixtureLoader(connection);
+</span></span><span style=display:flex><span>    loader.<span style=color:#a6e22e>load</span>();
+</span></span><span style=display:flex><span>    CompanyDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> CompanyDao(connection);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    List<span style=color:#f92672>&lt;</span>Company<span style=color:#f92672>&gt;</span> actualCompanies <span style=color:#f92672>=</span> dao.<span style=color:#a6e22e>getAll</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    Company expectedCompany <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Company(1111L, <span style=color:#e6db74>&#34;Apple&#34;</span>);
+</span></span><span style=display:flex><span>    assertThat(actualCompanies, is(containsInAnyOrder(expectedCompany)));
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>とても複雑な手続きが必要で、どうしても継承して共通処理にしたい！って場合でも、
 その複雑な手続きを行うだけのクラスを別で用意し、各クラスのGivenで毎回呼ぶほうが良いと思います。
-とにかく、コードを読む人が関心事となるテストメソッド以外の箇所を意識しなくて済むようにする、ってことですね。</p><h2 id=出力はハードコードされた期待値と比較しようというの話>出力はハードコードされた期待値と比較しようというの話</h2><ul><li>(1) Production Code（アプリ本体のコード）をテストで再利用しない</li><li>(2) Production Logic（アプリ本体のロジック）をテストに持ち込まない</li><li>(3) テストメソッド内にロジックを書きすぎないようにする</li></ul><h3 id=1-production-codeアプリ本体のコードをテストで再利用しない>(1) Production Code（アプリ本体のコード）をテストで再利用しない</h3><p>テスト対象の処理以外のProduction Code（アプリ本体のコード）はテストで再利用するな、ということ。どういうことかというと、</p><ul><li>アサートしやすくするためにProduction Codeのとあるメソッドを使って期待値を生成して比較する</li></ul><p>のようなケース。以下、元記事のサンプルコード。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>// Don&#39;t
-</span><span style=color:#75715e></span><span style=color:#66d9ef>boolean</span> isActive <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
-<span style=color:#66d9ef>boolean</span> isRejected <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span><span style=color:#f92672>;</span>
-insertIntoDatabase<span style=color:#f92672>(</span><span style=color:#66d9ef>new</span> Product<span style=color:#f92672>(</span>1<span style=color:#f92672>,</span> isActive<span style=color:#f92672>,</span> isRejected<span style=color:#f92672>));</span>
-
-ProductDTO actualDTO <span style=color:#f92672>=</span> requestProduct<span style=color:#f92672>(</span>1<span style=color:#f92672>);</span>
-
-<span style=color:#75715e>// production code reuse ahead
-</span><span style=color:#75715e></span>List<span style=color:#f92672>&lt;</span>State<span style=color:#f92672>&gt;</span> expectedStates <span style=color:#f92672>=</span> ProductionCode<span style=color:#f92672>.</span><span style=color:#a6e22e>mapBooleansToEnumList</span><span style=color:#f92672>(</span>isActive<span style=color:#f92672>,</span> isRejected<span style=color:#f92672>);</span>
-assertThat<span style=color:#f92672>(</span>actualDTO<span style=color:#f92672>.</span><span style=color:#a6e22e>states</span><span style=color:#f92672>).</span><span style=color:#a6e22e>isEqualTo</span><span style=color:#f92672>(</span>expectedStates<span style=color:#f92672>);</span>
-</code></pre></div><p>ここでは、 <code>requestProduct(1)</code> のInとOutのみをテストすべきであって、期待値の生成のために <code>ProductionCode.mapBooleansToEnumList</code> というProduction codeを登場させてはいけないということ。</p><p>何が問題かというと、</p><blockquote><p>If you reuse production code in a test, you might miss a bug that is introduced in the reused code because you don’t test this code anymore.<br>テストでProduction codeを再利用すると、このコードをテストしなくなったために、再利用したコードに導入されたバグを見逃してしまう可能性があります。</p></blockquote><p>つまり、 <code>requestProduct(1)</code> の中で <code>ProductionCode.mapBooleansToEnumList</code> が使われていると、
+とにかく、コードを読む人が関心事となるテストメソッド以外の箇所を意識しなくて済むようにする、ってことですね。</p><h2 id=出力はハードコードされた期待値と比較しようというの話>出力はハードコードされた期待値と比較しようというの話</h2><ul><li>(1) Production Code（アプリ本体のコード）をテストで再利用しない</li><li>(2) Production Logic（アプリ本体のロジック）をテストに持ち込まない</li><li>(3) テストメソッド内にロジックを書きすぎないようにする</li></ul><h3 id=1-production-codeアプリ本体のコードをテストで再利用しない>(1) Production Code（アプリ本体のコード）をテストで再利用しない</h3><p>テスト対象の処理以外のProduction Code（アプリ本体のコード）はテストで再利用するな、ということ。どういうことかというと、</p><ul><li>アサートしやすくするためにProduction Codeのとあるメソッドを使って期待値を生成して比較する</li></ul><p>のようなケース。以下、元記事のサンプルコード。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// Don&#39;t</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>boolean</span> isActive <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>boolean</span> isRejected <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+</span></span><span style=display:flex><span>insertIntoDatabase(<span style=color:#66d9ef>new</span> Product(1, isActive, isRejected));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ProductDTO actualDTO <span style=color:#f92672>=</span> requestProduct(1);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// production code reuse ahead</span>
+</span></span><span style=display:flex><span>List<span style=color:#f92672>&lt;</span>State<span style=color:#f92672>&gt;</span> expectedStates <span style=color:#f92672>=</span> ProductionCode.<span style=color:#a6e22e>mapBooleansToEnumList</span>(isActive, isRejected);
+</span></span><span style=display:flex><span>assertThat(actualDTO.<span style=color:#a6e22e>states</span>).<span style=color:#a6e22e>isEqualTo</span>(expectedStates);
+</span></span></code></pre></div><p>ここでは、 <code>requestProduct(1)</code> のInとOutのみをテストすべきであって、期待値の生成のために <code>ProductionCode.mapBooleansToEnumList</code> というProduction codeを登場させてはいけないということ。</p><p>何が問題かというと、</p><blockquote><p>If you reuse production code in a test, you might miss a bug that is introduced in the reused code because you don’t test this code anymore.<br>テストでProduction codeを再利用すると、このコードをテストしなくなったために、再利用したコードに導入されたバグを見逃してしまう可能性があります。</p></blockquote><p>つまり、 <code>requestProduct(1)</code> の中で <code>ProductionCode.mapBooleansToEnumList</code> が使われていると、
 <code>ProductionCode.mapBooleansToEnumList</code> にバグがあった場合に、間違った結果と間違った期待値同士での検証となってしまい、アサートをパスしてしまうため。
 テストメソッドにおいては、</p><ul><li>テスト対象の入力を分かりやすく設定する</li><li>出力の期待値にはハードコードされた値を使う</li></ul><p>が良いらしい。</p><h3 id=2-production-logicアプリ本体のロジックをテストに持ち込まない>(2) Production Logic（アプリ本体のロジック）をテストに持ち込まない</h3><p>(1)に似てるけど、こっちは本番で使ってるコードをコピーしてテストクラスで使う、はやめておけってやつです。</p><p>特に、変換処理とか何かしら値を加工するようなシンプルな実装があった時、
 テストでその変換処理が欲しくなってアプリ本体のコードを部分的にテストクラスに持ってくるみたいなことがあります。</p><p>そうするのではなく、変換結果をテストメソッド内にハードコードしてそれを期待値とせよ、ということみたいです。</p><h3 id=3-テストメソッド内にロジックを書きすぎないようにする>(3) テストメソッド内にロジックを書きすぎないようにする</h3><p>テストメソッドは、基本的にはInとOutの比較だけのはず。</p><p>例外、外れ値、異常値などいろいろなケースを1つのメソッド内でアサートし始めると、
@@ -243,66 +242,67 @@ for文やif文の嵐になるのでそうならないようにすべき。</p><h
 このため、テスト時に都合が良い制限値を設定できる作りにすべき、という話。
 一度設定すると書き換えできないようにするのが理想なので、コンストラクタで値を設定できるようにしておけば良い。それだけ。</p><h3 id=3-instantnow-や-new-date-を使わないようにする>(3) <code>Instant.now()</code> や <code>new Date()</code> を使わないようにする</h3><p>例えば、DBに値を保存するメソッド内で、更新日時に <code>Instant.now()</code> した値を設定して保存、ということはよくあると思います。
 が、これだとDBに保存された際の更新日時がシステム日時に依存してしまうので、良くないです。</p><p>Javaには <code>java.time.Clock</code> というクラスが用意されており、このClockをインジェクションできる作りにすることで、
-テスト時のみ固定の時刻が設定される状態を作れます。</p><p>テストしづらい実装と、テストしやすい実装例を以下に示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>/**
-</span><span style=color:#75715e> * テストしづらい...
-</span><span style=color:#75715e> */</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UnTestableDao</span> <span style=color:#f92672>{</span>
-  <span style=color:#f92672>...</span>
-  <span style=color:#66d9ef>public</span> User <span style=color:#a6e22e>updateUser</span><span style=color:#f92672>(</span>User user<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    user<span style=color:#f92672>.</span><span style=color:#a6e22e>setDateTime</span><span style=color:#f92672>(</span>LocalDateTime<span style=color:#f92672>.</span><span style=color:#a6e22e>now</span><span style=color:#f92672>());</span>
-    updateDatabase<span style=color:#f92672>(</span>user<span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>return</span> user<span style=color:#f92672>;</span>
-  <span style=color:#f92672>}</span>
-  <span style=color:#f92672>...</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#75715e>/**
-</span><span style=color:#75715e> * テストしやすい！
-</span><span style=color:#75715e> */</span>
-<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TestableDao</span> <span style=color:#f92672>{</span>
-  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> Clock clock<span style=color:#f92672>;</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>TestableDao</span><span style=color:#f92672>(</span>Clock clock<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    <span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>clock</span> <span style=color:#f92672>=</span> clock<span style=color:#f92672>;</span>
-  <span style=color:#f92672>}</span>
-  <span style=color:#66d9ef>public</span> User <span style=color:#a6e22e>updateUser</span><span style=color:#f92672>(</span>User user<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
-    user<span style=color:#f92672>.</span><span style=color:#a6e22e>setDateTime</span><span style=color:#f92672>(</span>LocalDateTime<span style=color:#f92672>.</span><span style=color:#a6e22e>now</span><span style=color:#f92672>(</span><span style=color:#66d9ef>this</span><span style=color:#f92672>.</span><span style=color:#a6e22e>clock</span><span style=color:#f92672>));</span>
-    updateDatabase<span style=color:#f92672>(</span>user<span style=color:#f92672>);</span>
-    <span style=color:#66d9ef>return</span> user<span style=color:#f92672>;</span>
-  <span style=color:#f92672>}</span>
-  <span style=color:#f92672>...</span>
-<span style=color:#f92672>}</span>
-</code></pre></div><p>何が困るのか、何が嬉しいか、実際のテストコードを以下に示します。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#75715e>/**
-</span><span style=color:#75715e>   * テストしづらい...
-</span><span style=color:#75715e>   */</span>
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>updateUserTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    UnTestableDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UnTestableDao<span style=color:#f92672>();</span>
-    User user <span style=color:#f92672>=</span> createUserWithId<span style=color:#f92672>(</span>10L<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    User actualUser <span style=color:#f92672>=</span> dao<span style=color:#f92672>.</span><span style=color:#a6e22e>updateUser</span><span style=color:#f92672>(</span>user<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUser<span style=color:#f92672>.</span><span style=color:#a6e22e>getDateTime</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span> <span style=color:#f92672>???</span> <span style=color:#f92672>));</span> <span style=color:#75715e>// 期待値がわからない
-</span><span style=color:#75715e></span>  <span style=color:#f92672>}</span>
-</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java>  <span style=color:#75715e>/**
-</span><span style=color:#75715e>   * テストしやすい
-</span><span style=color:#75715e>   */</span>
-  <span style=color:#a6e22e>@Test</span>
-  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>updateUserTest</span><span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
-    <span style=color:#75715e>// Given
-</span><span style=color:#75715e></span>    Instant fixedInstant <span style=color:#f92672>=</span> Instant<span style=color:#f92672>.</span><span style=color:#a6e22e>parse</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;2020-10-04T00:00:00.00Z&#34;</span><span style=color:#f92672>);</span>
-    Clock fixedClock <span style=color:#f92672>=</span> Clock<span style=color:#f92672>.</span><span style=color:#a6e22e>fixed</span><span style=color:#f92672>(</span>fixedInstant<span style=color:#f92672>,</span> ZoneId<span style=color:#f92672>.</span><span style=color:#a6e22e>systemDefault</span><span style=color:#f92672>());</span>
-    TestableDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> TestableDao<span style=color:#f92672>(</span>fixedClock<span style=color:#f92672>);</span>
-    User user <span style=color:#f92672>=</span> createUserWithId<span style=color:#f92672>(</span>10L<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// When
-</span><span style=color:#75715e></span>    User actualUser <span style=color:#f92672>=</span> dao<span style=color:#f92672>.</span><span style=color:#a6e22e>updateUser</span><span style=color:#f92672>(</span>user<span style=color:#f92672>);</span>
-
-    <span style=color:#75715e>// Then
-</span><span style=color:#75715e></span>    assertThat<span style=color:#f92672>(</span>actualUser<span style=color:#f92672>.</span><span style=color:#a6e22e>getDateTime</span><span style=color:#f92672>(),</span> is<span style=color:#f92672>(</span> LocalDateTime<span style=color:#f92672>.</span><span style=color:#a6e22e>ofInstant</span><span style=color:#f92672>(</span>fixedInstant<span style=color:#f92672>,</span> ZoneId<span style=color:#f92672>.</span><span style=color:#a6e22e>systemDefault</span><span style=color:#f92672>())</span> <span style=color:#f92672>));</span> <span style=color:#75715e>// 期待値が固定化される
-</span><span style=color:#75715e></span>  <span style=color:#f92672>}</span>
-</code></pre></div><h3 id=4-非同期実行とビジネスロジックは分離する>(4) 非同期実行とビジネスロジックは分離する</h3><p>ここは同期的な部分と非同期的な部分を混ぜると、とたんにテストしづらくなるので、
+テスト時のみ固定の時刻が設定される状態を作れます。</p><p>テストしづらい実装と、テストしやすい実装例を以下に示します。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * テストしづらい...
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UnTestableDao</span> {
+</span></span><span style=display:flex><span>  ...
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> User <span style=color:#a6e22e>updateUser</span>(User user) {
+</span></span><span style=display:flex><span>    user.<span style=color:#a6e22e>setDateTime</span>(LocalDateTime.<span style=color:#a6e22e>now</span>());
+</span></span><span style=display:flex><span>    updateDatabase(user);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> user;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  ...
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e> * テストしやすい！
+</span></span></span><span style=display:flex><span><span style=color:#75715e> */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>TestableDao</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>final</span> Clock clock;
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>TestableDao</span>(Clock clock) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>clock</span> <span style=color:#f92672>=</span> clock;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> User <span style=color:#a6e22e>updateUser</span>(User user) {
+</span></span><span style=display:flex><span>    user.<span style=color:#a6e22e>setDateTime</span>(LocalDateTime.<span style=color:#a6e22e>now</span>(<span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>clock</span>));
+</span></span><span style=display:flex><span>    updateDatabase(user);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> user;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  ...
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>何が困るのか、何が嬉しいか、実際のテストコードを以下に示します。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * テストしづらい...
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>updateUserTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    UnTestableDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> UnTestableDao();
+</span></span><span style=display:flex><span>    User user <span style=color:#f92672>=</span> createUserWithId(10L);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    User actualUser <span style=color:#f92672>=</span> dao.<span style=color:#a6e22e>updateUser</span>(user);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    assertThat(actualUser.<span style=color:#a6e22e>getDateTime</span>(), is( <span style=color:#f92672>???</span> )); <span style=color:#75715e>// 期待値がわからない</span>
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * テストしやすい
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>@Test</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>updateUserTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Given</span>
+</span></span><span style=display:flex><span>    Instant fixedInstant <span style=color:#f92672>=</span> Instant.<span style=color:#a6e22e>parse</span>(<span style=color:#e6db74>&#34;2020-10-04T00:00:00.00Z&#34;</span>);
+</span></span><span style=display:flex><span>    Clock fixedClock <span style=color:#f92672>=</span> Clock.<span style=color:#a6e22e>fixed</span>(fixedInstant, ZoneId.<span style=color:#a6e22e>systemDefault</span>());
+</span></span><span style=display:flex><span>    TestableDao dao <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> TestableDao(fixedClock);
+</span></span><span style=display:flex><span>    User user <span style=color:#f92672>=</span> createUserWithId(10L);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// When</span>
+</span></span><span style=display:flex><span>    User actualUser <span style=color:#f92672>=</span> dao.<span style=color:#a6e22e>updateUser</span>(user);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Then</span>
+</span></span><span style=display:flex><span>    assertThat(actualUser.<span style=color:#a6e22e>getDateTime</span>(), is( LocalDateTime.<span style=color:#a6e22e>ofInstant</span>(fixedInstant, ZoneId.<span style=color:#a6e22e>systemDefault</span>()) )); <span style=color:#75715e>// 期待値が固定化される</span>
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><h3 id=4-非同期実行とビジネスロジックは分離する>(4) 非同期実行とビジネスロジックは分離する</h3><p>ここは同期的な部分と非同期的な部分を混ぜると、とたんにテストしづらくなるので、
 同期、非同期を意識してロジックを分離しておいたほうが良い、という話。ここ具体例難しいなぁ。</p><h2 id=jvmの設定junit5などの話>JVMの設定、Junit5などの話</h2><p>ざっくりまとめると</p><ul><li>JVMのオプションに<code>-noverify -XX:TieredStopAtLevel=1</code>オプションつけるとちょっとテスト早くなる</li><li><code>assertTrue()</code> and <code>assertFalse()</code> は避けたほうが良い</li><li>テストのグループ化</li><li>Mock Remote Service（HTTPのテスト時にhttpレイヤをMock化できる機能）</li></ul><p>について説明されています。
-ここはJava依存の話なので、Java好きの人は元の記事をご参照ください&mldr;.!!!</p></div></div></section></section><footer class=footer><div class="content has-text-centered"><p><a href=https://github.com/orf/bare-hugo-theme target=_blank>Bare Hugo theme.</a>
-Blog source code <a href=https://github.com/xshoji/blog target=_blank>available on Github</a>.</p></div></footer></body></html>
+ここはJava依存の話なので、Java好きの人は元の記事をご参照ください&mldr;.!!!</p></div></article></main><footer><div><p>&copy; 2025 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav><a href=https://github.com/xshoji target=_blank rel=noopener>GitHub</a>
+<a href=https://x.com/xshoji2020 target=_blank rel=noopener>X</a>
+<a href=/index.xml>RSS</a></nav></div></footer></body></html>

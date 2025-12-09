@@ -1,0 +1,10 @@
+(()=>{(function(){"use strict";let c=document.querySelector("header");if(c){let t=function(){let r=window.scrollY||document.documentElement.scrollTop;Math.abs(r-e)>s&&(r>n&&!o?(c.classList.add("scrolled"),o=!0):r<=n&&o&&(c.classList.remove("scrolled"),o=!1)),e=r},e=0,o=!1,n=50,s=5;t();let i=!1;window.addEventListener("scroll",()=>{i||(window.requestAnimationFrame(()=>{t(),i=!1}),i=!0)})}if(document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(o){o.preventDefault();let n=document.querySelector(this.getAttribute("href"));n&&n.scrollIntoView({behavior:"smooth",block:"start"})})}),document.querySelector("article")){let e=document.createElement("div");e.style.cssText=`
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(90deg, #2c6b6f, #4a9a9e);
+      z-index: 1000;
+      transition: width 0.1s ease;
+    `,document.body.appendChild(e),window.addEventListener("scroll",()=>{let o=window.innerHeight,n=document.documentElement.scrollHeight,t=window.scrollY/(n-o)*100;e.style.width=Math.min(t,100)+"%"})}if(document.querySelectorAll(".post-card").forEach(e=>{e.addEventListener("mouseenter",function(){this.style.transition="transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)"})}),document.addEventListener("keydown",e=>{e.key==="Escape"&&window.scrollTo({top:0,behavior:"smooth"})}),"IntersectionObserver"in window){let e=new IntersectionObserver((o,n)=>{o.forEach(s=>{if(s.isIntersecting){let t=s.target;t.style.opacity="0",t.style.transition="opacity 0.6s ease",t.dataset.src&&(t.src=t.dataset.src),t.addEventListener("load",()=>{t.style.opacity="1"}),n.unobserve(t)}})});document.querySelectorAll("img[data-src]").forEach(o=>{e.observe(o)})}let l=document.querySelector(".hero");l&&window.addEventListener("scroll",()=>{let e=window.scrollY;e<window.innerHeight&&(l.style.transform=`translateY(${e*.3}px)`,l.style.opacity=1-e/window.innerHeight*1.5)}),document.querySelectorAll("[data-year]").forEach(e=>{e.textContent=new Date().getFullYear()}),console.log("\u2728 Crafted with precision in Tokyo")})();})();
