@@ -1,39 +1,39 @@
 <!doctype html><html lang=ja dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Posts | xshoji's blog</title><link rel=icon type=image/x-icon href=/favicon.ico><link rel=stylesheet href=/css/main.min.03af3e14caa58f36152cd636d890e8c24e8bcb65a774c52bcb72398e5711840d.css integrity="sha256-A68+FMqljzYVLNY22JDowk6Ly2WndMUry3I5jlcRhA0=" crossorigin=anonymous><script src=/js/main.9ba4e4979f37ac864f5a8d53e468d3d84e495610d89b88cbae8eeded4d5d9280.js integrity="sha256-m6Tkl583rIZPWo1T5GjT2E5JVhDYm4jLro7t7U1dkoA=" crossorigin=anonymous defer></script><script src=/js/lightbox.1a9e265bfe43f67aca751f263e84ecbc054c84057d0b190ace6243e18a66704b.js integrity="sha256-Gp4mW/5D9nrKdR8mPoTsvAVMhAV9CxkKzmJD4YpmcEs=" crossorigin=anonymous defer></script></head><body><header><div><h1><a href=/>xshoji's blog</a></h1><nav><ul><li><a href=/posts/>Blog</a></li><li><a href=/about/>About</a></li><li><a href=/tags/>Tags</a></li></ul></nav></div></header><main><section class=hero style=margin-bottom:var(--space-2xl)><h1 class=hero-title>Posts</h1></section><section class=post-list><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2023-08-06>Aug 06, 2023
 </time><span class=post-card-separator></span>
 <span>7 min read</span></div><h2 class=post-card-title><a href=/posts/20230802_postman-backup-dump-file-issue/>Postmanのエクスポート機能が廃止された件（とその解決策）</a></h2><div class=post-card-summary><h2 id=はじめに>はじめに</h2><p>APIの開発で</p><blockquote><p>Postman API Platform | Sign Up for Free<br><a href=https://www.postman.com/>https://www.postman.com/</a></p></blockquote><p>を使っていて、最近PC入れ替えを行う際、このPostmanのバックアップ機能（エクスポート機能）が消えていて大変困ったため、
-何が起こっていたのかなど、Postman側の経緯や、この対策などについてまとめます。</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/postman class=tag>#postman</a>
-<a href=https://blog.xshoji.com/%20tags/export class=tag>#export</a>
-<a href=https://blog.xshoji.com/%20tags/remove class=tag>#remove</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2023-03-26>Mar 26, 2023
+何が起こっていたのかなど、Postman側の経緯や、この対策などについてまとめます。</p></div><div class=post-card-tags><a href=/tags/postman/ class=tag>#postman</a>
+<a href=/tags/export/ class=tag>#export</a>
+<a href=/tags/remove/ class=tag>#remove</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2023-03-26>Mar 26, 2023
 </time><span class=post-card-separator></span>
 <span>3 min read</span></div><h2 class=post-card-title><a href=/posts/20230326_proposal-packing-source-code-in-golang/>Goのバイナリにソースコードをそのまま同梱するという提案</a></h2><div class=post-card-summary><h2 id=はじめに>はじめに</h2><p>業務でGoのスクリプトを書いて、バイナリをチームに配ることがよくあります。
-Goでコンパイル済みのバイナリを配るメリットとしては</p><ul><li>実行環境に依存せずどこでも実行できる</li></ul><p>という点かなーと思います。 ただ、デメリットもあって、それは実行するバイナリがどのソースコードから生成されたものか分かりづらいという点です。</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/golang class=tag>#golang</a>
-<a href=https://blog.xshoji.com/%20tags/source class=tag>#source</a>
-<a href=https://blog.xshoji.com/%20tags/proposal class=tag>#proposal</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-10-03>Oct 03, 2020
+Goでコンパイル済みのバイナリを配るメリットとしては</p><ul><li>実行環境に依存せずどこでも実行できる</li></ul><p>という点かなーと思います。 ただ、デメリットもあって、それは実行するバイナリがどのソースコードから生成されたものか分かりづらいという点です。</p></div><div class=post-card-tags><a href=/tags/golang/ class=tag>#golang</a>
+<a href=/tags/source/ class=tag>#source</a>
+<a href=/tags/proposal/ class=tag>#proposal</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-10-03>Oct 03, 2020
 </time><span class=post-card-separator></span>
 <span>15 min read</span></div><h2 class=post-card-title><a href=/posts/20201003_bestpractice-for-testing/>単体テスト ベストプラクティス集</a></h2><div class=post-card-summary><blockquote><p>Modern Best Practices for Testing in Java<br><a href=https://phauer.com/2019/modern-best-practices-testing-java/>https://phauer.com/2019/modern-best-practices-testing-java/</a></p></blockquote><p>テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、
 自分自身がテストする時はもちろん、コードレビュー時でも注意・指摘したい内容がまとめられています。</p><p>タイトルには「Java」と書かれていますが、プラクティスとしては言語に依存しない内容がほとんどなので、
-特定の言語に限らない有益なプラクティスだと思いました。</p><p>それでは、それぞれの中身をまとめていきます。</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/java class=tag>#java</a>
-<a href=https://blog.xshoji.com/%20tags/unit-test class=tag>#unit test</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-09-27>Sep 27, 2020
+特定の言語に限らない有益なプラクティスだと思いました。</p><p>それでは、それぞれの中身をまとめていきます。</p></div><div class=post-card-tags><a href=/tags/java/ class=tag>#java</a>
+<a href=/tags/unit-test/ class=tag>#unit test</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-09-27>Sep 27, 2020
 </time><span class=post-card-separator></span>
 <span>16 min read</span></div><h2 class=post-card-title><a href=/posts/20200927_instructions-for-building-a-free-blog-site-with-markdown-hugo-github-pages/>Hugo + GitHub Pagesで作る無料ブログサイト構築（2020年版）</a></h2><div class=post-card-summary><p>Hugo + GitHub Pagesでこのブログを運用していて、以下の要件を目指しました。</p><ol><li>お金をかけないこと</li><li>Markdownで記事を書けること</li><li>ブログの静的データのみ公開し、元ネタは公開しないこと</li><li>記事の更新／反映が自動化されていること</li></ol><p>似たような要件でブログを作ってみたい人に向けて、構築の流れを紹介したいと思います。
 初心者向けに細かく説明しているので若干長いと思います。</p><p>以下にリンク付き目次を載せておくので、
-興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/hugo class=tag>#hugo</a>
-<a href=https://blog.xshoji.com/%20tags/blog class=tag>#blog</a>
-<a href=https://blog.xshoji.com/%20tags/github-pages class=tag>#GitHub Pages</a>
-<a href=https://blog.xshoji.com/%20tags/github-action class=tag>#github action</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-09-26>Sep 26, 2020
+興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。</p></div><div class=post-card-tags><a href=/tags/hugo/ class=tag>#hugo</a>
+<a href=/tags/blog/ class=tag>#blog</a>
+<a href=/tags/github-pages/ class=tag>#GitHub Pages</a>
+<a href=/tags/github-action/ class=tag>#github action</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-09-26>Sep 26, 2020
 </time><span class=post-card-separator></span>
 <span>3 min read</span></div><h2 class=post-card-title><a href=/posts/20200926_new-targeting-techniques-for-ads/>スマホにおける広告の新しいターゲティング手法について</a></h2><div class=post-card-summary><blockquote><p>Companies can track your phone’s movements to target ads ｜ Ars Technica<br><a href=https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/>https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/</a></p></blockquote><p>が元の記事。</p><p>広告業界では、トラッキング方法の話題が結構熱くて、最近iOS14で適用される（※2021/9に延期になった）ユーザーのトラッキング機能のデフォルトオプトアウト
 （ユーザーに「あなたのこと追跡するけど、いいよね？」（はい／いいえ）みたいな許可を明示的に得ないと、デフォルトでトラッキングができなくなる）や、
-Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきています。</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/ads class=tag>#ads</a>
-<a href=https://blog.xshoji.com/%20tags/targeting class=tag>#targeting</a>
-<a href=https://blog.xshoji.com/%20tags/smartphone class=tag>#smartphone</a>
-<a href=https://blog.xshoji.com/%20tags/sensor class=tag>#sensor</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-09-20>Sep 20, 2020
+Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきています。</p></div><div class=post-card-tags><a href=/tags/ads/ class=tag>#ads</a>
+<a href=/tags/targeting/ class=tag>#targeting</a>
+<a href=/tags/smartphone/ class=tag>#smartphone</a>
+<a href=/tags/sensor/ class=tag>#sensor</a></div></article><article class=post-card><div class=post-card-meta><time class=post-card-date datetime=2020-09-20>Sep 20, 2020
 </time><span class=post-card-separator></span>
 <span>3 min read</span></div><h2 class=post-card-title><a href=/posts/20200920_an-approach-to-avoid-sql-injection-filters/>SQLインジェクションフィルタを回避するためのアプローチ</a></h2><div class=post-card-summary><blockquote><p>Astrocamel - Blog/Portfolio of George Skouroupathis<br><a href=https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html>https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html</a></p></blockquote><p>が元の記事で、さらっとまとめると</p><blockquote><p>Cloudflareを使ってるサイトの脆弱性試験しようとしたら、そもそもサイトまでリクエストが届いてないことが判明<br>CloudflareのWAFで弾かれてるっぽいから、SQLのリクエスト難読化したら無事突破できたよ</p></blockquote><p>って話です。この機能を回避するアプローチが面白かった。
 ここでいう「難読化（obfuscation）」っていうのは、
 SQLの意味はそのままに、Cloudflareのフィルタをパスできるクエリの加工のことのようです。
-（CDNのレイヤで、リクエストの中身まで見て攻撃を防ぐみたいなことしてるの知らなかった・・・。）</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/cdn class=tag>#cdn</a>
-<a href=https://blog.xshoji.com/%20tags/security class=tag>#security</a>
-<a href=https://blog.xshoji.com/%20tags/sql-injection class=tag>#sql injection</a></div></article></section></main><footer><div><p>&copy; 2025 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav><a href=https://github.com/xshoji target=_blank rel=noopener>GitHub</a>
+（CDNのレイヤで、リクエストの中身まで見て攻撃を防ぐみたいなことしてるの知らなかった・・・。）</p></div><div class=post-card-tags><a href=/tags/cdn/ class=tag>#cdn</a>
+<a href=/tags/security/ class=tag>#security</a>
+<a href=/tags/sql-injection/ class=tag>#sql injection</a></div></article></section></main><footer><div><p>&copy; 2025 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav><a href=https://github.com/xshoji target=_blank rel=noopener>GitHub</a>
 <a href=https://x.com/xshoji2020 target=_blank rel=noopener>X</a>
 <a href=/index.xml>RSS</a></nav></div></footer></body></html>

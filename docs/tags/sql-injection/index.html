@@ -3,8 +3,8 @@
 <span>3 min read</span></div><h2 class=post-card-title><a href=/posts/20200920_an-approach-to-avoid-sql-injection-filters/>SQLインジェクションフィルタを回避するためのアプローチ</a></h2><div class=post-card-summary><blockquote><p>Astrocamel - Blog/Portfolio of George Skouroupathis<br><a href=https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html>https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html</a></p></blockquote><p>が元の記事で、さらっとまとめると</p><blockquote><p>Cloudflareを使ってるサイトの脆弱性試験しようとしたら、そもそもサイトまでリクエストが届いてないことが判明<br>CloudflareのWAFで弾かれてるっぽいから、SQLのリクエスト難読化したら無事突破できたよ</p></blockquote><p>って話です。この機能を回避するアプローチが面白かった。
 ここでいう「難読化（obfuscation）」っていうのは、
 SQLの意味はそのままに、Cloudflareのフィルタをパスできるクエリの加工のことのようです。
-（CDNのレイヤで、リクエストの中身まで見て攻撃を防ぐみたいなことしてるの知らなかった・・・。）</p></div><div class=post-card-tags><a href=https://blog.xshoji.com/%20tags/cdn class=tag>#cdn</a>
-<a href=https://blog.xshoji.com/%20tags/security class=tag>#security</a>
-<a href=https://blog.xshoji.com/%20tags/sql-injection class=tag>#sql injection</a></div></article></section></main><footer><div><p>&copy; 2025 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav><a href=https://github.com/xshoji target=_blank rel=noopener>GitHub</a>
+（CDNのレイヤで、リクエストの中身まで見て攻撃を防ぐみたいなことしてるの知らなかった・・・。）</p></div><div class=post-card-tags><a href=/tags/cdn/ class=tag>#cdn</a>
+<a href=/tags/security/ class=tag>#security</a>
+<a href=/tags/sql-injection/ class=tag>#sql injection</a></div></article></section></main><footer><div><p>&copy; 2025 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav><a href=https://github.com/xshoji target=_blank rel=noopener>GitHub</a>
 <a href=https://x.com/xshoji2020 target=_blank rel=noopener>X</a>
 <a href=/index.xml>RSS</a></nav></div></footer></body></html>
