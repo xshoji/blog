@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 06 Aug 2023 13:00:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 14 Dec 2025 02:06:34 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>VSCode: ショートカットキーのみでAIに指示を送る方法</title><link>https://blog.xshoji.com/posts/20251214_vscode-default-keybindings-chat01/</link><pubDate>Sun, 14 Dec 2025 02:06:34 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251214_vscode-default-keybindings-chat01/</guid><description>&lt;p&gt;VSCodeで、AIに送る指示をテンプレートにしてショートカットに設定する方法を紹介します。
+この方法を活用すると、文章やコードを選択してショートカットキーを押すだけで&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AIに英訳を生成させられる&lt;/li&gt;
+&lt;li&gt;メソッド単位のリファクタリングを行わる&lt;/li&gt;
+&lt;li&gt;簡単なコードレビューを依頼できる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;といったことが可能になります。最近は、プロンプトのmarkdownファイルを所定の場所に設置し、Chatからコマンドで呼び出す方式が一般的だと思いますが、ここで紹介するのはそれよりもさらにお手軽な使い方ができる方法となります。&lt;/p&gt;
+&lt;p&gt;この後の説明では&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ショートカットキーのみでAIへ英訳の指示を出す設定&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;を例として設定方法を紹介していきます。また、AIは Github copilot を使います。&lt;/p&gt;</description></item><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;APIの開発で&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Postman API Platform | Sign Up for Free&lt;br&gt;
