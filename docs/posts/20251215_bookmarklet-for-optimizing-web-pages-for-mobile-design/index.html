@@ -1,0 +1,552 @@
+<!doctype html><html lang=ja dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Webページをスマホ向けのデザインに最適化する Bookmarklet | xshoji's blog</title><link rel=icon type=image/x-icon href=/favicon.ico><link rel=stylesheet href=/css/main.min.d2842504ddc52bba8e1c0e66e4cb306fcaf7e94ae15a36803c6b32f085b8b422.css integrity="sha256-0oQlBN3FK7qOHA5m5Mswb8r36UrhWjaAPGsy8IW4tCI=" crossorigin=anonymous><script src=/js/main.86f93bd34f8aa854c140f989f367f8dbe384a24d1ebbc6f97165b7309b147d2b.js integrity="sha256-hvk700+KqFTBQPmJ82f42+OEok0eu8b5cWW3MJsUfSs=" crossorigin=anonymous defer></script><script src=/js/lightbox.1a9e265bfe43f67aca751f263e84ecbc054c84057d0b190ace6243e18a66704b.js integrity="sha256-Gp4mW/5D9nrKdR8mPoTsvAVMhAV9CxkKzmJD4YpmcEs=" crossorigin=anonymous defer></script></head><body><header><div><h1><a href=/>xshoji's blog</a></h1><nav><ul><li><a href=/posts/>Blog</a></li><li><a href=/about/>About</a></li><li><a href=/tags/>Tags</a></li></ul></nav></div></header><main><article><header><div class=article-meta><time datetime=2025-12-15T02:41:41+09:00>December 15, 2025</time>
+<span class=article-meta-reading-time>6 min read</span></div><h1 class=article-title>Webページをスマホ向けのデザインに最適化する Bookmarklet</h1><div class=post-card-tags><a href=/tags/bookmarklet/ class=tag>#bookmarklet</a>
+<a href=/tags/mobile/ class=tag>#mobile</a>
+<a href=/tags/css/ class=tag>#css</a>
+<a href=/tags/javascript/ class=tag>#javascript</a></div></header><div class=article-content><p>普段 iPhone を使っていて、Safari でブログをよく読むのですが、スマホ向けに最適化されていないページがまだ多く、見にくいと感じることがよくあります。
+Safari には「リーダー表示」という機能があり、記事本文だけを抽出して見やすく表示できますが</p><blockquote><p>iPhoneのSafariで記事を読んでいるときに気をそらすものを非表示にする - Apple サポート （日本）<br><a href=https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios>https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios</a></p></blockquote><p>リーダー表示に対応していないページもあります。また、リーダー表示にしても、コードブロックや文中の変数のスタイルがわかりにくく、痒いところに手が届かないと感じることがあります。</p><p>そうした悩みがあり、スマホ向けに最適化されていないページを見やすくする Bookmarklet（ブックマークレット）を作成しました。
+今回は作成した Bookmarklet の紹介と使い方を説明します。</p><h2 id=スマホで-bookmarklet-を設定する方法>スマホで Bookmarklet を設定する方法</h2><p>Bookmarkletの設定方法は以下の通りです。</p><ol><li>お使いのブラウザで適当なページをお気に入り登録する</li><li>Bookmarkletのコードをコピーする</li><li>先ほど登録したお気に入りを編集する</li><li>URLの部分にコピーしたBookmarkletのコードを貼り付ける</li><li>名前をわかりやすい名前に変更する ( 例: Optimize for Mobile )</li><li>保存する</li></ol><p>これで設定は完了です。</p><h3 id=bookmarklet-のコード>Bookmarklet のコード</h3><p>「2.」で設定するBookmarkletのコードを以下に示します。
+だいぶ長いので、中身は気にせずにコピーして設定してください。
+（気になる人はコードの中身を読んでみてください。）</p><p>やってることを文章で簡単に説明すると、Webページに適用されているCSSを全て無効にした後に自作のCSSを無理やり適用してる、という感じです。</p><details><summary>Bookmarkletに設定するコードはこちら</summary><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>javascript</span><span style=color:#f92672>:</span>(() =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#39;use strict&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* ==================== Configuration ==================== */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Configuration object for the optimizer
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @const {Object}
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>CONFIG</span> <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/** Auto-apply optimization on page load */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>autoApplyOptimization</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>,
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/** Style element ID for injected CSS */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>styleElementId</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;mobile-page-optimizer-style&#39;</span>,
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/** Data attribute for storing original styles */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>originalStyleAttr</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;data-original-style&#39;</span>,
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/** Data attribute for marking disabled elements */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>disabledAttr</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;data-mobile-optimizer-disabled&#39;</span>,
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/** Button configuration */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>button</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textEnabled</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Mobile View OFF&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textDisabled</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Mobile View ON&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>position</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>top</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;10px&#39;</span>, <span style=color:#a6e22e>left</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;10px&#39;</span> },
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>zIndex</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;2147483647&#39;</span>,
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/** Colors for theming */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colors</span><span style=color:#f92672>:</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>background</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#e8e0d5&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>text</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#333333&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>textDark</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#111111&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>link</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#0060bf&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>linkVisited</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#5a3696&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>linkHover</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#0077cc&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>codeInline</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#a83232&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>codeBackground</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#f5f2ed&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>codeBorder</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#d5c7b5&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>emphasis</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#8B4513&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>buttonActive</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#28a745&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>buttonInactive</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;#f8f9fa&#39;</span>,
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* ==================== CSS Management ==================== */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Disables or enables all existing CSS on the page
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Stores original styles for restoration
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   *
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @param {boolean} isDisabled - Whether to disable CSS
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>disableCss</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>isDisabled</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#75715e>/* Disable external and internal stylesheets */</span>
+</span></span><span style=display:flex><span>      Array.<span style=color:#a6e22e>from</span>(document.<span style=color:#a6e22e>styleSheets</span>).<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>sheet</span>) =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>sheet</span>.<span style=color:#a6e22e>disabled</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>isDisabled</span>;
+</span></span><span style=display:flex><span>        } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>e</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#75715e>/* Some stylesheets may throw security errors (CORS) */</span>
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>warn</span>(<span style=color:#e6db74>&#39;Cannot disable stylesheet:&#39;</span>, <span style=color:#a6e22e>e</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>isDisabled</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>/* Save and remove inline styles */</span>
+</span></span><span style=display:flex><span>        document.<span style=color:#a6e22e>querySelectorAll</span>(<span style=color:#e6db74>&#39;[style]&#39;</span>).<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>el</span>) =&gt; {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>originalStyleAttr</span>, <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>getAttribute</span>(<span style=color:#e6db74>&#39;style&#39;</span>));
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>removeAttribute</span>(<span style=color:#e6db74>&#39;style&#39;</span>);
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>/* Disable style elements (except our own) */</span>
+</span></span><span style=display:flex><span>        document.<span style=color:#a6e22e>querySelectorAll</span>(<span style=color:#e6db74>&#39;style&#39;</span>).<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>el</span>) =&gt; {
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>!==</span> <span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>styleElementId</span>) {
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>disabledAttr</span>, <span style=color:#e6db74>&#39;true&#39;</span>);
+</span></span><span style=display:flex><span>            <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>textContent</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;</span>;
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>/* Restore saved inline styles */</span>
+</span></span><span style=display:flex><span>        document.<span style=color:#a6e22e>querySelectorAll</span>(<span style=color:#e6db74>`[</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>originalStyleAttr</span><span style=color:#e6db74>}</span><span style=color:#e6db74>]`</span>).<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>el</span>) =&gt; {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#e6db74>&#39;style&#39;</span>, <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>getAttribute</span>(<span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>originalStyleAttr</span>));
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>el</span>.<span style=color:#a6e22e>removeAttribute</span>(<span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>originalStyleAttr</span>);
+</span></span><span style=display:flex><span>        });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>/* Reload page if we disabled any style elements */</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (document.<span style=color:#a6e22e>querySelector</span>(<span style=color:#e6db74>`[</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>disabledAttr</span><span style=color:#e6db74>}</span><span style=color:#e6db74>]`</span>)) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>location</span>.<span style=color:#a6e22e>reload</span>();
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>error</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#e6db74>&#39;Error in disableCss:&#39;</span>, <span style=color:#a6e22e>error</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Generates optimized CSS for mobile viewing
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   *
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @returns {string} CSS string
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>generateOptimizedCSS</span> <span style=color:#f92672>=</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>colors</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>CONFIG</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>`
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Base Styles - Common */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        * {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          box-sizing: border-box !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow-wrap: break-word !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          word-wrap: break-word !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          word-break: break-word !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, Oxygen, Ubuntu, Cantarell, &#39;Helvetica Neue&#39;, sans-serif !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Prevent Horizontal Scrolling &amp; Basic Layout */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        html, body, #root, #app, .container, .wrapper, .content, main, article, section, header, footer, nav, div {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          max-width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-width: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin-left: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin-right: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          box-sizing: border-box !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow-x: hidden !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          position: static !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          left: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          right: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Body Element Base Styles */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        body {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 8px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow-y: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          background-color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>background</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-size: 16px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          line-height: 1.6 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          text-align: left !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>text</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-height: 100vh !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          height: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Div Settings */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        div {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          clear: both !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          float: none !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: block !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow: visible !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          height: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Heading Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        h1, h2, h3, h4, h5, h6 {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          text-align: left !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 0.8em 0 0.4em 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 0 8px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>textDark</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        h1 { font-size: 1.4em !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        h2 { font-size: 1.3em !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        h3 { font-size: 1.1em !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Paragraphs */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        p {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 0.6em 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 0 10px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-size: 16px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow: visible !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>text</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* List Items */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        li {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 0.2em 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 0 0px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-size: 16px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow: visible !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>text</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Media Elements - Images, Videos, etc. */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        img, video, iframe, canvas, object, embed, svg {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          max-width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          height: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: block !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Table Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        table, tbody, thead, tr, td, th {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: block !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          max-width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-width: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-collapse: collapse !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* List Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ul, ol {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: block !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin-left: 10px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding-left: 20px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          list-style-position: outside !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* List Markers */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ul { list-style-type: disc !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ol { list-style-type: decimal !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ul ul { list-style-type: circle !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ul ol { list-style-type: decimal !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ol ul { list-style-type: disc !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        ol ol { list-style-type: lower-alpha !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Inline Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        span, a, em, strong, i, b {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: inline !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          max-width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Emphasis Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        strong, b {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-weight: 700 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: #000000 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          letter-spacing: 0.02em !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Italic Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        em, i {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-style: italic !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>emphasis</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          letter-spacing: 0.01em !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Link Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        a {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>link</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          text-decoration: underline !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-weight: 500 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-bottom: 1px dotted rgba(0, 96, 191, 0.3) !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding-bottom: 1px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-height: 44px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-width: 44px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        a:visited { color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>linkVisited</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important; }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        a:hover {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>linkHover</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          text-decoration: none !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-bottom: 1px solid rgba(0, 96, 191, 0.7) !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Touch Target Size */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        button, input, select, textarea {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-height: 44px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          min-width: 44px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Code Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        code, kbd, samp {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-family: &#39;SFMono-Regular&#39;, Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-size: 12px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          line-height: 1.4 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Inline Code */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        code:not(pre code) {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          background-color: rgba(0, 0, 0, 0.05) !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-radius: 3px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 2px 4px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>codeInline</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Preformatted Text */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        pre {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow-x: auto !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          white-space: pre !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          width: 100% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          background-color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>codeBackground</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>text</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 15px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border: 1px solid </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>codeBorder</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-radius: 6px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 10px 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-family: &#39;SFMono-Regular&#39;, Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-size: 16px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          line-height: 1.4 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: block !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          word-wrap: normal !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          word-break: keep-all !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow-wrap: normal !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          -webkit-overflow-scrolling: touch !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Code Inside Pre Tags */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        pre code {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          background-color: transparent !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border: none !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: inline !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          white-space: pre !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow: visible !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          word-wrap: normal !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          word-break: keep-all !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          overflow-wrap: normal !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: inherit !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Inline Code in Paragraphs */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        p code, li code, td code {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 2px 5px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-radius: 3px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: inline !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          white-space: normal !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-size: 90% !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          background-color: rgba(0, 0, 0, 0.05) !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>codeInline</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border: 1px solid </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>codeBorder</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Blockquote Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        blockquote {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 1.2em 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 15px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding-left: 20px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          background-color: rgba(0, 0, 0, 0.03) !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-left: 4px solid #a89968 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          border-radius: 3px !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-style: italic !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          color: </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>textDark</span><span style=color:#e6db74>}</span><span style=color:#e6db74> !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          line-height: 1.7 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          position: relative !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        blockquote p {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin: 0.5em 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          padding: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          font-style: italic !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        blockquote p:first-child {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin-top: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        blockquote p:last-child {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          margin-bottom: 0 !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        /* Hidden Elements */
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        aside, nav.sidebar, .sidebar, .ad-container, 
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        svg.svg-icon, [class*=&#34;icon&#34;], [class*=&#34;Icon&#34;] {
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>          display: none !important;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>        }
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      `</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Updates viewport meta tag for mobile optimization
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   *
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @param {boolean} isEnabled - Whether to enable mobile viewport
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>updateViewportMeta</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>isEnabled</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>VIEWPORT_CONTENT</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes&#39;</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ORIGINAL_CONTENT_ATTR</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;data-original-content&#39;</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>viewportMeta</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>querySelector</span>(<span style=color:#e6db74>&#39;meta[name=&#34;viewport&#34;]&#39;</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>isEnabled</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>viewportMeta</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>hasAttribute</span>(<span style=color:#a6e22e>ORIGINAL_CONTENT_ATTR</span>)) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#a6e22e>ORIGINAL_CONTENT_ATTR</span>, <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>getAttribute</span>(<span style=color:#e6db74>&#39;content&#39;</span>));
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>viewportMeta</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>createElement</span>(<span style=color:#e6db74>&#39;meta&#39;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#e6db74>&#39;name&#39;</span>, <span style=color:#e6db74>&#39;viewport&#39;</span>);
+</span></span><span style=display:flex><span>        document.<span style=color:#a6e22e>head</span>.<span style=color:#a6e22e>appendChild</span>(<span style=color:#a6e22e>viewportMeta</span>);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#e6db74>&#39;content&#39;</span>, <span style=color:#a6e22e>VIEWPORT_CONTENT</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>viewportMeta</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>hasAttribute</span>(<span style=color:#a6e22e>ORIGINAL_CONTENT_ATTR</span>)) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>setAttribute</span>(<span style=color:#e6db74>&#39;content&#39;</span>, <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>getAttribute</span>(<span style=color:#a6e22e>ORIGINAL_CONTENT_ATTR</span>));
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>removeAttribute</span>(<span style=color:#a6e22e>ORIGINAL_CONTENT_ATTR</span>);
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>viewportMeta</span>.<span style=color:#a6e22e>remove</span>();
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Applies or removes mobile-optimized CSS
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   *
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @param {boolean} isEnabled - Whether to enable optimization
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>optimizeForSmartphone</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>isEnabled</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>updateViewportMeta</span>(<span style=color:#a6e22e>isEnabled</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>optimizeStyle</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>getElementById</span>(<span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>styleElementId</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>isEnabled</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span><span style=color:#a6e22e>optimizeStyle</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>optimizeStyle</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>createElement</span>(<span style=color:#e6db74>&#39;style&#39;</span>);
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>optimizeStyle</span>.<span style=color:#a6e22e>id</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>styleElementId</span>;
+</span></span><span style=display:flex><span>          document.<span style=color:#a6e22e>head</span>.<span style=color:#a6e22e>appendChild</span>(<span style=color:#a6e22e>optimizeStyle</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>optimizeStyle</span>.<span style=color:#a6e22e>textContent</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>generateOptimizedCSS</span>();
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>optimizeStyle</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>optimizeStyle</span>.<span style=color:#a6e22e>textContent</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>error</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#e6db74>&#39;Error in optimizeForSmartphone:&#39;</span>, <span style=color:#a6e22e>error</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* ==================== UI Components ==================== */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Creates the toggle button for mobile optimization
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   *
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @returns {HTMLButtonElement} The created button element
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>createToggleButton</span> <span style=color:#f92672>=</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>button</span> <span style=color:#f92672>=</span> document.<span style=color:#a6e22e>createElement</span>(<span style=color:#e6db74>&#39;button&#39;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> { <span style=color:#a6e22e>button</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>btnConfig</span>, <span style=color:#a6e22e>colors</span> } <span style=color:#f92672>=</span> <span style=color:#a6e22e>CONFIG</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* Set initial state */</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>isOptimized</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* Apply base styles */</span>
+</span></span><span style=display:flex><span>    Object.<span style=color:#a6e22e>assign</span>(<span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>, {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>position</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;fixed&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>top</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>btnConfig</span>.<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>top</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>left</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>btnConfig</span>.<span style=color:#a6e22e>position</span>.<span style=color:#a6e22e>left</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>zIndex</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>btnConfig</span>.<span style=color:#a6e22e>zIndex</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>padding</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;10px 15px&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>backgroundColor</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>buttonInactive</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>color</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;black&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>border</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;1px solid #ccc&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>borderRadius</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;5px&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>fontSize</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;16px&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>fontWeight</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;bold&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>cursor</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;pointer&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>boxShadow</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;0 2px 5px rgba(0,0,0,0.2)&#39;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>transition</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;all 0.3s ease&#39;</span>,
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     * Updates button appearance based on optimization state
+</span></span></span><span style=display:flex><span><span style=color:#75715e>     */</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>updateButtonState</span> <span style=color:#f92672>=</span> () =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>textContent</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>isOptimized</span> <span style=color:#f92672>?</span> <span style=color:#a6e22e>btnConfig</span>.<span style=color:#a6e22e>textEnabled</span> <span style=color:#f92672>:</span> <span style=color:#a6e22e>btnConfig</span>.<span style=color:#a6e22e>textDisabled</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>.<span style=color:#a6e22e>backgroundColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>isOptimized</span> <span style=color:#f92672>?</span> <span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>buttonActive</span> <span style=color:#f92672>:</span> <span style=color:#a6e22e>colors</span>.<span style=color:#a6e22e>buttonInactive</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>.<span style=color:#a6e22e>color</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>isOptimized</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#39;white&#39;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;black&#39;</span>;
+</span></span><span style=display:flex><span>    };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>updateButtonState</span>();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* Add click handler */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;click&#39;</span>, () =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>isOptimized</span> <span style=color:#f92672>=</span> <span style=color:#f92672>!</span><span style=color:#a6e22e>isOptimized</span>;
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>disableCss</span>(<span style=color:#a6e22e>isOptimized</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>optimizeForSmartphone</span>(<span style=color:#a6e22e>isOptimized</span>);
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>updateButtonState</span>();
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>error</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#e6db74>&#39;Error toggling optimization:&#39;</span>, <span style=color:#a6e22e>error</span>);
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>/* Add hover effect */</span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;mouseenter&#39;</span>, () =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>.<span style=color:#a6e22e>transform</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;translateY(-2px)&#39;</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>.<span style=color:#a6e22e>boxShadow</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;0 4px 8px rgba(0,0,0,0.3)&#39;</span>;
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;mouseleave&#39;</span>, () =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>.<span style=color:#a6e22e>transform</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;translateY(0)&#39;</span>;
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>button</span>.<span style=color:#a6e22e>style</span>.<span style=color:#a6e22e>boxShadow</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;0 2px 5px rgba(0,0,0,0.2)&#39;</span>;
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    document.<span style=color:#a6e22e>body</span>.<span style=color:#a6e22e>appendChild</span>(<span style=color:#a6e22e>button</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>button</span>;
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* ==================== Initialization ==================== */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Applies optimization based on configuration
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   *
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * @param {boolean} isOptimized - Whether to apply optimization
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>applyOptimization</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>isOptimized</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>disableCss</span>(<span style=color:#a6e22e>isOptimized</span>);
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>optimizeForSmartphone</span>(<span style=color:#a6e22e>isOptimized</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>error</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#e6db74>&#39;Error applying optimization:&#39;</span>, <span style=color:#a6e22e>error</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/**
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   * Initializes the mobile page optimizer
+</span></span></span><span style=display:flex><span><span style=color:#75715e>   */</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initialize</span> <span style=color:#f92672>=</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#75715e>/* Auto-apply optimization if configured */</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>CONFIG</span>.<span style=color:#a6e22e>autoApplyOptimization</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>applyOptimization</span>(<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e>/* Create toggle button */</span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>initButton</span> <span style=color:#f92672>=</span> () =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>/* Wait for body to be available */</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>document.<span style=color:#a6e22e>body</span>) {
+</span></span><span style=display:flex><span>          <span style=color:#a6e22e>requestAnimationFrame</span>(<span style=color:#a6e22e>initButton</span>);
+</span></span><span style=display:flex><span>          <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>createToggleButton</span>();
+</span></span><span style=display:flex><span>      };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      <span style=color:#66d9ef>if</span> (document.<span style=color:#a6e22e>readyState</span> <span style=color:#f92672>===</span> <span style=color:#e6db74>&#39;loading&#39;</span>) {
+</span></span><span style=display:flex><span>        document.<span style=color:#a6e22e>addEventListener</span>(<span style=color:#e6db74>&#39;DOMContentLoaded&#39;</span>, <span style=color:#a6e22e>initButton</span>);
+</span></span><span style=display:flex><span>      } <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#a6e22e>initButton</span>();
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    } <span style=color:#66d9ef>catch</span> (<span style=color:#a6e22e>error</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>(<span style=color:#e6db74>&#39;Error initializing Mobile Page Optimizer:&#39;</span>, <span style=color:#a6e22e>error</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>/* ==================== Entry Point ==================== */</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>initialize</span>();
+</span></span><span style=display:flex><span>})();
+</span></span></code></pre></div></details><h2 id=設定した-bookmarklet-の使い方>設定した Bookmarklet の使い方</h2><p>使い方は簡単で、スマホで見にくいページを開いた状態で、先ほど設定した Bookmarklet を実行するだけです。</p><h2 id=実際使ってみたらどんな感じになるか>実際使ってみたらどんな感じになるか</h2><p>左がSafariのリーダー表示、右が今回作成したBookmarkletを実行した後の表示例です。</p><p>やや暗めの見た目に見えるかもしれませんが、このあたりは調整できますので、お好みに合わせて調整していただければと思います。</p><p>Safari のリーダー表示との主な違いは以下の通りです。</p><ul><li>箇条書きや引用ブロックで不要な隙間が入らない</li><li>文章中に埋め込まれたコードブロックが見やすくなる</li><li>pre タグのコードブロックが見やすくなる<ul><li>コードが少し小さめに表示され、スマホでも読みやすくなる</li></ul></li><li><strong>リーダー表示に対応していないページでも使えるので、どのページでも読みやすくできます</strong></li></ul><p>以上です。</p><div class=figure-row><figure><img src=/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/data/default-reader01.PNG width=100% height=100%></figure><figure><img src=/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/data/custom-bookmarklet01.PNG width=100% height=100%></figure></div><div class=figure-row><figure><img src=/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/data/default-reader02.PNG width=100% height=100%></figure><figure><img src=/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/data/custom-bookmarklet02.PNG width=100% height=100%></figure></div><style>.figure-row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}.figure-row>figure{flex:1 1 48%;margin:0}.figure-row>figure img{width:100%;height:auto;display:block}</style><h2 id=まとめ>まとめ</h2><p>スマホで見にくい Web ページを簡単に見やすくする Bookmarklet を紹介しました。
+Bookmarklet なので特別なアプリをインストールする必要はなく、簡単に設定できます。スマホでブログをよく読む方は、ぜひ試してみてください。</p><h2 id=おまけ>おまけ</h2><p>実は、以前同様のことをする Bookmarklet（ブックマークレット）があり、それを好んで使っていましたが、あるとき急に動かなくなってしまいました。</p><blockquote><p>iPhoneのSafariが10倍便利になるブックマークレット10個 | カミアプ | AppleのニュースやIT系の情報をお届け<br><a href=https://www.appps.jp/161142/>https://www.appps.jp/161142/</a><br>&mldr;.<br>「開いているWebページを見やすく表示」</p></blockquote><p>しばらく諦めていたのですが、AI が登場した際に再挑戦しようと思い立ち、今回紹介した Bookmarklet を作成しました。</p></div></article></main><footer><div><p>&copy; 2025 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav><a href=https://github.com/xshoji target=_blank rel=noopener>GitHub</a>
+<a href=https://x.com/xshoji2020 target=_blank rel=noopener>X</a>
+<a href=/index.xml>RSS</a></nav></div></footer></body></html>
