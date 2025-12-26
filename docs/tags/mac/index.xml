@@ -6,8 +6,12 @@
 
 カスタム設定ファイル（Git管理下に置く）
 → 具体的なカスタマイズの設定内容を記述
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Macの画面録画を右クリックから簡単にエンコードできるようにするTips</title><link>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</link><pubDate>Wed, 24 Dec 2025 01:54:35 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</guid><description>&lt;p&gt;自作のツールの動きを見せたい時や、動作の証跡を残したい時などにMacの画面録画機能で動画を撮ることがあります。ただ、Macの録画機能で撮影された動画はそのままだと結構重いので、SlackやGithubに載せるとなるとエンコードしないとそのままでは扱いづらいです。ターミナルからコマンドを思い出して、ffmpeg等でエンコードすれば良いのですが、できればもっと簡単にサクッとやりたいものです。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Macの画面録画を右クリックから簡単にエンコードできるようにするTips</title><link>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</link><pubDate>Wed, 24 Dec 2025 01:54:35 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</guid><description>&lt;p&gt;自作のツールの動きを見せたい時や、動作の証跡を残したい時などにMacの画面録画機能で動画を撮ることがあります。ただ、Macの録画機能で撮影された動画はそのままだと結構重いので、SlackやGithubに載せるとなるとエンコードしないとそのままでは扱いづらいです。ターミナルからコマンドを思い出して、ffmpeg等でエンコードすれば良いのですが、できればもっと簡単にサクッとやりたいです。&lt;/p&gt;
 &lt;p&gt;そこで今回は、Macで画面を録画した後、その動画ファイルの右クリックメニューからサクッとエンコードしてお手軽にデモ動画を作る方法を紹介します。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;そもそもMacならデフォルトで右クリックからエンコードできるんじゃないの？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;と思った方。その通りです。なので、エンコードにこだわらない場合は、この記事の方法を使う必要はありません。ただ、この記事の最後にMac標準の方法でエンコードした場合とのサイズ比較を載せてますが、HandBrakeCLI等のツールでエンコードした方がより高圧縮で画質も良いのでこの記事で紹介する方法も覚えておくと良いと思います。&lt;/p&gt;
 &lt;h2 id="準備するもの"&gt;準備するもの&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;エンコーダー（ffmpeg, HandBrakeCLIなど）&lt;/li&gt;
