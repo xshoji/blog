@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on xshoji's blog</title><link>https://blog.xshoji.com/tags/golang/</link><description>Recent content in Golang on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 03 Jan 2026 03:39:42 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする</title><link>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</link><pubDate>Sat, 03 Jan 2026 01:56:07 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</guid><description>&lt;p&gt;業務でちょっとした検証用のツールや、調査用のコマンドラインアプリケーションを Go 言語で作成することがよくあります。
-基本自分しか使わないのですが、何かきっかけでスクリプトを他の人に配ることもあり、このとき &lt;code&gt;main.go&lt;/code&gt; のみで完結するようにしておくと、人に配るときや何らかの証跡と一緒に残しておくさいもテキストファイル一つ渡せば済むので大変便利です。
-また、配布先の人がビルドする時もトラブルが圧倒的に少ないです。
-このため、外部のライブラリが必ず必要という状況でない限りは、できるだけ Go 標準ライブラリだけでコマンドラインアプリケーションを作成するようにしています。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Golang on xshoji's blog</title><link>https://blog.xshoji.com/tags/golang/</link><description>Recent content in Golang on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 05 Jan 2026 10:31:51 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/golang/index.xml" rel="self" type="application/rss+xml"/><item><title>Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする</title><link>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</link><pubDate>Sat, 03 Jan 2026 01:56:07 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</guid><description>&lt;p&gt;業務でちょっとした検証用のツールや、調査用のコマンドラインアプリケーションを Go 言語で作成することがよくあります。
+基本自分しか使わないのですが、何かきっかけでスクリプトを他の人に配ることもあり、このとき &lt;code&gt;main.go&lt;/code&gt; のみで完結するようにしておくと、人に配るときや何らかの証跡と一緒に残しておく際もテキストファイル一つ渡せば済むので大変便利です。
+また、配布先の人がビルドする時もトラブルが少ないです。
+このため、外部のライブラリが必ず必要という状況でない限りは、できるだけ Go 標準ライブラリだけでツールを作成するようにしています。&lt;/p&gt;
 &lt;p&gt;ただ、Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージはコマンドライン引数のパースを簡単に実装できる反面、 Usage の出力があまり綺麗ではなかったり、ロングパラメータを扱うのが難しいなど色々使い勝手が悪い部分があります。
-これまで、 &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; のような外部ライブラリを使わずに、どうにしか標準の flag パッケージだけで Usage を綺麗にしたりロングパラメータを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
+これまで、 &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; のような外部ライブラリを使わずに、どうに貸して標準の flag パッケージだけで Usage を綺麗にしたりロングパラメータを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
 &lt;p&gt;今回は「 &lt;strong&gt;Usage を綺麗に整形して見やすくする&lt;/strong&gt; 」方法について紹介します。
 ここで紹介する方法（以降、呼びやすさのために「 Custom Usage 」と表現します）を使うと、標準の flag パッケージだけで以下のような綺麗な Usage を出力できるようになります。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Usage: main &lt;span style="color:#f92672"&gt;[&lt;/span&gt;OPTIONS&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-plaintext" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Usage: main [OPTIONS]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Description:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; A sample command demonstrating simple template usage in Go CLI applications.
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Options:
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -f &amp;lt;string&amp;gt; &lt;span style="color:#f92672"&gt;(&lt;/span&gt;required&lt;span style="color:#f92672"&gt;)&lt;/span&gt; File path
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -f &amp;lt;string&amp;gt; (required) File path
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -d Debug mode
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -l &amp;lt;int&amp;gt; Index of line &lt;span style="color:#f92672"&gt;(&lt;/span&gt;default 10&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -u &amp;lt;string&amp;gt; URL &lt;span style="color:#f92672"&gt;(&lt;/span&gt;default &lt;span style="color:#e6db74"&gt;&amp;#34;https://httpbin.org/get&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -w &amp;lt;duration&amp;gt; Duration of wait seconds &lt;span style="color:#f92672"&gt;(&lt;/span&gt;e.g., 1s, 500ms, 2m&lt;span style="color:#f92672"&gt;)&lt;/span&gt; &lt;span style="color:#f92672"&gt;(&lt;/span&gt;default 1s&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;どうでしょうか？ Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージだけにしては結構見やすくなっているのではないでしょうか。
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -l &amp;lt;int&amp;gt; Index of line (default 10)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -u &amp;lt;string&amp;gt; URL (default &amp;#34;https://httpbin.org/get&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -w &amp;lt;duration&amp;gt; Duration of wait seconds (e.g., 1s, 500ms, 2m) (default 1s)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージだけにしては結構見やすくなっているのではないでしょうか？
 興味があれば、ぜひ詳細を読んでみてください。&lt;/p&gt;</description></item><item><title>Goのバイナリにソースコードをそのまま同梱するという提案</title><link>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</link><pubDate>Sun, 26 Mar 2023 02:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;業務でGoのスクリプトを書いて、バイナリをチームに配ることがよくあります。
 Goでコンパイル済みのバイナリを配るメリットとしては&lt;/p&gt;
