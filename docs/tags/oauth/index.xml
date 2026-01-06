@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Oauth on xshoji's blog</title><link>https://blog.xshoji.com/tags/oauth/</link><description>Recent content in Oauth on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 07 Jan 2026 03:07:27 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/oauth/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_spoofing-github-copilot-plugin/</link><pubDate>Tue, 06 Jan 2026 02:17:47 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_spoofing-github-copilot-plugin/</guid><description>&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
+&lt;a href="https://opencode.ai/"&gt;https://opencode.ai/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;が話題になっています。
+私は普段 GitHub Copilot を利用しているのですが、この OpenCode は GitHub Copilot との連携に対応しています。
+&amp;hellip;となると、 Claude Code を使わずとも、 OpenCode を使えば、追加料金なしで Claude Code っぽい環境を手に入れられるのでは？と思い、興味が湧きました。&lt;/p&gt;
+&lt;p&gt;ただ、利用する前に一点気になることがありました。
+それは、 GitHub Copilot って 3rd パーティ製アプリに対して Copilot を使った操作の API を公開してない認識だったので、どのように連携してるんだろう？という点でした。
+この部分について調べてみたところ、興味深い点と少し注意が必要な状況であることがわかったので、
+今回はその内容について共有したいと思います。&lt;/p&gt;</description></item></channel></rss>

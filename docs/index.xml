@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Exploring tech and sharing personal insights on xshoji's blog</title><link>https://blog.xshoji.com/</link><description>Recent content in Exploring tech and sharing personal insights on xshoji's blog</description><generator>Hugo</generator><language>ja</language><atom:link href="https://blog.xshoji.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする</title><link>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</link><pubDate>Sat, 03 Jan 2026 01:56:07 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</guid><description>&lt;p&gt;業務でちょっとした検証用のツールや、調査用のコマンドラインアプリケーションを Go 言語で作成することがよくあります。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Exploring tech and sharing personal insights on xshoji's blog</title><link>https://blog.xshoji.com/</link><description>Recent content in Exploring tech and sharing personal insights on xshoji's blog</description><generator>Hugo</generator><language>ja</language><atom:link href="https://blog.xshoji.com/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_spoofing-github-copilot-plugin/</link><pubDate>Tue, 06 Jan 2026 02:17:47 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_spoofing-github-copilot-plugin/</guid><description>&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
+&lt;a href="https://opencode.ai/"&gt;https://opencode.ai/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;が話題になっています。
+私は普段 GitHub Copilot を利用しているのですが、この OpenCode は GitHub Copilot との連携に対応しています。
+&amp;hellip;となると、 Claude Code を使わずとも、 OpenCode を使えば、追加料金なしで Claude Code っぽい環境を手に入れられるのでは？と思い、興味が湧きました。&lt;/p&gt;
+&lt;p&gt;ただ、利用する前に一点気になることがありました。
+それは、 GitHub Copilot って 3rd パーティ製アプリに対して Copilot を使った操作の API を公開してない認識だったので、どのように連携してるんだろう？という点でした。
+この部分について調べてみたところ、興味深い点と少し注意が必要な状況であることがわかったので、
+今回はその内容について共有したいと思います。&lt;/p&gt;</description></item><item><title>Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする</title><link>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</link><pubDate>Sat, 03 Jan 2026 01:56:07 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</guid><description>&lt;p&gt;業務でちょっとした検証用のツールや、調査用のコマンドラインアプリケーションを Go 言語で作成することがよくあります。
 基本自分しか使わないのですが、何かきっかけでスクリプトを他の人に配ることもあり、このとき &lt;code&gt;main.go&lt;/code&gt; のみで完結するようにしておくと、人に配るときや何らかの証跡と一緒に残しておく際もテキストファイル一つ渡せば済むので大変便利です。
 また、配布先の人がビルドする時もトラブルが少ないです。
 このため、外部のライブラリが必ず必要という状況でない限りは、できるだけ Go 標準ライブラリだけでツールを作成するようにしています。&lt;/p&gt;
