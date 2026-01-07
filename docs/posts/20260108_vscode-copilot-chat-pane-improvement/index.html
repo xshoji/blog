@@ -1,0 +1,39 @@
+<!doctype html><html lang=ja dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><title>VSCode: Copilot Chat のペインで上下キーでの履歴移動とEnterキーでの送信を無効化して使いやすくする | xshoji's blog</title><link rel=icon type=image/x-icon href=/favicon.ico><link rel=stylesheet href=/css/main.min.4b0c09cb003def9551ea261e5e8d57c6e48f0bea68c059b111f16cdb817e843c.css integrity="sha256-SwwJywA975VR6iYeXo1XxuSPC+powFmxEfFs24F+hDw=" crossorigin=anonymous><script src=/js/main.9bb57b255d451daab90a38635d9a16e73e51de496c83fe4ca2590051d38d11f8.js integrity="sha256-m7V7JV1FHaq5CjhjXZoW5z5R3klsg/5MolkAUdONEfg=" crossorigin=anonymous defer></script><script src=/js/lightbox.bc1534d02ae012fc45a8e5abd1956570e73c4619dd2d3aa46703a03833c1f068.js integrity="sha256-vBU00CrgEvxFqOWr0ZVlcOc8RhndLTqkZwOgODPB8Gg=" crossorigin=anonymous defer></script></head><body><header class="w-full p-md border-b border-border bg-surface sticky top-0 z-50 backdrop-blur bg-surface-alpha transition will-change-transform"><div class="max-w-max mx-auto flex justify-between items-center transition"><h1 class="blog-name text-lg font-sans font-semibold tracking-tight m-0 transition transform-origin-left"><a href=/ class="text-primary border-b border-transparent hover:text-accent transition">xshoji's blog</a></h1><nav class="blog-menu m-0 transition-fast"><ul class="list-none flex gap-md md:gap-lg items-center"><li class="mb-0 leading-relaxed"><a class="nav-link text-sm font-medium tracking-sm uppercase text-secondary border-none py-xs pb-xs relative" href=/posts/>Blog</a></li><li class="mb-0 leading-relaxed"><a class="nav-link text-sm font-medium tracking-sm uppercase text-secondary border-none py-xs pb-xs relative" href=/about/>About</a></li><li class="mb-0 leading-relaxed"><a class="nav-link text-sm font-medium tracking-sm uppercase text-secondary border-none py-xs pb-xs relative" href=/tags/>Tags</a></li></ul></nav></div></header><main><article class="max-w-content mx-auto"><header class=mb-xl><div class="post-meta flex flex-wrap gap-xs items-center text-xs text-tertiary uppercase tracking-wider font-semibold mb-md"><time class=text-accent datetime=2026-01-08T00:37:04+09:00>2026-01-08
+</time><span class="w-5 h-1px bg-border"></span>
+<span class="ml-auto text-right whitespace-nowrap">1 min read</span></div><h1 class="text-2xl font-sans font-semibold leading-tight mb-md tracking-tight">VSCode: Copilot Chat のペインで上下キーでの履歴移動とEnterキーでの送信を無効化して使いやすくする</h1><div class="flex gap-xs flex-wrap"><a href=/tags/vscode/ class="text-xs px-08 py-03 bg-accent-light text-accent rounded-sm font-medium tracking-sm border-transparent transition-fast hover:bg-accent hover:text-surface hover:border-accent hover:translate-y--1">#vscode</a>
+<a href=/tags/copilot-chat/ class="text-xs px-08 py-03 bg-accent-light text-accent rounded-sm font-medium tracking-sm border-transparent transition-fast hover:bg-accent hover:text-surface hover:border-accent hover:translate-y--1">#copilot chat</a>
+<a href=/tags/chat/ class="text-xs px-08 py-03 bg-accent-light text-accent rounded-sm font-medium tracking-sm border-transparent transition-fast hover:bg-accent hover:text-surface hover:border-accent hover:translate-y--1">#chat</a>
+<a href=/tags/ai/ class="text-xs px-08 py-03 bg-accent-light text-accent rounded-sm font-medium tracking-sm border-transparent transition-fast hover:bg-accent hover:text-surface hover:border-accent hover:translate-y--1">#ai</a>
+<a href=/tags/shortcut/ class="text-xs px-08 py-03 bg-accent-light text-accent rounded-sm font-medium tracking-sm border-transparent transition-fast hover:bg-accent hover:text-surface hover:border-accent hover:translate-y--1">#shortcut</a></div></header><div class="article-content text-base leading-relaxed text-secondary"><p>VSCodeの Copilot Chat のペインでAIへ指示する際、イラっとする動きをすることが２点ほどありました。具体的には</p><ul><li>上下でカーソル移動する際に、1行目で↑キーを押すと前に送信した文章が表示されてしまう（履歴移動になる）</li><li>まだ入力中なのに間違えてEnterで送信してしまう</li></ul><p>という点です。今回はこれらの解消方法を見つけたので紹介します。</p><h2 id=上下キーでの履歴移動を無効化する>上下キーでの履歴移動を無効化する</h2><blockquote><p>Here are the keybindings to disable it in chat but keep it elsewhere
+<a href=https://github.com/microsoft/vscode/issues/282902#issuecomment-3644365381>https://github.com/microsoft/vscode/issues/282902#issuecomment-3644365381</a></p></blockquote><p>にある通り、以下の設定を <code>keybindings.json</code> に追加します。</p><p>( <code>keybindings.json</code> の開き方は、 <a href=https://blog.xshoji.com/posts/20251214_vscode-default-keybindings-chat01/#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95>過去記事</a> に手順を載せてるので参考にしてみてください)</p><pre tabindex=0><code>    {
+        &#34;command&#34;: &#34;-history.showPrevious&#34;,
+        &#34;key&#34;: &#34;up&#34;
+    },
+    {
+        &#34;command&#34;: &#34;-history.showNext&#34;,
+        &#34;key&#34;: &#34;down&#34;
+    },
+    {
+        &#34;command&#34;: &#34;history.showPrevious&#34;,
+        &#34;key&#34;: &#34;up&#34;,
+        &#34;when&#34;: &#34;historyNavigationBackwardsEnabled &amp;&amp; historyNavigationWidgetFocus &amp;&amp; !isComposing &amp;&amp; !suggestWidgetVisible &amp;&amp; !inChat&#34;
+    },
+    {
+        &#34;command&#34;: &#34;history.showNext&#34;,
+        &#34;key&#34;: &#34;down&#34;,
+        &#34;when&#34;: &#34;historyNavigationForwardsEnabled &amp;&amp; historyNavigationWidgetFocus &amp;&amp; !isComposing &amp;&amp; !suggestWidgetVisible &amp;&amp; !inChat&#34;
+    }
+</code></pre><h2 id=enterで送信を無効化するcmd--enterで送信するようにする>Enterで送信を無効化する（Cmd + Enterで送信するようにする）</h2><blockquote><p><a href=https://github.com/orgs/community/discussions/86624#discussioncomment-12870557>https://github.com/orgs/community/discussions/86624#discussioncomment-12870557</a></p></blockquote><p>にある回答を参考に、以下の設定を <code>keybindings.json</code> に追加します。</p><pre tabindex=0><code>    // Disable Enter key to submit in VSCode Copilot Chat input box
+    {
+        &#34;key&#34;: &#34;cmd+enter&#34;,
+        &#34;command&#34;: &#34;workbench.action.chat.submit&#34;,
+        &#34;when&#34;: &#34;chatInputHasText &amp;&amp; inChatInput &amp;&amp; !chatSessionRequestInProgress &amp;&amp; !withinEditSessionDiff&#34;
+    },
+    {
+        &#34;key&#34;: &#34;enter&#34;,
+        &#34;command&#34;: &#34;-workbench.action.chat.submit&#34;,
+        &#34;when&#34;: &#34;chatInputHasText &amp;&amp; inChatInput &amp;&amp; !chatSessionRequestInProgress &amp;&amp; !withinEditSessionDiff&#34;
+    },
+</code></pre><h2 id=まとめ>まとめ</h2><p>これで、イライラする動作を解消でき、快適に Copilot Chat に指示を出せるようになりました!!</p></div></article></main><footer class="w-full p-md border-t border-border bg-surface"><div class="max-w-max mx-auto flex justify-between items-center text-sm text-tertiary"><p>&copy; 2026 xshoji's blog. Crafted in Tokyo. All rights reserved.</p><nav class="social-links flex gap-md"><a href=https://github.com/xshoji target=_blank rel=noopener class="text-tertiary font-medium transition-fast hover:text-accent border-none">GitHub</a>
+<a href=https://x.com/xshoji2020 target=_blank rel=noopener class="text-tertiary font-medium transition-fast hover:text-accent border-none">X</a>
+<a href=/index.xml class="text-tertiary font-medium transition-fast hover:text-accent border-none">RSS</a></nav></div></footer></body></html>
