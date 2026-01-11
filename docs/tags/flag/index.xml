@@ -1,9 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flag on xshoji's blog</title><link>https://blog.xshoji.com/tags/flag/</link><description>Recent content in Flag on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 05 Jan 2026 10:38:03 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/flag/index.xml" rel="self" type="application/rss+xml"/><item><title>Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする</title><link>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</link><pubDate>Sat, 03 Jan 2026 01:56:07 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</guid><description>&lt;p&gt;業務でちょっとした検証用のツールや、調査用のコマンドラインアプリケーションを Go 言語で作成することがよくあります。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flag on xshoji's blog</title><link>https://blog.xshoji.com/tags/flag/</link><description>Recent content in Flag on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 12 Jan 2026 04:02:14 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/flag/index.xml" rel="self" type="application/rss+xml"/><item><title>Go 標準の flag パッケージのテクニック集その2: Longオプションへ対応する</title><link>https://blog.xshoji.com/posts/20260112_golang-flag-pretty-usage-with-long/</link><pubDate>Mon, 12 Jan 2026 02:33:24 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260112_golang-flag-pretty-usage-with-long/</guid><description>&lt;p&gt;&lt;a href="https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/"&gt;Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする | xshoji&amp;rsquo;s blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;の続きです。前回は、Go 標準の flag パッケージで Usage を綺麗に整形する方法を紹介しました。
+Usageは見やすくなったのですが、次の要件として、ロングオプションを扱いたい、というのがあります。&lt;/p&gt;
+&lt;p&gt;これは、例えば、 &lt;code&gt;-f&lt;/code&gt; で指定するオプションに対して、 &lt;code&gt;--file&lt;/code&gt; というロングオプションも同じ意味で指定できるようにしたい、というものです。
+Unix系のコマンドラインツールでは、一般的にショートオプション（ &lt;code&gt;-f&lt;/code&gt; のような1文字のオプション）とロングオプション（ &lt;code&gt;--file&lt;/code&gt; のような複数文字のオプション）の両方をサポートしていることが多いです。
+Go 標準の flag パッケージは、 任意の文字列をフラグ名として定義できるので、ショートオプションとロングオプションの両方を実装上定義することは可能ですが、それらが同じ意味のオプションであることが Usage からは伝わりづらいので、そのままではとても使えません。&lt;/p&gt;
+&lt;p&gt;前回紹介した有名な &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; といったフレームワークを使えば簡単に実現できるのですが、
+今回はあえて main.go のみで実装することにこだわりたかったため、Go 標準の flag パッケージだけでロングオプションを扱えるようにする方法を試行錯誤してみました。&lt;/p&gt;
+&lt;p&gt;多少複雑ですが、実用的な実装ができたので、今回はその実装方法について紹介したいと思います。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意: この記事で紹介するスニペットは Go 1.18以上（Genericsを使用するため） が必要です&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする</title><link>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</link><pubDate>Sat, 03 Jan 2026 01:56:07 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/</guid><description>&lt;p&gt;業務でちょっとした検証用のツールや、調査用のコマンドラインアプリケーションを Go 言語で作成することがよくあります。
 基本自分しか使わないのですが、何かきっかけでスクリプトを他の人に配ることもあり、このとき &lt;code&gt;main.go&lt;/code&gt; のみで完結するようにしておくと、人に配るときや何らかの証跡と一緒に残しておく際もテキストファイル一つ渡せば済むので大変便利です。
 また、配布先の人がビルドする時もトラブルが少ないです。
 このため、外部のライブラリが必ず必要という状況でない限りは、できるだけ Go 標準ライブラリだけでツールを作成するようにしています。&lt;/p&gt;
-&lt;p&gt;ただ、Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージはコマンドライン引数のパースを簡単に実装できる反面、 Usage の出力があまり綺麗ではなかったり、ロングパラメータを扱うのが難しいなど色々使い勝手が悪い部分があります。
-これまで、 &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; のような外部ライブラリを使わずに、どうに貸して標準の flag パッケージだけで Usage を綺麗にしたりロングパラメータを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
+&lt;p&gt;ただ、Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージはコマンドライン引数のパースを簡単に実装できる反面、 Usage の出力があまり綺麗ではなかったり、ロングオプションを扱うのが難しいなど色々使い勝手が悪い部分があります。
+先ほど説明した通り、 main.go のみで実装することにこだわりたかったため、これまで、 &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; のような外部ライブラリを使わずに、どうにかして Usage を綺麗にしたり ロングオプションを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
 &lt;p&gt;今回は「 &lt;strong&gt;Usage を綺麗に整形して見やすくする&lt;/strong&gt; 」方法について紹介します。
 ここで紹介する方法（以降、呼びやすさのために「 Custom Usage 」と表現します）を使うと、標準の flag パッケージだけで以下のような綺麗な Usage を出力できるようになります。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-plaintext" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
