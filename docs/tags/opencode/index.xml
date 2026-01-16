@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opencode on xshoji's blog</title><link>https://blog.xshoji.com/tags/opencode/</link><description>Recent content in Opencode on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 11 Jan 2026 17:59:08 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/opencode/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opencode on xshoji's blog</title><link>https://blog.xshoji.com/tags/opencode/</link><description>Recent content in Opencode on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 17 Jan 2026 03:17:40 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/opencode/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
+&lt;a href="https://x.com/opencode/status/2011790750543983072"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;にある通り公式に GitHub Copilot 連携がサポートされたようです。
+こちらの記事は、公式連携がサポートされる前にどのように OpenCode が GitHub Copilot 連携を実現していたのかの調査の記録として残しておきます。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
 &lt;a href="https://opencode.ai/"&gt;https://opencode.ai/&lt;/a&gt;&lt;/p&gt;
