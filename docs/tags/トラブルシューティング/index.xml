@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>トラブルシューティング on xshoji's blog</title><link>https://blog.xshoji.com/tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/</link><description>Recent content in トラブルシューティング on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 17 Jan 2026 03:17:45 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話</title><link>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</link><pubDate>Sat, 17 Jan 2026 01:03:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>トラブルシューティング on xshoji's blog</title><link>https://blog.xshoji.com/tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/</link><description>Recent content in トラブルシューティング on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 07 Feb 2026 03:04:44 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなりOSアップデートで解決した..と思ったらただの勘違いだった話（解決編）</title><link>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</link><pubDate>Sat, 07 Feb 2026 02:37:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話 | xshoji&amp;rsquo;s blog&lt;br&gt;
+&lt;a href="https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/"&gt;https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;こちらで意気揚々と書いたブログの内容に関して、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ググっても解決できなかった！&lt;/li&gt;
+&lt;li&gt;OSアップデートが原因だった！！&lt;/li&gt;
+&lt;li&gt;AIに相談して解決の糸口が掴めた！！！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;と散々書いてたんですが、数日後に、macOS 26 でもガッツリ再発して頭を抱える事態が発生しました&amp;hellip;&lt;/p&gt;</description></item><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話</title><link>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</link><pubDate>Sat, 17 Jan 2026 01:03:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;普段BTTを愛用していて、キーシーケンスによるスニペット入力をよく使います。
 これは、たとえば&lt;/p&gt;
 &lt;ul&gt;
