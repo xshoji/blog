@@ -1,8 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Postman on xshoji's blog</title><link>https://blog.xshoji.com/tags/postman/</link><description>Recent content in Postman on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 06 Aug 2023 13:00:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/postman/index.xml" rel="self" type="application/rss+xml"/><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Postman on xshoji's blog</title><link>https://blog.xshoji.com/tags/postman/</link><description>Recent content in Postman on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 06 Aug 2023 13:00:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/postman/index.xml" rel="self" type="application/rss+xml"/><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;APIの開発で&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Postman API Platform | Sign Up for Free&lt;br&gt;
-&lt;a href="https://www.postman.com/"&gt;https://www.postman.com/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Postman API Platform | Sign Up for Free&lt;br&gt;
+&lt;a href="https://www.postman.com/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://www.postman.com/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;を使っていて、最近PC入れ替えを行う際、このPostmanのバックアップ機能（エクスポート機能）が消えていて大変困ったため、
 何が起こっていたのかなど、Postman側の経緯や、この対策などについてまとめます。&lt;/p&gt;</description></item></channel></rss>

@@ -1,6 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unit Test on xshoji's blog</title><link>https://blog.xshoji.com/tags/unit-test/</link><description>Recent content in Unit Test on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 03 Oct 2020 12:13:50 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/unit-test/index.xml" rel="self" type="application/rss+xml"/><item><title>単体テスト ベストプラクティス集</title><link>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</link><pubDate>Sat, 03 Oct 2020 12:13:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Modern Best Practices for Testing in Java&lt;br&gt;
-&lt;a href="https://phauer.com/2019/modern-best-practices-testing-java/"&gt;https://phauer.com/2019/modern-best-practices-testing-java/&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unit Test on xshoji's blog</title><link>https://blog.xshoji.com/tags/unit-test/</link><description>Recent content in Unit Test on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 03 Oct 2020 12:13:50 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/unit-test/index.xml" rel="self" type="application/rss+xml"/><item><title>単体テスト ベストプラクティス集</title><link>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</link><pubDate>Sat, 03 Oct 2020 12:13:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Modern Best Practices for Testing in Java&lt;br&gt;
+&lt;a href="https://phauer.com/2019/modern-best-practices-testing-java/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://phauer.com/2019/modern-best-practices-testing-java/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、
 自分自身がテストする時はもちろん、コードレビュー時でも注意・指摘したい内容がまとめられています。&lt;/p&gt;

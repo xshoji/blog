@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Css on xshoji's blog</title><link>https://blog.xshoji.com/tags/css/</link><description>Recent content in Css on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 15 Dec 2025 11:30:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/css/index.xml" rel="self" type="application/rss+xml"/><item><title>Webページをスマホ向けのデザインに最適化する Bookmarklet</title><link>https://blog.xshoji.com/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/</link><pubDate>Mon, 15 Dec 2025 02:41:41 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/</guid><description>&lt;p&gt;普段 iPhone を使っていて、Safari でブログをよく読むのですが、スマホ向けに最適化されていないページがまだ多く、見にくいと感じることがよくあります。
 Safari には「リーダー表示」という機能があり、記事本文だけを抽出して見やすく表示できますが&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;iPhoneのSafariで記事を読んでいるときに気をそらすものを非表示にする - Apple サポート （日本）&lt;br&gt;
-&lt;a href="https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios"&gt;https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;iPhoneのSafariで記事を読んでいるときに気をそらすものを非表示にする - Apple サポート （日本）&lt;br&gt;
+&lt;a href="https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;リーダー表示に対応していないページもあります。また、リーダー表示にしても、コードブロックや文中の変数のスタイルがわかりにくく、痒いところに手が届かないと感じることがあります。&lt;/p&gt;
 &lt;p&gt;そうした悩みがあり、スマホ向けに最適化されていないページを見やすくする Bookmarklet（ブックマークレット）を作成しました。

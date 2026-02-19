@@ -1,14 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 14 Feb 2026 02:29:02 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>AmpCodeの広告付き無料プランの1日のクレジットでできること:smartモードとrushモードの比較</title><link>https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/</link><pubDate>Sat, 14 Feb 2026 01:37:30 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 14 Feb 2026 02:29:02 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>AmpCodeの広告付き無料プランの1日のクレジットでできること:smartモードとrushモードの比較</title><link>https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/</link><pubDate>Sat, 14 Feb 2026 01:37:30 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;ampcodeには、3つのモードがある。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;agent-modes - Owner’s Manual - Amp&lt;br&gt;
-&lt;a href="https://ampcode.com/manual#agent-modes"&gt;https://ampcode.com/manual#agent-modes&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;agent-modes - Owner’s Manual - Amp&lt;br&gt;
+&lt;a href="https://ampcode.com/manual#agent-modes"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://ampcode.com/manual#agent-modes&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;figure&gt;&lt;img src="https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/data/00_amp_models.png" width="100%" height="100%"&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;今回はsmartモードとrushモードで「1日（$10）でどこまで作れるのか」っていうのが気になって検証してしまった。深夜2時に。&lt;/p&gt;</description></item><item><title>AmpCodeの広告付き無料プランを試そうと思ったら1ヶ月近く待たされた話</title><link>https://blog.xshoji.com/posts/20260209_ampcode-free-waiting-1month/</link><pubDate>Mon, 09 Feb 2026 01:28:32 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260209_ampcode-free-waiting-1month/</guid><description>&lt;p&gt;2025年末くらいにXのポストで &lt;a href="https://ampcode.com/"&gt;AmpCode&lt;/a&gt; というサービスを知った。
-このサービスは、比較的珍しい「広告付き無料プラン（&lt;a href="https://ampcode.com/free"&gt;Amp Free&lt;/a&gt;と呼ばれてます）」があるAIコーディングエージェントで、無料でも最新のAIモデルを使える。&lt;/p&gt;
+&lt;p&gt;今回はsmartモードとrushモードで「1日（$10）でどこまで作れるのか」っていうのが気になって検証してしまった。深夜2時に。&lt;/p&gt;</description></item><item><title>AmpCodeの広告付き無料プランを試そうと思ったら1ヶ月近く待たされた話</title><link>https://blog.xshoji.com/posts/20260209_ampcode-free-waiting-1month/</link><pubDate>Mon, 09 Feb 2026 01:28:32 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260209_ampcode-free-waiting-1month/</guid><description>&lt;p&gt;2025年末くらいにXのポストで &lt;a href="https://ampcode.com/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;AmpCode&lt;/a&gt;
+ というサービスを知った。
+このサービスは、比較的珍しい「広告付き無料プラン（&lt;a href="https://ampcode.com/free"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Amp Free&lt;/a&gt;
+と呼ばれてます）」があるAIコーディングエージェントで、無料でも最新のAIモデルを使える。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;最新のAIモデルを使える（2026年1月時点だと Claude Opus 4.5）&lt;/li&gt;
 &lt;li&gt;毎日 10$ 分のクレジットを付与される&lt;/li&gt;
@@ -16,10 +26,16 @@
 &lt;li&gt;広告が開発に関する広告なので地味に良い感じ（らしい）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;私は普段そんなにがっつりAIを使うことはなく、寝る前の1-2時間でちょっと思いついたことを試す、くらいの用途でAIを使っていたので、これだと最新のモデルも使えるしめっちゃええやん！ということで早速登録してみました。&lt;/p&gt;
-&lt;p&gt;ただし、登録したものの、すぐ使えずに結局一ヶ月近く待つことになったので、その話をまとめます。&lt;/p&gt;</description></item><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなりOSアップデートで解決した..と思ったらただの勘違いだった話（解決編）</title><link>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</link><pubDate>Sat, 07 Feb 2026 02:37:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話 | xshoji&amp;rsquo;s blog&lt;br&gt;
-&lt;a href="https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/"&gt;https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ただし、登録したものの、すぐ使えずに結局一ヶ月近く待つことになったので、その話をまとめます。&lt;/p&gt;</description></item><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなりOSアップデートで解決した..と思ったらただの勘違いだった話（解決編）</title><link>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</link><pubDate>Sat, 07 Feb 2026 02:37:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話 | xshoji&amp;rsquo;s blog&lt;br&gt;
+&lt;a href="https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;こちらで意気揚々と書いたブログの内容に関して、&lt;/p&gt;
 &lt;ul&gt;
@@ -31,23 +47,33 @@
 私は普段 memo.txt と言うファイルにあらゆるメモを保存しているんですが、ちょっとしたメモを保存するのに VSCode を起動しようとすると、ほんの一瞬待たされるのでそこがストレスになっています。&lt;/p&gt;
 &lt;p&gt;そこで、最近 Zed エディタを試しているんですが、 Zed は非常に軽量で起動も一瞬ですしサクサク動きます。
 今回は、そんな Zed エディタでキーボードのみで矩形選択（カラム選択）できるようにする設定方法を紹介します。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能が正式サポートされたので仕組みを再確認してみた</title><link>https://blog.xshoji.com/posts/20260118_opencode-github-copilot-official-integration/</link><pubDate>Sun, 18 Jan 2026 16:32:52 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260118_opencode-github-copilot-official-integration/</guid><description>&lt;p&gt;以前&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり） | xshoji&amp;rsquo;s blog&lt;br&gt;
-&lt;a href="https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/"&gt;https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり） | xshoji&amp;rsquo;s blog&lt;br&gt;
+&lt;a href="https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;こちらで記事にした OpenCode の GitHub Copilot 連携機能ですが、2026年1月16日に公式にサポートされたと発表がありました。&lt;/p&gt;
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;OpenCode can now officially be used with your Github Copilot subscription&lt;br&gt;&lt;br&gt;with the $39 pro+ subscription you get access to the best coding models&lt;br&gt;&lt;br&gt;wonderful to see them support open source and user choice of tooling in this way &lt;a href="https://t.co/BUH1JtBF32"&gt;pic.twitter.com/BUH1JtBF32&lt;/a&gt;&lt;/p&gt;&amp;mdash; OpenCode (@opencode) &lt;a href="https://twitter.com/opencode/status/2011790750543983072?ref_src=twsrc%5Etfw"&gt;January 15, 2026&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;Your &lt;a href="https://twitter.com/github?ref_src=twsrc%5Etfw"&gt;@GitHub&lt;/a&gt; Copilot subscription can now officially be used with &lt;a href="https://twitter.com/opencode?ref_src=twsrc%5Etfw"&gt;@OpenCode&lt;/a&gt; &lt;a href="https://t.co/f5aJtVWhG6"&gt;pic.twitter.com/f5aJtVWhG6&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jared Palmer (@jaredpalmer) &lt;a href="https://twitter.com/jaredpalmer/status/2011803160122097826?ref_src=twsrc%5Etfw"&gt;January 15, 2026&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
-&lt;p&gt;ということで、改めて OpenCode の GitHub Copilot 連携機能が以前とどう変わったのか再確認してみました。&lt;/p&gt;</description></item><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話</title><link>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</link><pubDate>Sat, 17 Jan 2026 01:03:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;[ ! ] 2026-02-07(土) 追記&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなりOSアップデートで解決した..と思ったらただの勘違いだった話（解決編） | xshoji&amp;rsquo;s blog&lt;br&gt;
-&lt;a href="https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/"&gt;https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ということで、改めて OpenCode の GitHub Copilot 連携機能が以前とどう変わったのか再確認してみました。&lt;/p&gt;</description></item><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話</title><link>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</link><pubDate>Sat, 17 Jan 2026 01:03:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260117_btt-key-sequence-snippet-issue/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;[ ! ] 2026-02-07(土) 追記&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなりOSアップデートで解決した..と思ったらただの勘違いだった話（解決編） | xshoji&amp;rsquo;s blog&lt;br&gt;
+&lt;a href="https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;で本件の根本解決しました。&lt;br&gt;
 こちらの記事の内容は完全に勘違いだったようです。が、ネタとして残しておきます。&lt;/p&gt;
+
 &lt;/blockquote&gt;
-&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;普段BTTを愛用していて、キーシーケンスによるスニペット入力をよく使います。
 これは、たとえば&lt;/p&gt;
 &lt;ul&gt;
@@ -58,35 +84,54 @@
 &lt;p&gt;そんなキーシーケンスによるスニペット入力機能ですが、数日前まで普通に使えていたのに、ある日突然動かなくなりました。&lt;/p&gt;
 &lt;p&gt;設定は一切変えていないし、macOSも普段どおり使っているだけです。それなのに、トリガーが一切発火しない。&lt;/p&gt;
 &lt;p&gt;最初は「まあBTTだし、たまにあるよね」くらいの気持ちで調査を始めたのですが、結果的にこれはググっても、SNSを見ても、ほぼ辿り着けない系の不具合でした。&lt;/p&gt;
-&lt;p&gt;この記事では最終的にどうやって答えに辿り着いたのか、その流れをネタとして書き残しておきます。&lt;/p&gt;</description></item><item><title>Go 標準の flag パッケージのテクニック集その2: ロングオプションへ対応する</title><link>https://blog.xshoji.com/posts/20260112_golang-flag-pretty-usage-with-long/</link><pubDate>Mon, 12 Jan 2026 02:33:24 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260112_golang-flag-pretty-usage-with-long/</guid><description>&lt;p&gt;&lt;a href="https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/"&gt;Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする | xshoji&amp;rsquo;s blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この記事では最終的にどうやって答えに辿り着いたのか、その流れをネタとして書き残しておきます。&lt;/p&gt;</description></item><item><title>Go 標準の flag パッケージのテクニック集その2: ロングオプションへ対応する</title><link>https://blog.xshoji.com/posts/20260112_golang-flag-pretty-usage-with-long/</link><pubDate>Mon, 12 Jan 2026 02:33:24 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260112_golang-flag-pretty-usage-with-long/</guid><description>&lt;p&gt;&lt;a href="https://blog.xshoji.com/posts/20260103_golang-flag-pretty-usage/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Go 標準の flag パッケージのテクニック集その1: Usageを綺麗に整形して見やすくする | xshoji&amp;rsquo;s blog&lt;/a&gt;
+&lt;/p&gt;
 &lt;p&gt;の続きです。前回は、Go 標準の flag パッケージで Usage を綺麗に整形する方法を紹介しました。
 Usage は見やすくなったのですが、次の要件として、ロングオプションを扱いたい、というのがあります。&lt;/p&gt;
 &lt;p&gt;Unix系のコマンドラインツールでは、一般的にショートオプション（ &lt;code&gt;-f&lt;/code&gt; のような1文字のオプション）とロングオプション（ &lt;code&gt;--file&lt;/code&gt; のような複数文字のオプション）の両方をサポートしていることが多いです。
 Go 標準の flag パッケージは、 任意の文字列をフラグ名として定義できるので、ショートオプションとロングオプションの両方を実装上定義することは可能ですが、それらが同じ意味のオプションであることが Usage からは伝わりづらいので、そのままではとても使えません。&lt;/p&gt;
-&lt;p&gt;前回紹介した有名な &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; といったフレームワークを使えば簡単に実現できるのですが、
+&lt;p&gt;前回紹介した有名な &lt;a href="https://github.com/spf13/cobra"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;spf13/cobra&lt;/a&gt;
+ や &lt;a href="https://github.com/urfave/cli"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;urfave/cli&lt;/a&gt;
+ といったフレームワークを使えば簡単に実現できるのですが、
 今回はあえて main.go のみで実装することにこだわりたかったため、Go 標準の flag パッケージだけでロングオプションを扱えるようにする方法を試行錯誤してみました。&lt;/p&gt;
 &lt;p&gt;多少複雑ですが、実用的な実装ができたので、今回はその実装方法について紹介したいと思います。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注意: この記事で紹介するスニペットは Go 1.18以上（Genericsを使用するため） が必要です&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;注意: この記事で紹介するスニペットは Go 1.18以上（Genericsを使用するため） が必要です&lt;/p&gt;
+
 &lt;/blockquote&gt;</description></item><item><title>VSCode: Copilot Chat のペインで上下キーでの履歴移動とEnterキーでの送信を無効化して使いやすくする</title><link>https://blog.xshoji.com/posts/20260108_vscode-copilot-chat-pane-improvement/</link><pubDate>Thu, 08 Jan 2026 00:37:04 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260108_vscode-copilot-chat-pane-improvement/</guid><description>&lt;p&gt;VSCodeの Copilot Chat のペインでAIへ指示する際、イラっとする動きをすることが２点ほどありました。具体的には&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;上下でカーソル移動する際に、1行目で↑キーを押すと前に送信した文章が表示されてしまう（履歴移動になる）&lt;/li&gt;
 &lt;li&gt;まだ入力中なのに間違えてEnterで送信してしまう&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;という点です。今回はこれらの解消方法を見つけたので紹介します。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
-&lt;a href="https://x.com/opencode/status/2011790750543983072"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;という点です。今回はこれらの解消方法を見つけたので紹介します。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
+&lt;a href="https://x.com/opencode/status/2011790750543983072"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;にある通り公式に GitHub Copilot 連携がサポートされたようです。
 こちらの記事は、公式連携がサポートされる前にどのように OpenCode が GitHub Copilot 連携を実現していたのかの調査の記録として残しておきます。&lt;/p&gt;
+
 &lt;/blockquote&gt;
-&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
-&lt;a href="https://opencode.ai/"&gt;https://opencode.ai/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Claude Code&lt;/a&gt;
+ の OSS 版と言われている&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
+&lt;a href="https://opencode.ai/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://opencode.ai/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;が話題になっています。
 私は普段 GitHub Copilot を利用しているのですが、この OpenCode は GitHub Copilot との連携に対応しています。
@@ -99,10 +144,14 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
 また、配布先の人がビルドする時もトラブルが少ないです。
 このため、外部のライブラリが必ず必要という状況でない限りは、できるだけ Go 標準ライブラリだけでツールを作成するようにしています。&lt;/p&gt;
 &lt;p&gt;ただ、Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージはコマンドライン引数のパースを簡単に実装できる反面、 Usage の出力があまり綺麗ではなかったり、ロングオプションを扱うのが難しいなど色々使い勝手が悪い部分があります。
-先ほど説明した通り、 main.go のみで実装することにこだわりたかったため、これまで、 &lt;a href="https://github.com/spf13/cobra"&gt;spf13/cobra&lt;/a&gt; や &lt;a href="https://github.com/urfave/cli"&gt;urfave/cli&lt;/a&gt; のような外部ライブラリを使わずに、どうにかして Usage を綺麗にしたり ロングオプションを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
+先ほど説明した通り、 main.go のみで実装することにこだわりたかったため、これまで、 &lt;a href="https://github.com/spf13/cobra"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;spf13/cobra&lt;/a&gt;
+ や &lt;a href="https://github.com/urfave/cli"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;urfave/cli&lt;/a&gt;
+ のような外部ライブラリを使わずに、どうにかして Usage を綺麗にしたり ロングオプションを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
 &lt;p&gt;今回は「 &lt;strong&gt;Usage を綺麗に整形して見やすくする&lt;/strong&gt; 」方法について紹介します。
 ここで紹介する方法（以降、呼びやすさのために「 Custom Usage 」と表現します）を使うと、標準の flag パッケージだけで以下のような綺麗な Usage を出力できるようになります。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-plaintext" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
+&lt;div class="highlight my-[var(--space-md)]"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="p-[var(--space-sm)] pt-[calc(var(--space-sm)*1.1)] md:p-[var(--space-md)] rounded-[4px] overflow-x-auto text-[0.75rem] md:text-[var(--text-sm)] leading-[1.6]"&gt;&lt;code class="language-plaintext bg-transparent p-0 text-inherit whitespace-pre inline-block [-webkit-text-size-adjust:none]" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Usage: main [OPTIONS]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Description:
@@ -113,32 +162,41 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -d Debug mode
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -l &amp;lt;int&amp;gt; Index of line (default 10)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -u &amp;lt;string&amp;gt; URL (default &amp;#34;https://httpbin.org/get&amp;#34;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -w &amp;lt;duration&amp;gt; Duration of wait seconds (e.g., 1s, 500ms, 2m) (default 1s)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージだけにしては結構見やすくなっているのではないでしょうか？
-興味があれば、ぜひ詳細を読んでみてください。&lt;/p&gt;</description></item><item><title>BetterTouchTool: グローバルなキーボードショートカットで固定のテキストファイルをVSCodeで開けるようにする</title><link>https://blog.xshoji.com/posts/20251231_btt-open-vscode-shortcut-constant-text/</link><pubDate>Wed, 31 Dec 2025 02:28:47 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251231_btt-open-vscode-shortcut-constant-text/</guid><description>&lt;p&gt;Macを使い始めた頃から、 &lt;a href="https://folivora.ai/"&gt;BetterTouchTool (BTT)&lt;/a&gt; をフル活用していて、これなしでは生きていけない体になっています。色々カスタマイズして使ってますが、今回はグローバルなキーボードショートカットで特定のテキストファイルをVisual Studio Codeで開けるようにする方法を紹介します。&lt;/p&gt;
-&lt;p&gt;これ、何に使うの？って話なんですが、私はいつもデスクトップに &lt;code&gt;memo.txt&lt;/code&gt; というファイルを置いておいて、そこにちょっとしたメモを書いたり、文章の調整や頭の中を整理したりするために使っていて、頻繁に参照/書き込みします。いつもはこのファイルを開きっぱなしにしておいてアプリ切り替えでウィンドウをアクティブにする方法だったのですが、ふとBTT使えばグローバルショートカットでどこからでも簡単に開けるんじゃ？と思い、試したところ実現できたので紹介しようと思います。&lt;/p&gt;</description></item><item><title>Ghostty の設定を別ファイルで管理し、Gitでバックアップ・同期しやすくする方法</title><link>https://blog.xshoji.com/posts/20251226_ghostty-customized-config-management/</link><pubDate>Fri, 26 Dec 2025 01:42:17 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251226_ghostty-customized-config-management/</guid><description>&lt;p&gt;最近流行ってるターミナルエミュレーター &lt;a href="https://ghostty.org/"&gt;Ghostty&lt;/a&gt; を使い始めました。設定をテキストでカスタマイズできるのがとても魅力的です。ただ、 Settings から直接設定を書き換える方法だと、アプリが管理してるデフォルトの設定ファイルへ内容が書き込まれてしまうため、バックアップや他の端末との同期が困難です。&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; -w &amp;lt;duration&amp;gt; Duration of wait seconds (e.g., 1s, 500ms, 2m) (default 1s)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Go 標準の &lt;code&gt;flag&lt;/code&gt; パッケージだけにしては結構見やすくなっているのではないでしょうか？
+興味があれば、ぜひ詳細を読んでみてください。&lt;/p&gt;</description></item><item><title>BetterTouchTool: グローバルなキーボードショートカットで固定のテキストファイルをVSCodeで開けるようにする</title><link>https://blog.xshoji.com/posts/20251231_btt-open-vscode-shortcut-constant-text/</link><pubDate>Wed, 31 Dec 2025 02:28:47 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251231_btt-open-vscode-shortcut-constant-text/</guid><description>&lt;p&gt;Macを使い始めた頃から、 &lt;a href="https://folivora.ai/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;BetterTouchTool (BTT)&lt;/a&gt;
+ をフル活用していて、これなしでは生きていけない体になっています。色々カスタマイズして使ってますが、今回はグローバルなキーボードショートカットで特定のテキストファイルをVisual Studio Codeで開けるようにする方法を紹介します。&lt;/p&gt;
+&lt;p&gt;これ、何に使うの？って話なんですが、私はいつもデスクトップに &lt;code&gt;memo.txt&lt;/code&gt; というファイルを置いておいて、そこにちょっとしたメモを書いたり、文章の調整や頭の中を整理したりするために使っていて、頻繁に参照/書き込みします。いつもはこのファイルを開きっぱなしにしておいてアプリ切り替えでウィンドウをアクティブにする方法だったのですが、ふとBTT使えばグローバルショートカットでどこからでも簡単に開けるんじゃ？と思い、試したところ実現できたので紹介しようと思います。&lt;/p&gt;</description></item><item><title>Ghostty の設定を別ファイルで管理し、Gitでバックアップ・同期しやすくする方法</title><link>https://blog.xshoji.com/posts/20251226_ghostty-customized-config-management/</link><pubDate>Fri, 26 Dec 2025 01:42:17 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251226_ghostty-customized-config-management/</guid><description>&lt;p&gt;最近流行ってるターミナルエミュレーター &lt;a href="https://ghostty.org/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Ghostty&lt;/a&gt;
+ を使い始めました。設定をテキストでカスタマイズできるのがとても魅力的です。ただ、 Settings から直接設定を書き換える方法だと、アプリが管理してるデフォルトの設定ファイルへ内容が書き込まれてしまうため、バックアップや他の端末との同期が困難です。&lt;/p&gt;
 &lt;p&gt;そこで今回は、 &lt;code&gt;config-file&lt;/code&gt; という設定項目を使った Ghostty の設定管理方法を紹介します。
 具体的には、以下のような構成にすることで、カスタマイズした Ghostty の設定を別ファイル管理にし、そちらをGit管理にすることでバックアップや他端末と簡単に同期させられるようにしています。&lt;/p&gt;
-&lt;pre tabindex="0"&gt;&lt;code&gt;デフォルトのGhostty設定ファイル
+&lt;div class="my-[var(--space-md)]"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4" class="p-[var(--space-sm)] pt-[calc(var(--space-sm)*1.1)] md:p-[var(--space-md)] rounded-[4px] overflow-x-auto text-[0.75rem] md:text-[var(--text-sm)] leading-[1.6]"&gt;&lt;code class="bg-transparent p-0 text-inherit whitespace-pre inline-block [-webkit-text-size-adjust:none]"&gt;デフォルトのGhostty設定ファイル
 → 「カスタム設定ファイル」へのファイルパスを指定
 
 カスタム設定ファイル（Git管理下に置く）
-→ 具体的なカスタマイズの設定内容を記述
-&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Wayback Machine で過去のページを手軽に確認できる Bookmarklet</title><link>https://blog.xshoji.com/posts/20251225_wayback-machine-bookmarklet/</link><pubDate>Thu, 25 Dec 2025 01:19:39 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251225_wayback-machine-bookmarklet/</guid><description>&lt;p&gt;調査や資料集めの際、手元にあるURLにアクセスすると&lt;/p&gt;
+→ 具体的なカスタマイズの設定内容を記述&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Wayback Machine で過去のページを手軽に確認できる Bookmarklet</title><link>https://blog.xshoji.com/posts/20251225_wayback-machine-bookmarklet/</link><pubDate>Thu, 25 Dec 2025 01:19:39 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251225_wayback-machine-bookmarklet/</guid><description>&lt;p&gt;調査や資料集めの際、手元にあるURLにアクセスすると&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;過去に見れていたページが消えている&lt;/li&gt;
 &lt;li&gt;ページの内容が変わってしまっている&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;といった事がよくあります。 そんな時に便利なのが &lt;a href="https://archive.org/web/"&gt;Wayback Machine&lt;/a&gt; です。 Wayback Machineは過去に保存されたWebページのスナップショットを閲覧できるサービスです。&lt;/p&gt;
+&lt;p&gt;といった事がよくあります。 そんな時に便利なのが &lt;a href="https://archive.org/web/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Wayback Machine&lt;/a&gt;
+ です。 Wayback Machineは過去に保存されたWebページのスナップショットを閲覧できるサービスです。&lt;/p&gt;
 &lt;p&gt;で、Wayback Machineにアクセスして、URLを入力して、過去のスナップショットを探せば話は終わりなんですが、若干面倒です。もっと手軽にできないかと思い、めっちゃシンプルなBookmarkletを作成しました。&lt;/p&gt;
 &lt;p&gt;このBookmarkletをブラウザのブックマークバーに登録しておくと、閲覧中のページのWayback Machineのスナップショット一覧ページをワンクリックで開けます。&lt;/p&gt;
 &lt;p&gt;特に、スマホで記事を見たときに「あれ、前と内容が違う？」と思ったときにすぐに確認できるのが便利です。&lt;/p&gt;</description></item><item><title>Macの画面録画を右クリックから簡単にエンコードできるようにするTips</title><link>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</link><pubDate>Wed, 24 Dec 2025 01:54:35 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</guid><description>&lt;p&gt;自作のツールの動きを見せたい時や、動作の証跡を残したい時などにMacの画面録画機能で動画を撮ることがあります。ただ、Macの録画機能で撮影された動画はそのままだと結構重いので、SlackやGithubに載せるとなるとエンコードしないとそのままでは扱いづらいです。ターミナルからコマンドを思い出して、ffmpeg等でエンコードすれば良いのですが、できればもっと簡単にサクッとやりたいです。&lt;/p&gt;
 &lt;p&gt;そこで今回は、Macで画面を録画した後、その動画ファイルの右クリックメニューからサクッとエンコードしてお手軽にデモ動画を作る方法を紹介します。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;そもそもMacならデフォルトで右クリックからエンコードできるんじゃないの？&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;そもそもMacならデフォルトで右クリックからエンコードできるんじゃないの？&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;と思った方。その通りです。なので、エンコードにこだわらない場合は、この記事の方法を使う必要はありません。ただ、この記事の最後にMac標準の方法でエンコードした場合とのサイズ比較を載せてますが、HandBrakeCLI等のツールでエンコードした方がより高圧縮で画質も良いのでこの記事で紹介する方法も覚えておくと良いと思います。&lt;/p&gt;
-&lt;h2 id="準備するもの"&gt;準備するもの&lt;/h2&gt;
+&lt;h2 id="準備するもの"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;準備するもの&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;エンコーダー（ffmpeg, HandBrakeCLIなど）&lt;/li&gt;
 &lt;li&gt;Automatorによるクイックアクション&lt;/li&gt;
@@ -146,9 +204,12 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
 &lt;/ul&gt;
 &lt;p&gt;それぞれ順番に説明していきます。&lt;/p&gt;</description></item><item><title>Webページをスマホ向けのデザインに最適化する Bookmarklet</title><link>https://blog.xshoji.com/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/</link><pubDate>Mon, 15 Dec 2025 02:41:41 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251215_bookmarklet-for-optimizing-web-pages-for-mobile-design/</guid><description>&lt;p&gt;普段 iPhone を使っていて、Safari でブログをよく読むのですが、スマホ向けに最適化されていないページがまだ多く、見にくいと感じることがよくあります。
 Safari には「リーダー表示」という機能があり、記事本文だけを抽出して見やすく表示できますが&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;iPhoneのSafariで記事を読んでいるときに気をそらすものを非表示にする - Apple サポート （日本）&lt;br&gt;
-&lt;a href="https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios"&gt;https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;iPhoneのSafariで記事を読んでいるときに気をそらすものを非表示にする - Apple サポート （日本）&lt;br&gt;
+&lt;a href="https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://support.apple.com/ja-jp/guide/iphone/iphdc30e3b86/ios&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;リーダー表示に対応していないページもあります。また、リーダー表示にしても、コードブロックや文中の変数のスタイルがわかりにくく、痒いところに手が届かないと感じることがあります。&lt;/p&gt;
 &lt;p&gt;そうした悩みがあり、スマホ向けに最適化されていないページを見やすくする Bookmarklet（ブックマークレット）を作成しました。
@@ -161,25 +222,38 @@ Safari には「リーダー表示」という機能があり、記事本文だ�
 &lt;/ul&gt;
 &lt;p&gt;といったことが可能になります。最近は、プロンプトのmarkdownファイルを所定の場所に設置し、Chatからコマンドで呼び出す方式が一般的だと思いますが、ここで紹介するのはそれよりもさらにお手軽な使い方ができる方法となります。&lt;/p&gt;
 &lt;p&gt;この後の説明では&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ショートカットキーのみでAIへ英訳の指示を出す設定&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;ショートカットキーのみでAIへ英訳の指示を出す設定&lt;/p&gt;
+
 &lt;/blockquote&gt;
-&lt;p&gt;を例として設定方法を紹介していきます。また、AIは Github copilot を使います。&lt;/p&gt;</description></item><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;を例として設定方法を紹介していきます。また、AIは Github copilot を使います。&lt;/p&gt;</description></item><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;APIの開発で&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Postman API Platform | Sign Up for Free&lt;br&gt;
-&lt;a href="https://www.postman.com/"&gt;https://www.postman.com/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Postman API Platform | Sign Up for Free&lt;br&gt;
+&lt;a href="https://www.postman.com/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://www.postman.com/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;を使っていて、最近PC入れ替えを行う際、このPostmanのバックアップ機能（エクスポート機能）が消えていて大変困ったため、
-何が起こっていたのかなど、Postman側の経緯や、この対策などについてまとめます。&lt;/p&gt;</description></item><item><title>Goのバイナリにソースコードをそのまま同梱するという提案</title><link>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</link><pubDate>Sun, 26 Mar 2023 02:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</guid><description>&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
+何が起こっていたのかなど、Postman側の経緯や、この対策などについてまとめます。&lt;/p&gt;</description></item><item><title>Goのバイナリにソースコードをそのまま同梱するという提案</title><link>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</link><pubDate>Sun, 26 Mar 2023 02:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;業務でGoのスクリプトを書いて、バイナリをチームに配ることがよくあります。
 Goでコンパイル済みのバイナリを配るメリットとしては&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;実行環境に依存せずどこでも実行できる&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;という点かなーと思います。 ただ、デメリットもあって、それは実行するバイナリがどのソースコードから生成されたものか分かりづらいという点です。&lt;/p&gt;</description></item><item><title>単体テスト ベストプラクティス集</title><link>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</link><pubDate>Sat, 03 Oct 2020 12:13:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Modern Best Practices for Testing in Java&lt;br&gt;
-&lt;a href="https://phauer.com/2019/modern-best-practices-testing-java/"&gt;https://phauer.com/2019/modern-best-practices-testing-java/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;という点かなーと思います。 ただ、デメリットもあって、それは実行するバイナリがどのソースコードから生成されたものか分かりづらいという点です。&lt;/p&gt;</description></item><item><title>単体テスト ベストプラクティス集</title><link>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</link><pubDate>Sat, 03 Oct 2020 12:13:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20201003_bestpractice-for-testing/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Modern Best Practices for Testing in Java&lt;br&gt;
+&lt;a href="https://phauer.com/2019/modern-best-practices-testing-java/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://phauer.com/2019/modern-best-practices-testing-java/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;テスト時に何気なく気をつけている事が根拠とともに具体的に示されていて、
 自分自身がテストする時はもちろん、コードレビュー時でも注意・指摘したい内容がまとめられています。&lt;/p&gt;
@@ -195,21 +269,28 @@ Goでコンパイル済みのバイナリを配るメリットとしては&lt;/p
 &lt;p&gt;似たような要件でブログを作ってみたい人に向けて、構築の流れを紹介したいと思います。
 初心者向けに細かく説明しているので若干長いと思います。&lt;/p&gt;
 &lt;p&gt;以下にリンク付き目次を載せておくので、
-興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。&lt;/p&gt;</description></item><item><title>スマホにおける広告の新しいターゲティング手法について</title><link>https://blog.xshoji.com/posts/20200926_new-targeting-techniques-for-ads/</link><pubDate>Sat, 26 Sep 2020 05:55:23 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200926_new-targeting-techniques-for-ads/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Companies can track your phone’s movements to target ads ｜ Ars Technica&lt;br&gt;
-&lt;a href="https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/"&gt;https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/&lt;/a&gt;&lt;/p&gt;
+興味があるトピックだけつまみ食いしてもらう読み方のほうが良いかもしれません。&lt;/p&gt;</description></item><item><title>スマホにおける広告の新しいターゲティング手法について</title><link>https://blog.xshoji.com/posts/20200926_new-targeting-techniques-for-ads/</link><pubDate>Sat, 26 Sep 2020 05:55:23 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200926_new-targeting-techniques-for-ads/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Companies can track your phone’s movements to target ads ｜ Ars Technica&lt;br&gt;
+&lt;a href="https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://arstechnica.com/information-technology/2020/09/companies-can-track-your-phones-movements-to-target-ads/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;が元の記事。&lt;/p&gt;
 &lt;p&gt;広告業界では、トラッキング方法の話題が結構熱くて、最近iOS14で適用される（※2021/9に延期になった）ユーザーのトラッキング機能のデフォルトオプトアウト
 （ユーザーに「あなたのこと追跡するけど、いいよね？」（はい／いいえ）みたいな許可を明示的に得ないと、デフォルトでトラッキングができなくなる）や、
-Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきています。&lt;/p&gt;</description></item><item><title>SQLインジェクションフィルタを回避するためのアプローチ</title><link>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</link><pubDate>Sun, 20 Sep 2020 19:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Astrocamel - Blog/Portfolio of George Skouroupathis&lt;br&gt;
-&lt;a href="https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html"&gt;https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html&lt;/a&gt;&lt;/p&gt;
+Google Chromeのトラッキング用のクッキーの段階的な廃止など、個人のプロファイルに基づくトラッキングができなくなってきています。&lt;/p&gt;</description></item><item><title>SQLインジェクションフィルタを回避するためのアプローチ</title><link>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</link><pubDate>Sun, 20 Sep 2020 19:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Astrocamel - Blog/Portfolio of George Skouroupathis&lt;br&gt;
+&lt;a href="https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;が元の記事で、さらっとまとめると&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Cloudflareを使ってるサイトの脆弱性試験しようとしたら、そもそもサイトまでリクエストが届いてないことが判明&lt;br&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Cloudflareを使ってるサイトの脆弱性試験しようとしたら、そもそもサイトまでリクエストが届いてないことが判明&lt;br&gt;
 CloudflareのWAFで弾かれてるっぽいから、SQLのリクエスト難読化したら無事突破できたよ&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;って話です。この機能を回避するアプローチが面白かった。
 ここでいう「難読化（obfuscation）」っていうのは、

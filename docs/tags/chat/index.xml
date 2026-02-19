@@ -12,7 +12,8 @@
 &lt;/ul&gt;
 &lt;p&gt;といったことが可能になります。最近は、プロンプトのmarkdownファイルを所定の場所に設置し、Chatからコマンドで呼び出す方式が一般的だと思いますが、ここで紹介するのはそれよりもさらにお手軽な使い方ができる方法となります。&lt;/p&gt;
 &lt;p&gt;この後の説明では&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;ショートカットキーのみでAIへ英訳の指示を出す設定&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;ショートカットキーのみでAIへ英訳の指示を出す設定&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;を例として設定方法を紹介していきます。また、AIは Github copilot を使います。&lt;/p&gt;</description></item></channel></rss>

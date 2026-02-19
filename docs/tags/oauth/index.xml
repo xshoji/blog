@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Oauth on xshoji's blog</title><link>https://blog.xshoji.com/tags/oauth/</link><description>Recent content in Oauth on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 19 Jan 2026 10:43:03 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/oauth/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenCode の GitHub Copilot 連携機能が正式サポートされたので仕組みを再確認してみた</title><link>https://blog.xshoji.com/posts/20260118_opencode-github-copilot-official-integration/</link><pubDate>Sun, 18 Jan 2026 16:32:52 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260118_opencode-github-copilot-official-integration/</guid><description>&lt;p&gt;以前&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり） | xshoji&amp;rsquo;s blog&lt;br&gt;
-&lt;a href="https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/"&gt;https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり） | xshoji&amp;rsquo;s blog&lt;br&gt;
+&lt;a href="https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;こちらで記事にした OpenCode の GitHub Copilot 連携機能ですが、2026年1月16日に公式にサポートされたと発表がありました。&lt;/p&gt;
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;OpenCode can now officially be used with your Github Copilot subscription&lt;br&gt;&lt;br&gt;with the $39 pro+ subscription you get access to the best coding models&lt;br&gt;&lt;br&gt;wonderful to see them support open source and user choice of tooling in this way &lt;a href="https://t.co/BUH1JtBF32"&gt;pic.twitter.com/BUH1JtBF32&lt;/a&gt;&lt;/p&gt;&amp;mdash; OpenCode (@opencode) &lt;a href="https://twitter.com/opencode/status/2011790750543983072?ref_src=twsrc%5Etfw"&gt;January 15, 2026&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;Your &lt;a href="https://twitter.com/github?ref_src=twsrc%5Etfw"&gt;@GitHub&lt;/a&gt; Copilot subscription can now officially be used with &lt;a href="https://twitter.com/opencode?ref_src=twsrc%5Etfw"&gt;@OpenCode&lt;/a&gt; &lt;a href="https://t.co/f5aJtVWhG6"&gt;pic.twitter.com/f5aJtVWhG6&lt;/a&gt;&lt;/p&gt;&amp;mdash; Jared Palmer (@jaredpalmer) &lt;a href="https://twitter.com/jaredpalmer/status/2011803160122097826?ref_src=twsrc%5Etfw"&gt;January 15, 2026&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
-&lt;p&gt;ということで、改めて OpenCode の GitHub Copilot 連携機能が以前とどう変わったのか再確認してみました。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
-&lt;a href="https://x.com/opencode/status/2011790750543983072"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ということで、改めて OpenCode の GitHub Copilot 連携機能が以前とどう変わったのか再確認してみました。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
+&lt;a href="https://x.com/opencode/status/2011790750543983072"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;にある通り公式に GitHub Copilot 連携がサポートされたようです。
 こちらの記事は、公式連携がサポートされる前にどのように OpenCode が GitHub Copilot 連携を実現していたのかの調査の記録として残しておきます。&lt;/p&gt;
+
 &lt;/blockquote&gt;
-&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
-&lt;a href="https://opencode.ai/"&gt;https://opencode.ai/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Claude Code&lt;/a&gt;
+ の OSS 版と言われている&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
+&lt;a href="https://opencode.ai/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://opencode.ai/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;が話題になっています。
 私は普段 GitHub Copilot を利用しているのですが、この OpenCode は GitHub Copilot との連携に対応しています。

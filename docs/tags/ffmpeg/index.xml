@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ffmpeg on xshoji's blog</title><link>https://blog.xshoji.com/tags/ffmpeg/</link><description>Recent content in Ffmpeg on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Thu, 01 Jan 2026 02:57:16 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml"/><item><title>Macの画面録画を右クリックから簡単にエンコードできるようにするTips</title><link>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</link><pubDate>Wed, 24 Dec 2025 01:54:35 +0900</pubDate><guid>https://blog.xshoji.com/posts/20251224_demo_video_making_tips/</guid><description>&lt;p&gt;自作のツールの動きを見せたい時や、動作の証跡を残したい時などにMacの画面録画機能で動画を撮ることがあります。ただ、Macの録画機能で撮影された動画はそのままだと結構重いので、SlackやGithubに載せるとなるとエンコードしないとそのままでは扱いづらいです。ターミナルからコマンドを思い出して、ffmpeg等でエンコードすれば良いのですが、できればもっと簡単にサクッとやりたいです。&lt;/p&gt;
 &lt;p&gt;そこで今回は、Macで画面を録画した後、その動画ファイルの右クリックメニューからサクッとエンコードしてお手軽にデモ動画を作る方法を紹介します。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;そもそもMacならデフォルトで右クリックからエンコードできるんじゃないの？&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;そもそもMacならデフォルトで右クリックからエンコードできるんじゃないの？&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;と思った方。その通りです。なので、エンコードにこだわらない場合は、この記事の方法を使う必要はありません。ただ、この記事の最後にMac標準の方法でエンコードした場合とのサイズ比較を載せてますが、HandBrakeCLI等のツールでエンコードした方がより高圧縮で画質も良いのでこの記事で紹介する方法も覚えておくと良いと思います。&lt;/p&gt;
-&lt;h2 id="準備するもの"&gt;準備するもの&lt;/h2&gt;
+&lt;h2 id="準備するもの"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;準備するもの&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;エンコーダー（ffmpeg, HandBrakeCLIなど）&lt;/li&gt;
 &lt;li&gt;Automatorによるクイックアクション&lt;/li&gt;

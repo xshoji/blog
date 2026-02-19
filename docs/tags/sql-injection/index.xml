@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sql Injection on xshoji's blog</title><link>https://blog.xshoji.com/tags/sql-injection/</link><description>Recent content in Sql Injection on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 20 Sep 2020 19:00:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/sql-injection/index.xml" rel="self" type="application/rss+xml"/><item><title>SQLインジェクションフィルタを回避するためのアプローチ</title><link>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</link><pubDate>Sun, 20 Sep 2020 19:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Astrocamel - Blog/Portfolio of George Skouroupathis&lt;br&gt;
-&lt;a href="https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html"&gt;https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sql Injection on xshoji's blog</title><link>https://blog.xshoji.com/tags/sql-injection/</link><description>Recent content in Sql Injection on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 20 Sep 2020 19:00:00 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/sql-injection/index.xml" rel="self" type="application/rss+xml"/><item><title>SQLインジェクションフィルタを回避するためのアプローチ</title><link>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</link><pubDate>Sun, 20 Sep 2020 19:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20200920_an-approach-to-avoid-sql-injection-filters/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Astrocamel - Blog/Portfolio of George Skouroupathis&lt;br&gt;
+&lt;a href="https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://www.astrocamel.com/web/2020/09/04/how-i-bypassed-cloudflares-sql-injection-filter.html&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;が元の記事で、さらっとまとめると&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Cloudflareを使ってるサイトの脆弱性試験しようとしたら、そもそもサイトまでリクエストが届いてないことが判明&lt;br&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Cloudflareを使ってるサイトの脆弱性試験しようとしたら、そもそもサイトまでリクエストが届いてないことが判明&lt;br&gt;
 CloudflareのWAFで弾かれてるっぽいから、SQLのリクエスト難読化したら無事突破できたよ&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;って話です。この機能を回避するアプローチが面白かった。
 ここでいう「難読化（obfuscation）」っていうのは、

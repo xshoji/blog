@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Zed on xshoji's blog</title><link>https://blog.xshoji.com/tags/zed/</link><description>Recent content in Zed on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 28 Jan 2026 02:44:02 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/zed/index.xml" rel="self" type="application/rss+xml"/><item><title>Zed: キーボードのみで矩形選択できるようにする設定</title><link>https://blog.xshoji.com/posts/20260128_zed-column-selection-keyboard-bindings/</link><pubDate>Wed, 28 Jan 2026 02:25:20 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260128_zed-column-selection-keyboard-bindings/</guid><description>&lt;p&gt;普段、 VSCode でテキスト編集しているんですが、本当に若干ですが &amp;ldquo;もっさり&amp;rdquo; するんですよね。
 私は普段 memo.txt と言うファイルにあらゆるメモを保存しているんですが、ちょっとしたメモを保存するのに VSCode を起動しようとすると、ほんの一瞬待たされるのでそこがストレスになっています。&lt;/p&gt;
 &lt;p&gt;そこで、最近 Zed エディタを試しているんですが、 Zed は非常に軽量で起動も一瞬ですしサクサク動きます。
-今回は、そんな Zed エディタでキーボードのみで矩形選択（カラム選択）できるようにする設定方法を紹介します。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
-&lt;a href="https://x.com/opencode/status/2011790750543983072"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;&lt;/p&gt;
+今回は、そんな Zed エディタでキーボードのみで矩形選択（カラム選択）できるようにする設定方法を紹介します。&lt;/p&gt;</description></item><item><title>OpenCode の GitHub Copilot 連携機能の仕組みを読み解く（注意点あり）</title><link>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</link><pubDate>Wed, 07 Jan 2026 03:10:57 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260106_opencode-github-copilot-integration-spec/</guid><description>&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;[ ! ] 2026-01-16(金) 追記&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode on X: &amp;ldquo;OpenCode can now officially be used with your Github Copilot subscription &amp;hellip;&amp;rdquo;&lt;br&gt;
+&lt;a href="https://x.com/opencode/status/2011790750543983072"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://x.com/opencode/status/2011790750543983072&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;にある通り公式に GitHub Copilot 連携がサポートされたようです。
 こちらの記事は、公式連携がサポートされる前にどのように OpenCode が GitHub Copilot 連携を実現していたのかの調査の記録として残しておきます。&lt;/p&gt;
+
 &lt;/blockquote&gt;
-&lt;h2 id="はじめに"&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"&gt;Claude Code&lt;/a&gt; の OSS 版と言われている&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
-&lt;a href="https://opencode.ai/"&gt;https://opencode.ai/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Claude Code&lt;/a&gt;
+ の OSS 版と言われている&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;OpenCode | The open source AI coding agent&lt;br&gt;
+&lt;a href="https://opencode.ai/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://opencode.ai/&lt;/a&gt;
+&lt;/p&gt;
+
 &lt;/blockquote&gt;
 &lt;p&gt;が話題になっています。
 私は普段 GitHub Copilot を利用しているのですが、この OpenCode は GitHub Copilot との連携に対応しています。
