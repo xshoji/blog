@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bruno on xshoji's blog</title><link>https://blog.xshoji.com/tags/bruno/</link><description>Recent content in Bruno on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 24 Feb 2026 03:10:46 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/bruno/index.xml" rel="self" type="application/rss+xml"/><item><title>Brunoで環境変数を一時的に上書きする方法</title><link>https://blog.xshoji.com/posts/20260224_bruno-set-environment-var-temporary/</link><pubDate>Tue, 24 Feb 2026 02:55:25 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260224_bruno-set-environment-var-temporary/</guid><description>&lt;p&gt;以前 &lt;a href="https://www.postman.com/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Postman&lt;/a&gt;
+ を使っていたが、環境変数を一時的に違う値に上書きする機能が地味に便利だった。&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Guide on How to Persist Postman Variables | Postman Blog&lt;br&gt;
+&lt;a href="https://blog.postman.com/how-to-persist-postman-variables/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://blog.postman.com/how-to-persist-postman-variables/&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;この機能を使うことで、今だけ&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;操作対象のアカウントIDを違うIDに切り替える&lt;/li&gt;
+&lt;li&gt;リクエスト先のバージョンを変更する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;といったことが可能で、かつ環境変数の元の値は変更しないので作業が終わったら全て元に戻す、ということが可能だった。&lt;/p&gt;
+&lt;p&gt;InsomniaやBrunoでは対応していなかったので、普段書き換える時は環境変数を書き換えたり、頻繁にやるなら環境ごとコピーしたり面倒だった。&lt;/p&gt;</description></item></channel></rss>
