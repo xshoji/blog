@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>フロントエンド on xshoji's blog</title><link>https://blog.xshoji.com/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%89/</link><description>Recent content in フロントエンド on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 11 Mar 2026 01:42:07 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%89/index.xml" rel="self" type="application/rss+xml"/><item><title>Astro: iOS SafariのCTAバー問題で半日溶かした話</title><link>https://blog.xshoji.com/posts/20260311_cta-bar-astro-dev-tool-issue/</link><pubDate>Wed, 11 Mar 2026 01:17:22 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260311_cta-bar-astro-dev-tool-issue/</guid><description>&lt;p&gt;CTAバー。画面の下にぴったり張り付く「電話で相談」「Web相談」みたいなやつ。&lt;/p&gt;
+&lt;hr&gt;
+&lt;figure&gt;&lt;img src="https://blog.xshoji.com/posts/20260311_cta-bar-astro-dev-tool-issue/data/01_ctabar_sampe1.PNG" width="100%" height="100%"&gt;
+&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;p&gt;これを実装していて、普通は &lt;code&gt;position: fixed&lt;/code&gt; + &lt;code&gt;bottom: 0&lt;/code&gt; たったこれだけで終わるんですが、 iOS Safari で見たら、ボタンの下部分の領域の背景が透けて見えててしまっていた（↑の図の状態）。
+参考にしてた別のサイトはきれいに表示されてるので絶対できるはずなのに、うちだけ透ける。なんで。&lt;/p&gt;
+&lt;p&gt;&amp;hellip;で、ここからコストかけて Opus 4.6 に修正させまくったが、全然治らないやり取りが続くことになった。&lt;/p&gt;</description></item></channel></rss>
