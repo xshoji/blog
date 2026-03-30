@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on xshoji's blog</title><link>https://blog.xshoji.com/tags/monitoring/</link><description>Recent content in Monitoring on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 31 Mar 2026 01:59:53 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Ampの広告付き無料プランのクレジット表示プラグインを作った（結構ハマった）</title><link>https://blog.xshoji.com/posts/20260331_ampfree-credit-monitoring-plugin/</link><pubDate>Tue, 31 Mar 2026 01:25:03 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260331_ampfree-credit-monitoring-plugin/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;最近、AmpのCEOがこんなツイートしてた&lt;/p&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;I can see why some would want that. It’s not a high priority since many wouldn’t want it, and it would be for users who are using free differently from paid, which is not the kind of usage pattern we want to prioritize. (We see some people who use Amp Free for non-coding misc.…&lt;/p&gt;&amp;mdash; Quinn Slack (@sqs) &lt;a href="https://twitter.com/sqs/status/2037096582739615791?ref_src=twsrc%5Etfw"&gt;March 26, 2026&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;p&gt;「Amp free のクレジットを使い切った時に有料のクレジット利用に切り替えるか？を通知して欲しい」という要望に対しての返信。公式には提供しないけど似たようなモニタ機能は簡単に作れるよ、ということでCEOが言う通り Amp 自身にそのプラグインを作ってもらった。できたのは Amp Free の残クレジットを会話のたびに通知するPlugin。&lt;/p&gt;
+&lt;figure&gt;&lt;img src="data/large01.png" width="100%" height="100%"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;この記事では、このプラグインを実装する過程で若干ハマったポイントがあったんでそこを紹介します。&lt;/p&gt;</description></item></channel></rss>
