@@ -27,7 +27,7 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
  のような外部ライブラリを使わずに、どうにかして Usage を綺麗にしたり ロングオプションを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
 &lt;p&gt;今回は「 &lt;strong&gt;Usage を綺麗に整形して見やすくする&lt;/strong&gt; 」方法について紹介します。
 ここで紹介する方法（以降、呼びやすさのために「 Custom Usage 」と表現します）を使うと、標準の flag パッケージだけで以下のような綺麗な Usage を出力できるようになります。&lt;/p&gt;
-&lt;div class="highlight my-[var(--space-md)]"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="p-[var(--space-sm)] pt-[calc(var(--space-sm)*1.1)] md:p-[var(--space-md)] rounded-[4px] overflow-x-auto text-[0.75rem] md:text-[var(--text-sm)] leading-[1.6]"&gt;&lt;code class="language-plaintext bg-transparent p-0 text-inherit whitespace-pre inline-block [-webkit-text-size-adjust:none]" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
+&lt;div class="highlight my-[var(--space-md)]"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;" class="p-[var(--space-sm)] pt-[calc(var(--space-sm)*1.1)] md:p-[var(--space-md)] rounded-[4px] overflow-x-auto text-[0.75rem] md:text-[var(--text-sm)] leading-[1.6]"&gt;&lt;code class="language-plaintext bg-transparent p-0 text-inherit whitespace-pre inline-block [-webkit-text-size-adjust:none]" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Usage: main [OPTIONS]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Description:

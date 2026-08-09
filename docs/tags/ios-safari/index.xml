@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IOS Safari on xshoji's blog</title><link>https://blog.xshoji.com/tags/ios-safari/</link><description>Recent content in IOS Safari on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 10 Aug 2026 00:33:17 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/ios-safari/index.xml" rel="self" type="application/rss+xml"/><item><title>iOS Safari でブックマークレットからいきなりペースト許可 UI を出す方法</title><link>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</link><pubDate>Sun, 09 Aug 2026 02:34:29 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;iOS Safari で動かすブックマークレットから、クリップボードに入っている JSON を読み取りたかった。&lt;/p&gt;
+&lt;p&gt;最初に書いた処理は単純で、ブックマークレットを実行したら入力用モーダルを作り、 &lt;code&gt;navigator.clipboard.readText()&lt;/code&gt; を呼ぶというものだった。&lt;/p&gt;
+&lt;p&gt;ところが、新しいタブで最初に実行したときだけ、 iOS のペースト許可 UI が出ない。 iOS のペースト許可 UI というのは以下のようなやつのこと。&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/data/image1.jpg" width="100%" height="100%"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;読み取りも失敗する。
+同じページでもう一度ブックマークレットを実行すると、今度は動くことがある。&lt;/p&gt;
+&lt;p&gt;いくつかの方法を試した結果、次の順番にすると新しいタブの初回でも動作した。&lt;/p&gt;</description></item></channel></rss>

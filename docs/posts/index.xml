@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Thu, 09 Apr 2026 00:19:21 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Amp Freeの無料クレジット残量をメニューバーに表示するようにしてみた</title><link>https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/</link><pubDate>Mon, 06 Apr 2026 02:37:02 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/</guid><description>&lt;h2 id="はじめに"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 10 Aug 2026 00:33:17 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>iOS Safari でブックマークレットからいきなりペースト許可 UI を出す方法</title><link>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</link><pubDate>Sun, 09 Aug 2026 02:34:29 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</guid><description>&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;iOS Safari で動かすブックマークレットから、クリップボードに入っている JSON を読み取りたかった。&lt;/p&gt;
+&lt;p&gt;最初に書いた処理は単純で、ブックマークレットを実行したら入力用モーダルを作り、 &lt;code&gt;navigator.clipboard.readText()&lt;/code&gt; を呼ぶというものだった。&lt;/p&gt;
+&lt;p&gt;ところが、新しいタブで最初に実行したときだけ、 iOS のペースト許可 UI が出ない。 iOS のペースト許可 UI というのは以下のようなやつのこと。&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/data/image1.jpg" width="100%" height="100%"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;読み取りも失敗する。
+同じページでもう一度ブックマークレットを実行すると、今度は動くことがある。&lt;/p&gt;
+&lt;p&gt;いくつかの方法を試した結果、次の順番にすると新しいタブの初回でも動作した。&lt;/p&gt;</description></item><item><title>Amp Freeの無料クレジット残量をメニューバーに表示するようにしてみた</title><link>https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/</link><pubDate>Mon, 06 Apr 2026 02:37:02 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
  class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
@@ -215,7 +227,7 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
  のような外部ライブラリを使わずに、どうにかして Usage を綺麗にしたり ロングオプションを扱えるようにしたりできないか試行錯誤したので、その実装方法について何回かに分けて紹介したいと思います。&lt;/p&gt;
 &lt;p&gt;今回は「 &lt;strong&gt;Usage を綺麗に整形して見やすくする&lt;/strong&gt; 」方法について紹介します。
 ここで紹介する方法（以降、呼びやすさのために「 Custom Usage 」と表現します）を使うと、標準の flag パッケージだけで以下のような綺麗な Usage を出力できるようになります。&lt;/p&gt;
-&lt;div class="highlight my-[var(--space-md)]"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;" class="p-[var(--space-sm)] pt-[calc(var(--space-sm)*1.1)] md:p-[var(--space-md)] rounded-[4px] overflow-x-auto text-[0.75rem] md:text-[var(--text-sm)] leading-[1.6]"&gt;&lt;code class="language-plaintext bg-transparent p-0 text-inherit whitespace-pre inline-block [-webkit-text-size-adjust:none]" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
+&lt;div class="highlight my-[var(--space-md)]"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;" class="p-[var(--space-sm)] pt-[calc(var(--space-sm)*1.1)] md:p-[var(--space-md)] rounded-[4px] overflow-x-auto text-[0.75rem] md:text-[var(--text-sm)] leading-[1.6]"&gt;&lt;code class="language-plaintext bg-transparent p-0 text-inherit whitespace-pre inline-block [-webkit-text-size-adjust:none]" data-lang="plaintext"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;$ go run main.go -h
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Usage: main [OPTIONS]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Description:
