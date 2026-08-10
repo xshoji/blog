@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>WebMCP on xshoji's blog</title><link>https://blog.xshoji.com/tags/webmcp/</link><description>Recent content in WebMCP on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 11 Aug 2026 03:22:04 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/webmcp/index.xml" rel="self" type="application/rss+xml"/><item><title>WebMCP は「 AI に Web UI を中抜きさせない」 ための規格なのか</title><link>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</link><pubDate>Tue, 11 Aug 2026 02:56:59 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</guid><description>&lt;!--
+ARTICLE PLAN
+
+ステータス :
+- FIXED
+
+仮タイトル :
+- WebMCP は「 AI に Web を中抜きさせない」ための規格なのか
+
+想定読者 :
+- WebMCP を最近知り、 MCP や既存のブラウザ操作との違いを知りたい Web 開発者
+- AI エージェント時代にも Web UI を残そうとする WebMCP の設計思想に関心がある開発者
+
+読者が抱えている問題 :
+- WebMCP を操作精度や速度を改善する API としては理解できても、サイト側が追加実装してまで導入する理由が見えにくい
+
+中心的な問い :
+- WebMCP は、 AI エージェントによって Web UI やブラウザ体験が中抜きされるのを防ぐための規格なのか
+
+中心的な結論 :
+- WebMCP は、バックエンド直結型連携による Web UI の迂回を防ぐことを明示的な Goal の一つに掲げ、エージェントを既存の Web アプリへ参加させる選択肢を提供する
+- ただし、 AI プラットフォームによる広告収益や顧客接点の中抜きを防ぐという事業的解釈は、公式資料から直接確認できる目的ではない
+- Cloudflare は、 WebMCP 対応の共通処理をエッジへ移し、既存 MCP Server を Web ページの文脈へ接続することで導入負担の一部を下げている
+
+記事全体の論理 :
+1. Cloudflare の発表から WebMCP を知る
+2. WebMCP と既存のブラウザ操作の責任分界を整理する
+3. 仕様文書の公開主体と Editors を確認する
+4. 公式 README の disintermediation という Goal から設計思想を読む
+5. WebMCP が残す Web UI 、セッション、ユーザー制御の意味を考える
+6. サイト側の実装負担という普及上の課題を確認する
+7. Cloudflare がその負担のどこを引き受けたかを評価する
+
+事実・根拠 :
+- WebMCP 仕様、 webmachinelearning/webmcp README 、 Chrome for Developers 、 Cloudflare Blog を一次情報として使用する
+
+解釈・仮説 :
+- WebMCP がサービスとユーザーの接点を AI プラットフォームへ集約させない選択肢になり得る、という評価は筆者の解釈として記述する
+
+記事から除外する内容 :
+- Google や Microsoft がブラウザ事業を守る目的で WebMCP を策定しているという断定
+- WebMCP が MCP を置き換えるという説明
+- Cloudflare がサービス固有の Tool を自動生成するという説明
+
+文体・粒度 :
+- 調査の過程で認識が変わった順序を残す
+- 技術的事実と筆者の解釈を明確に分ける
+--&gt;
+&lt;h2 id="はじめに"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;Cloudflare が「 Give any website a WebMCP interface 」という記事を公開した。&lt;/p&gt;
+&lt;p&gt;WebMCP を有効にすると、 Cloudflare が HTML へ bridge script を挿入し、ブラウザ内の AI エージェントが利用できる Tool をページへ登録するという。
+サイトのオリジン側には変更が要らない。&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Give any website a WebMCP interface&lt;br&gt;
+&lt;a href="https://blog.cloudflare.com/webmcp/"
+ class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;https://blog.cloudflare.com/webmcp/&lt;/a&gt;
+&lt;br&gt;
+─&lt;br&gt;
+Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on and browser agents can start working with your site, with no code and nothing changed at your origin. Cloudflare adds a small bridge to your pages, which registers a set of tools for a visitor’s agent to use.&lt;br&gt;
+本日、 Cloudflare における WebMCP の Developer Preview を開始します。有効にすると、コードやオリジン側の変更なしに、ブラウザエージェントがサイトを操作できるようになります。 Cloudflare はページへ小さな bridge を追加し、訪問者のエージェントが利用する Tool 群を登録します。&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;最初は、 AI エージェントが Web サイトを効率よく操作するための API だと理解した。
+画面を見てボタンを探す代わりに、ページが操作可能な機能を構造化された Tool として渡す。
+それならエージェントの操作は速く、安定する。&lt;/p&gt;
+&lt;p&gt;ただ、調べるうちに別の疑問が生じた。
+AI エージェントが DOM や Accessibility Tree から画面を理解できるなら、サイト側が追加実装してまで Tool を用意する必要はあるのだろうか。&lt;/p&gt;
+&lt;p&gt;WebMCP の公式 README には、その疑問を操作精度だけでは説明できない一節がある。&lt;/p&gt;
+&lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
+ &lt;p&gt;Prevent web content disintermediation&lt;/p&gt;
+
+&lt;/blockquote&gt;
+&lt;p&gt;WebMCP は、 AI エージェントに Web を「中抜き」させないための規格でもあるのだろうか。&lt;/p&gt;</description></item></channel></rss>
