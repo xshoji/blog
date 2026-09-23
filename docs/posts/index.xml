@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 12 Aug 2026 02:23:47 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>WebMCP は「 AI に Web UI を中抜きさせない」 ための規格なのか</title><link>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</link><pubDate>Tue, 11 Aug 2026 02:56:59 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</guid><description>&lt;!--
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Thu, 24 Sep 2026 02:39:01 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MacBook Air M5 のアンチグレアフィルムを国内外で比較した</title><link>https://blog.xshoji.com/posts/20260924_macbook-air-screen-protector-pre-purchase-research/</link><pubDate>Wed, 23 Sep 2026 02:03:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260924_macbook-air-screen-protector-pre-purchase-research/</guid><description>&lt;!--
+ARTICLE PLAN
+
+ステータス :
+- FIXED
+
+仮タイトル :
+- MacBook Air M5 のアンチグレアフィルムを国内外で比較した
+
+想定読者 :
+- MacBook Air M5 13 インチにアンチグレアフィルムを貼りたい人
+- Amazon の評価だけではなく、実際のユーザーの声も踏まえて選びたい人
+- 反射防止性能だけでなく、画質、貼りやすさ、厚さなども気になる人
+- 国内製品だけでなく海外で評判の製品も比較したい人
+
+中心的な問い :
+- MacBook Air M5 13 インチ向けのアンチグレアフィルムを国内外から比較すると、どの製品が自分の用途に合うのか
+
+中心的な結論 :
+- 国内外の製品を、反射防止性能、高精細さ、貼りやすさ、厚さ、実ユーザーの声、入手性まで含めて比較した結果、ミヤビックスの OverLay Plus Lite を選んだ
+- 貼り付けにくさを指摘する声はあったものの、問題なく貼れたという利用者もおり、自分自身も過去に大型フィルムの貼り直しを何度も経験しているため、今回は決定的な欠点とは考えなかった
+- 最終的には、反射を抑えながら高精細な表示をできるだけ維持するという性能面を重視した
+
+記事全体の論理 :
+1. MacBook Air M5 13 インチを購入し、現在の MacBook Pro と同じようにアンチグレアフィルムを貼りたいと考えた
+2. 現在使用している CRYSTAL VIEW PRO HDAG には満足しているが、 MacBook Air 向けでは同じように安心して選べる後継が見つからなかった
+3. 国内メーカーを中心に候補を探し、 Amazon の評価だけではなく SNS や実使用レビューまで確認した
+4. 調査範囲を海外まで広げると、 ViaScreens や ANTOOGOO V など、日本ではあまり見かけない候補も見つかった
+5. 国内外の製品を、反射防止、高精細さ、貼りやすさ、厚さ、ユーザー評価などで比較した
+6. 海外製品には魅力的なものもあったが、日本から購入すると送料を含めて高額になるため候補から外した
+7. 国内で入手しやすい製品を改めて比較し、最終的に OverLay Plus Lite を選んだ
+8. OverLay シリーズで指摘されている貼り付け難易度は認識した上で、性能を優先して許容した
+
+文体・粒度 :
+- 個人の購入検討をベースにしたテック系レビュー記事
+- 商品ランキングのように断定的な順位付けはしない
+- 「自分が何を重視し、なぜその候補を外し、なぜ最終的に選んだか」を中心にする
+- スペックは必要十分に示し、細かな数値の羅列にしない
+- 実ユーザーの声と公式仕様を分けて扱う
+- 調査時点と購入後の実体験を混同しない
+--&gt;
+&lt;h2 id="macbook-air-m5-を買ったのでアンチグレアフィルムが欲しい"
+ style="font-family: var(--font-serif);"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+&gt;MacBook Air M5 を買ったのでアンチグレアフィルムが欲しい&lt;/h2&gt;
+&lt;p&gt;最近、 MacBook Air M5 の 13 インチモデルを購入した。
+今使っている MacBook Pro には、アンチグレアの液晶保護フィルムを貼っている。照明や窓の映り込みが減り、指紋も目立ちにくい。
+使い心地がよかったので、今回購入した新しい MacBook Air にも同じフィルムを貼りたい。&lt;/p&gt;
+&lt;p&gt;探し始めると意外と候補が多く、レビューの件数や星だけでは決めにくかった。
+そこでこの記事では商品の性能の比較に加えて、ブログや Reddit の使用報告も調査してみた。&lt;/p&gt;</description></item><item><title>WebMCP は「 AI に Web UI を中抜きさせない」 ための規格なのか</title><link>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</link><pubDate>Tue, 11 Aug 2026 02:56:59 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</guid><description>&lt;!--
 ARTICLE PLAN
 
 ステータス :
@@ -48,7 +97,7 @@ ARTICLE PLAN
 --&gt;
 &lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;Cloudflare が「 Give any website a WebMCP interface 」という記事を公開した。&lt;/p&gt;
 &lt;p&gt;WebMCP を有効にすると、 Cloudflare が HTML へ bridge script を挿入し、ブラウザ内の AI エージェントが利用できる Tool をページへ登録するという。
@@ -74,7 +123,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
 &lt;/blockquote&gt;
 &lt;p&gt;WebMCP は、 AI エージェントに Web を「中抜き」させないための規格でもあるのだろうか。&lt;/p&gt;</description></item><item><title>iOS Safari でブックマークレットからいきなりペースト許可 UI を出す方法</title><link>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</link><pubDate>Sun, 09 Aug 2026 02:34:29 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;iOS Safari で動かすブックマークレットから、クリップボードに入っている JSON を読み取りたかった。&lt;/p&gt;
 &lt;p&gt;最初に書いた処理は単純で、ブックマークレットを実行したら入力用モーダルを作り、 &lt;code&gt;navigator.clipboard.readText()&lt;/code&gt; を呼ぶというものだった。&lt;/p&gt;
@@ -86,7 +135,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
 同じページでもう一度ブックマークレットを実行すると、今度は動くことがある。&lt;/p&gt;
 &lt;p&gt;いくつかの方法を試した結果、次の順番にすると新しいタブの初回でも動作した。&lt;/p&gt;</description></item><item><title>Amp Freeの無料クレジット残量をメニューバーに表示するようにしてみた</title><link>https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/</link><pubDate>Mon, 06 Apr 2026 02:37:02 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://blog.xshoji.com/posts/20260331_ampfree-credit-monitoring-plugin/"
  class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;前回の記事&lt;/a&gt;
@@ -100,7 +149,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
 &lt;figure&gt;&lt;img src="https://blog.xshoji.com/posts/20260406_ampfree-credit-monitoring2/data/amp-free-monitor-menu-bar01.png" width="100%" height="100%"&gt;
 &lt;/figure&gt;</description></item><item><title>Ampの広告付き無料プランのクレジット表示プラグインを作った（結構ハマった）</title><link>https://blog.xshoji.com/posts/20260331_ampfree-credit-monitoring-plugin/</link><pubDate>Tue, 31 Mar 2026 01:25:03 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260331_ampfree-credit-monitoring-plugin/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;最近、AmpのCEOがこんなツイートしてた&lt;/p&gt;
 &lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;I can see why some would want that. It’s not a high priority since many wouldn’t want it, and it would be for users who are using free differently from paid, which is not the kind of usage pattern we want to prioritize. (We see some people who use Amp Free for non-coding misc.…&lt;/p&gt;&amp;mdash; Quinn Slack (@sqs) &lt;a href="https://twitter.com/sqs/status/2037096582739615791?ref_src=twsrc%5Etfw"&gt;March 26, 2026&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
@@ -110,7 +159,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
 
 &lt;p&gt;この記事では、このプラグインを実装する過程で若干ハマったポイントがあったんでそこを紹介します。&lt;/p&gt;</description></item><item><title>AmpCodeの広告付き無料プランの1日のクレジットでできること:largeモード編</title><link>https://blog.xshoji.com/posts/20260319_ampfree-large-mode-1day-challenge/</link><pubDate>Thu, 19 Mar 2026 00:43:40 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260319_ampfree-large-mode-1day-challenge/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;最近、 AmpCode に隠しモードが追加された（らしい）&lt;/p&gt;
 &lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
@@ -150,7 +199,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
  class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;こちらの記事&lt;/a&gt;
 が原因で乗り換えました）、環境変数を設定する画面上では Postman にあるような「Initial Value」と「Current Value」という項目はなかったため、普段書き換える時は環境変数を書き換えたり、頻繁にやるなら環境ごとコピーしたり面倒だった。&lt;/p&gt;</description></item><item><title>AmpCodeの広告付き無料プランの1日のクレジットでできること:smartモードとrushモードの比較</title><link>https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/</link><pubDate>Sat, 14 Feb 2026 01:37:30 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260214_ampcode-free-1day-challenge/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;ampcodeには、3つのモードがある。&lt;/p&gt;
 &lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
@@ -178,7 +227,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
 &lt;p&gt;私は普段そんなにがっつりAIを使うことはなく、寝る前の1-2時間でちょっと思いついたことを試す、くらいの用途でAIを使っていたので、これだと最新のモデルも使えるしめっちゃええやん！ということで早速登録してみました。&lt;/p&gt;
 &lt;p&gt;ただし、登録したものの、すぐ使えずに結局一ヶ月近く待つことになったので、その話をまとめます。&lt;/p&gt;</description></item><item><title>BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなりOSアップデートで解決した..と思ったらただの勘違いだった話（解決編）</title><link>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</link><pubDate>Sat, 07 Feb 2026 02:37:50 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260207_btt-key-sequence-snippet-issue-solved/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
  &lt;p&gt;BetterTouchTool: キーシーケンスによるスニペット入力機能が突然動作しなくなったが、OSアップデートで解決した話 | xshoji&amp;rsquo;s blog&lt;br&gt;
@@ -222,7 +271,7 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
 &lt;/blockquote&gt;
 &lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;普段BTTを愛用していて、キーシーケンスによるスニペット入力をよく使います。
 これは、たとえば&lt;/p&gt;
@@ -271,7 +320,7 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
 &lt;/blockquote&gt;
 &lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"
  class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Claude Code&lt;/a&gt;
@@ -345,7 +394,7 @@ Go 標準の flag パッケージは、 任意の文字列をフラグ名とし�
 &lt;p&gt;と思った方。その通りです。なので、エンコードにこだわらない場合は、この記事の方法を使う必要はありません。ただ、この記事の最後にMac標準の方法でエンコードした場合とのサイズ比較を載せてますが、HandBrakeCLI等のツールでエンコードした方がより高圧縮で画質も良いのでこの記事で紹介する方法も覚えておくと良いと思います。&lt;/p&gt;
 &lt;h2 id="準備するもの"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;準備するもの&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;エンコーダー（ffmpeg, HandBrakeCLIなど）&lt;/li&gt;
@@ -378,7 +427,7 @@ Safari には「リーダー表示」という機能があり、記事本文だ�
 &lt;/blockquote&gt;
 &lt;p&gt;を例として設定方法を紹介していきます。また、AIは Github copilot を使います。&lt;/p&gt;</description></item><item><title>Postmanのエクスポート機能が廃止された件（とその解決策）</title><link>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</link><pubDate>Sun, 06 Aug 2023 13:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230802_postman-backup-dump-file-issue/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;APIの開発で&lt;/p&gt;
 &lt;blockquote class="my-[var(--space-md)] pl-[var(--space-md)] border-l-[3px] border-accent italic font-sans text-base whitespace-normal [overflow-wrap:anywhere] [word-wrap:break-word] [&amp;_p]:text-text-tertiary [&amp;_a]:text-text-secondary"&gt;
@@ -391,7 +440,7 @@ Safari には「リーダー表示」という機能があり、記事本文だ�
 &lt;p&gt;を使っていて、最近PC入れ替えを行う際、このPostmanのバックアップ機能（エクスポート機能）が消えていて大変困ったため、
 何が起こっていたのかなど、Postman側の経緯や、この対策などについてまとめます。&lt;/p&gt;</description></item><item><title>Goのバイナリにソースコードをそのまま同梱するという提案</title><link>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</link><pubDate>Sun, 26 Mar 2023 02:00:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20230326_proposal-packing-source-code-in-golang/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;業務でGoのスクリプトを書いて、バイナリをチームに配ることがよくあります。
 Goでコンパイル済みのバイナリを配るメリットとしては&lt;/p&gt;

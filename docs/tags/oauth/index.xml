@@ -24,7 +24,7 @@
 &lt;/blockquote&gt;
 &lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://code.claude.com/docs/ja/overview"
  class="text-accent no-underline border-b border-accent hover:text-text-primary hover:border-transparent relative transition-[border-color,color]"&gt;Claude Code&lt;/a&gt;

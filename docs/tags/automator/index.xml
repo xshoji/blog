@@ -7,7 +7,7 @@
 &lt;p&gt;と思った方。その通りです。なので、エンコードにこだわらない場合は、この記事の方法を使う必要はありません。ただ、この記事の最後にMac標準の方法でエンコードした場合とのサイズ比較を載せてますが、HandBrakeCLI等のツールでエンコードした方がより高圧縮で画質も良いのでこの記事で紹介する方法も覚えておくと良いと思います。&lt;/p&gt;
 &lt;h2 id="準備するもの"
  style="font-family: var(--font-serif);"
- class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-md)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
+ class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;準備するもの&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;エンコーダー（ffmpeg, HandBrakeCLIなど）&lt;/li&gt;
