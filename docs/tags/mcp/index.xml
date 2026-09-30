@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCP on xshoji's blog</title><link>https://blog.xshoji.com/tags/mcp/</link><description>Recent content in MCP on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 12 Aug 2026 02:23:47 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/mcp/index.xml" rel="self" type="application/rss+xml"/><item><title>WebMCP は「 AI に Web UI を中抜きさせない」 ための規格なのか</title><link>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</link><pubDate>Tue, 11 Aug 2026 02:56:59 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</guid><description>&lt;!--
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCP on xshoji's blog</title><link>https://blog.xshoji.com/tags/mcp/</link><description>Recent content in MCP on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 30 Sep 2026 09:53:20 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/tags/mcp/index.xml" rel="self" type="application/rss+xml"/><item><title>WebMCP は「 AI に Web UI を中抜きさせない」 ための規格なのか</title><link>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</link><pubDate>Tue, 11 Aug 2026 02:56:59 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260811_webmcp-disintermediation/</guid><description>&lt;!--
 ARTICLE PLAN
 
 ステータス :
@@ -72,4 +72,5 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
  &lt;p&gt;Prevent web content disintermediation&lt;/p&gt;
 
 &lt;/blockquote&gt;
-&lt;p&gt;WebMCP は、 AI エージェントに Web を「中抜き」させないための規格でもあるのだろうか。&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;WebMCP は、 AI エージェントに Web を中抜きさせないための規格&amp;hellip;なのか？
+気になったの調べてみた。&lt;/p&gt;</description></item></channel></rss>

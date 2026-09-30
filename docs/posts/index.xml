@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Thu, 24 Sep 2026 03:01:21 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MacBook Air M5 のアンチグレアフィルムを国内外で比較した</title><link>https://blog.xshoji.com/posts/20260924_macbook-air-screen-protector-pre-purchase-research/</link><pubDate>Wed, 23 Sep 2026 02:03:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260924_macbook-air-screen-protector-pre-purchase-research/</guid><description>&lt;!--
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on xshoji's blog</title><link>https://blog.xshoji.com/posts/</link><description>Recent content in Posts on xshoji's blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 30 Sep 2026 09:53:20 +0900</lastBuildDate><atom:link href="https://blog.xshoji.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MacBook Air M5 のアンチグレアフィルムを国内外で比較した</title><link>https://blog.xshoji.com/posts/20260924_macbook-air-screen-protector-pre-purchase-research/</link><pubDate>Wed, 23 Sep 2026 02:03:00 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260924_macbook-air-screen-protector-pre-purchase-research/</guid><description>&lt;!--
 ARTICLE PLAN
 
 ステータス :
@@ -121,7 +121,8 @@ Today we are launching a developer preview of WebMCP on Cloudflare. Switch it on
  &lt;p&gt;Prevent web content disintermediation&lt;/p&gt;
 
 &lt;/blockquote&gt;
-&lt;p&gt;WebMCP は、 AI エージェントに Web を「中抜き」させないための規格でもあるのだろうか。&lt;/p&gt;</description></item><item><title>iOS Safari でブックマークレットからいきなりペースト許可 UI を出す方法</title><link>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</link><pubDate>Sun, 09 Aug 2026 02:34:29 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</guid><description>&lt;h2 id="はじめに"
+&lt;p&gt;WebMCP は、 AI エージェントに Web を中抜きさせないための規格&amp;hellip;なのか？
+気になったの調べてみた。&lt;/p&gt;</description></item><item><title>iOS Safari でブックマークレットからいきなりペースト許可 UI を出す方法</title><link>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</link><pubDate>Sun, 09 Aug 2026 02:34:29 +0900</pubDate><guid>https://blog.xshoji.com/posts/20260810_how-to-prompt-for-paste-permission-directly-from-a-bookmarklet-in-ios-safari/</guid><description>&lt;h2 id="はじめに"
  style="font-family: var(--font-serif);"
  class="leading-[1.2] tracking-[-0.02em] text-text-primary mt-[var(--space-lg)] mb-[var(--space-md)] scroll-mt-[calc(var(--space-md)*2*1.2)] transition-colors font-medium text-[1.5rem]"
 &gt;はじめに&lt;/h2&gt;
